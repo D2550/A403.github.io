@@ -148,6 +148,68 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.njcit.me/2022/12/22/firefox%E4%BB%A3%E7%90%86%E7%9A%84%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ccadmin">
+      <meta itemprop="description" content="web安全">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="这里有一个网站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/12/22/firefox%E4%BB%A3%E7%90%86%E7%9A%84%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE/" class="post-title-link" itemprop="url">firefox代理的一些配置</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-12-22 20:02:57 / 修改时间：20:11:10" itemprop="dateCreated datePublished" datetime="2022-12-22T20:02:57+08:00">2022-12-22</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="火狐代理配置"><a href="#火狐代理配置" class="headerlink" title="火狐代理配置"></a>火狐代理配置</h1><p>插件下载地址：<a target="_blank" rel="noopener" href="https://addons.mozilla.org/zh-CN/firefox/addon/switchyomega/">https://addons.mozilla.org/zh-CN/firefox/addon/switchyomega/</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">127.0.0.1</span><br><span class="line">[::1]</span><br><span class="line">localhost</span><br><span class="line">*.mozilla.org</span><br><span class="line">*.mozilla.com</span><br><span class="line">*.firefox.com</span><br><span class="line">*.firefox.org</span><br><span class="line">*.mozilla.net</span><br></pre></td></tr></table></figure>
+<h1 id="burpsuite启动脚本"><a href="#burpsuite启动脚本" class="headerlink" title="burpsuite启动脚本"></a>burpsuite启动脚本</h1><p>burp下载地址：<a target="_blank" rel="noopener" href="https://portswigger.net/burp/releases">https://portswigger.net/burp/releases</a><br>loader下载地址：<a target="_blank" rel="noopener" href="https://github.com/h3110w0r1d-y/BurpLoaderKeygen">https://github.com/h3110w0r1d-y/BurpLoaderKeygen</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PS D:\pentest\burpsuite\jre\jdk-17.0.5&gt; cat .\start.vbs</span><br><span class="line">CreateObject(&quot;WScript.Shell&quot;).Run &quot;D:\pentest\burpsuite\jre\jdk-17.0.5\bin\java.exe -jar D:\pentest\burpsuite\jre\jdk-17.0.5\BurpLoaderKeygen.jar&quot;,0</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://blog.njcit.me/2022/12/16/log4j-payload/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -464,12 +526,12 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
