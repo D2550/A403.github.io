@@ -163,6 +163,91 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.njcit.me/2022/12/29/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ccadmin">
+      <meta itemprop="description" content="web安全">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="这里有一个网站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/12/29/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/" class="post-title-link" itemprop="url">RuoYi代码审计学习记录</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2022-12-29 09:07:17 / 修改时间：09:58:00" itemprop="dateCreated datePublished" datetime="2022-12-29T09:07:17+08:00">2022-12-29</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>总算要开始学习代码审计了，正好看到一篇比较好的代码审计的文章，跟着学习一点皮毛，顺便记录一下。基本都是抄的，推荐去看原文，文章地址：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/xpC9WGUKvoIkrdDmRdwMaQ">https://mp.weixin.qq.com/s/xpC9WGUKvoIkrdDmRdwMaQ</a></p>
+<h1 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h1><h2 id="工具配置"><a href="#工具配置" class="headerlink" title="工具配置"></a>工具配置</h2><p>JDK 1.8<a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html">下载地址</a>  </p>
+<p>推荐使用IntelliJ IDEA Ultimate版本，下载地址：<a target="_blank" rel="noopener" href="https://www.jetbrains.com/idea/download/">IntelliJ IDEA</a>，学生可以免费领专业版，有钱可以支持正版，没钱淘宝买个学生账号。  </p>
+<p>推荐Free MyBatis Tool插件和官方中文语言包，其他的看着装就行。</p>
+<p><img src="/../images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221229093809581.png" alt="image-20221229093809581"></p>
+<p>Free MyBatis Tool插件可以快速定位MyBatis调用代码，例如：</p>
+<p><img src="/../images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221229094002013.png" alt="image-20221229094002013"></p>
+<p><img src="/../images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221229094023014.png" alt="image-20221229094023014"></p>
+<p><img src="/../images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221229094045404.png" alt="image-20221229094045404"></p>
+<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p>RuoYi版本：v4.2，<a target="_blank" rel="noopener" href="https://gitee.com/y_project/RuoYi/tags">下载地址</a>，下载4.2的版本就行</p>
+<p><img src="/../images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221229094526076.png" alt="image-20221229094526076"></p>
+<p>使用idea直接打开项目，找到RuoYi-v4.2\ruoyi-admin\src\main\resources\application.yml，修改web端口（可选）</p>
+<p><img src="/../images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221229094724473.png" alt="image-20221229094724473"></p>
+<p>打开RuoYi-v4.2\ruoyi-admin\src\main\resources\application-druid.yml，修改数据库相关信息</p>
+<p><img src="/../images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221229095122611.png" alt="image-20221229095122611"></p>
+<p>mysql  Ver 8.0.30 for Linux on x86_64 不允许root远程登录，可以使用以下方法缓解</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CREATE USER &#x27;username&#x27;@&#x27;localhost&#x27; IDENTIFIED BY &#x27;password&#x27;;</span><br><span class="line"></span><br><span class="line">GRANT ALL PRIVILEGES ON *.* TO &#x27;username&#x27;@&#x27;localhost&#x27; WITH GRANT OPTION;</span><br><span class="line"></span><br><span class="line">CREATE USER &#x27;username&#x27;@&#x27;%&#x27; IDENTIFIED BY &#x27;password&#x27;;</span><br><span class="line"></span><br><span class="line">GRANT ALL PRIVILEGES ON *.* TO &#x27;username&#x27;@&#x27;%&#x27; WITH GRANT OPTION;</span><br><span class="line"></span><br><span class="line">FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
+
+<p>创建数据库并导入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">create database ry;</span><br><span class="line">use ry;</span><br><span class="line">source /opt/quartz.sql</span><br><span class="line">source /opt/ry_20200323.sql</span><br></pre></td></tr></table></figure>
+
+<p>启动环境</p>
+<p><img src="/../images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221229095619047.png" alt="image-20221229095619047"></p>
+<p>访问<a target="_blank" rel="noopener" href="http://127.0.0.1:8081/login%EF%BC%8C%E8%87%AA%E5%B8%A6%E7%94%A8%E6%88%B7%E5%90%8D%E5%AF%86%E7%A0%81%EF%BC%8C%E6%B2%A1%E6%9C%89%E7%9A%84%E8%AF%9D%E8%AF%95%E8%AF%95admin/admin123">http://127.0.0.1:8081/login，自带用户名密码，没有的话试试admin/admin123</a></p>
+<p><img src="/../images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221229095706777.png" alt="image-20221229095706777"></p>
+<p><img src="/../images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221229095744497.png" alt="image-20221229095744497"></p>
+<p>基础环境配置到此结束。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://blog.njcit.me/2022/12/27/powershell%E9%85%8D%E7%BD%AE/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -674,12 +759,12 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-count">8</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
