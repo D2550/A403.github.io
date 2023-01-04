@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"blog.njcit.me","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="前言总算要开始学习代码审计了，正好看到一篇比较好的代码审计的文章，跟着学习一点皮毛，顺便记录一下。基本都是抄的，推荐去看原文，文章地址：https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s&#x2F;xpC9WGUKvoIkrdDmRdwMaQ 基础配置工具配置JDK 1.8下载地址   推荐使用IntelliJ IDEA Ultimate版本，下载地址：IntelliJ IDEA，学生可以免费领专业版，有">
+  <meta name="description" content="前言总算要开始学习代码审计了，正好看到一篇比较好的代码审计的文章，跟着学习一点皮毛，顺便记录一下。基本都是抄的，推荐去看原文，文章地址：https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s&#x2F;xpC9WGUKvoIkrdDmRdwMaQ   参考文章：https:&#x2F;&#x2F;xz.aliyun.com&#x2F;t&#x2F;11928 基础配置工具配置JDK 1.8下载地址   推荐使用IntelliJ IDEA Ultim">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RuoYi代码审计学习记录">
 <meta property="og:url" content="https://blog.njcit.me/2022/12/29/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/index.html">
 <meta property="og:site_name" content="这里有一个网站">
-<meta property="og:description" content="前言总算要开始学习代码审计了，正好看到一篇比较好的代码审计的文章，跟着学习一点皮毛，顺便记录一下。基本都是抄的，推荐去看原文，文章地址：https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s&#x2F;xpC9WGUKvoIkrdDmRdwMaQ 基础配置工具配置JDK 1.8下载地址   推荐使用IntelliJ IDEA Ultimate版本，下载地址：IntelliJ IDEA，学生可以免费领专业版，有">
+<meta property="og:description" content="前言总算要开始学习代码审计了，正好看到一篇比较好的代码审计的文章，跟着学习一点皮毛，顺便记录一下。基本都是抄的，推荐去看原文，文章地址：https:&#x2F;&#x2F;mp.weixin.qq.com&#x2F;s&#x2F;xpC9WGUKvoIkrdDmRdwMaQ   参考文章：https:&#x2F;&#x2F;xz.aliyun.com&#x2F;t&#x2F;11928 基础配置工具配置JDK 1.8下载地址   推荐使用IntelliJ IDEA Ultim">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog.njcit.me/images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221229093809581.png">
 <meta property="og:image" content="https://blog.njcit.me/images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221229094002013.png">
@@ -40,8 +40,10 @@
 <meta property="og:image" content="https://blog.njcit.me/images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221229101224122.png">
 <meta property="og:image" content="https://blog.njcit.me/images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221229101517335.png">
 <meta property="og:image" content="https://blog.njcit.me/images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221229101800526.png">
+<meta property="og:image" content="https://blog.njcit.me/images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221230135940231.png">
+<meta property="og:image" content="https://blog.njcit.me/images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221230140054622.png">
 <meta property="article:published_time" content="2022-12-29T01:07:17.000Z">
-<meta property="article:modified_time" content="2022-12-29T02:20:28.956Z">
+<meta property="article:modified_time" content="2022-12-30T06:23:25.018Z">
 <meta property="article:author" content="ccadmin">
 <meta property="article:tag" content="代码审计">
 <meta name="twitter:card" content="summary">
@@ -203,10 +205,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2022-12-29 09:07:17 / 修改时间：10:20:28" itemprop="dateCreated datePublished" datetime="2022-12-29T09:07:17+08:00">2022-12-29</time>
+              <time title="创建时间：2022-12-29 09:07:17" itemprop="dateCreated datePublished" datetime="2022-12-29T09:07:17+08:00">2022-12-29</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-12-30 14:23:25" itemprop="dateModified" datetime="2022-12-30T14:23:25+08:00">2022-12-30</time>
+              </span>
 
           
 
@@ -219,7 +227,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>总算要开始学习代码审计了，正好看到一篇比较好的代码审计的文章，跟着学习一点皮毛，顺便记录一下。基本都是抄的，推荐去看原文，文章地址：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/xpC9WGUKvoIkrdDmRdwMaQ">https://mp.weixin.qq.com/s/xpC9WGUKvoIkrdDmRdwMaQ</a></p>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>总算要开始学习代码审计了，正好看到一篇比较好的代码审计的文章，跟着学习一点皮毛，顺便记录一下。基本都是抄的，推荐去看原文，文章地址：<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/xpC9WGUKvoIkrdDmRdwMaQ">https://mp.weixin.qq.com/s/xpC9WGUKvoIkrdDmRdwMaQ</a>  </p>
+<p>参考文章：<a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/11928">https://xz.aliyun.com/t/11928</a></p>
 <h1 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h1><h2 id="工具配置"><a href="#工具配置" class="headerlink" title="工具配置"></a>工具配置</h2><p>JDK 1.8<a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html">下载地址</a>  </p>
 <p>推荐使用IntelliJ IDEA Ultimate版本，下载地址：<a target="_blank" rel="noopener" href="https://www.jetbrains.com/idea/download/">IntelliJ IDEA</a>，学生可以免费领专业版，有钱可以支持正版，没钱淘宝买个学生账号。  </p>
 <p>推荐Free MyBatis Tool插件和官方中文语言包，其他的看着装就行。</p>
@@ -248,11 +257,15 @@
 <p>基础环境配置到此结束。</p>
 <h1 id="漏洞分析"><a href="#漏洞分析" class="headerlink" title="漏洞分析"></a>漏洞分析</h1><h2 id="Shiro反序列化漏洞"><a href="#Shiro反序列化漏洞" class="headerlink" title="Shiro反序列化漏洞"></a>Shiro反序列化漏洞</h2><p>为啥说这篇文章好呢，因为他把你每个步骤需要按的键都给你了，这里就依葫芦画瓢。根据文章可知，一般情况下shiro的配置文件在shiroconfig.java中，在idea中，如果你想搜索全部代码的话，快捷键是按两次Shift，这里按两下shift然后搜索shiroconfig，结果如下：</p>
 <p><img src="/../images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221229101224122.png" alt="image-20221229101224122"></p>
-<p>在shiroconfig.java中搜索key可以找到shiro加密使用的密钥fCq+&#x2F;xW488hMTCD+cmJ3aQ&#x3D;&#x3D;：</p>
+<p>在shiroconfig.java中搜索key可以找到shiro加密使用的密钥fCq+&#x2F;xW488hMTCD+cmJ3aQ&#x3D;&#x3D;，这里要注意，加密的方式是gcm：</p>
 <p><img src="/../images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221229101517335.png" alt="image-20221229101517335"></p>
 <p>查看设置的cookie:</p>
 <p><img src="/../images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221229101800526.png" alt="image-20221229101800526"></p>
 <p>shiro反序列化导致rce可以参考<a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/7793">链接</a>，这里就不多讲了，主要是我也不会。</p>
+<h2 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h2><p>这个版本官方发布了一些sql注入的补丁，具体注入点我们可以通过使用idea进行全局搜索来进行查找，在idea中按两次shift可以调出全局的搜索框，搜索常见的可以存在注入的点${xxx}找到的结果如下：</p>
+<p><img src="/../images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221230135940231.png" alt="image-20221230135940231"></p>
+<p>这里先定位到id为selectDeptList的sql语句，通过使用插件可以快速定位到Java代码：</p>
+<p><img src="/../images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221230140054622.png" alt="image-20221230140054622"></p>
 
     </div>
 
@@ -336,7 +349,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">基础配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7%E9%85%8D%E7%BD%AE"><span class="nav-number">2.1.</span> <span class="nav-text">工具配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="nav-number">2.2.</span> <span class="nav-text">环境搭建</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90"><span class="nav-number">3.</span> <span class="nav-text">漏洞分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Shiro%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E"><span class="nav-number">3.1.</span> <span class="nav-text">Shiro反序列化漏洞</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">基础配置</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7%E9%85%8D%E7%BD%AE"><span class="nav-number">2.1.</span> <span class="nav-text">工具配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="nav-number">2.2.</span> <span class="nav-text">环境搭建</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%86%E6%9E%90"><span class="nav-number">3.</span> <span class="nav-text">漏洞分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Shiro%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E"><span class="nav-number">3.1.</span> <span class="nav-text">Shiro反序列化漏洞</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SQL%E6%B3%A8%E5%85%A5"><span class="nav-number">3.2.</span> <span class="nav-text">SQL注入</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -350,14 +363,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -384,7 +397,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
