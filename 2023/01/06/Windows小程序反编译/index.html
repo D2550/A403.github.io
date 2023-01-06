@@ -20,20 +20,25 @@
     var CONFIG = {"hostname":"blog.njcit.me","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="简介shodan是一款网络空间搜索引擎，地址https:&#x2F;&#x2F;www.shodan.io&#x2F;。 使用 搜索列目录漏洞：http.title:&quot;Index of &#x2F;&quot; country:&quot;CN&quot;  搜索某个IP地址：net:8.8.0.0&#x2F;16 或者net:114.114.114.114  搜索域名&#x2F;主机名：hostname:baidu.com  搜索指定">
+  <meta name="description" content="前言Windows小程序是加密存储，没办法直接反编译（解包），需要先解密，然后再反编译，这篇文章主要介绍如何在Windows上不依赖手机和root来获取小程序的源码。 所需工具 PC微信小程序包解密工具:https:&#x2F;&#x2F;share.weiyun.com&#x2F;uMqNGOXv 反编译（解包）工具:https:&#x2F;&#x2F;pan.baidu.com&#x2F;s&#x2F;1dg5SdCv_VgzYVeakALgyVg?pwd&amp;#x">
 <meta property="og:type" content="article">
-<meta property="og:title" content="shodan基础使用">
-<meta property="og:url" content="https://blog.njcit.me/2023/01/04/shodan%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:title" content="Windows小程序反编译">
+<meta property="og:url" content="https://blog.njcit.me/2023/01/06/Windows%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8F%8D%E7%BC%96%E8%AF%91/index.html">
 <meta property="og:site_name" content="这里有一个网站">
-<meta property="og:description" content="简介shodan是一款网络空间搜索引擎，地址https:&#x2F;&#x2F;www.shodan.io&#x2F;。 使用 搜索列目录漏洞：http.title:&quot;Index of &#x2F;&quot; country:&quot;CN&quot;  搜索某个IP地址：net:8.8.0.0&#x2F;16 或者net:114.114.114.114  搜索域名&#x2F;主机名：hostname:baidu.com  搜索指定">
+<meta property="og:description" content="前言Windows小程序是加密存储，没办法直接反编译（解包），需要先解密，然后再反编译，这篇文章主要介绍如何在Windows上不依赖手机和root来获取小程序的源码。 所需工具 PC微信小程序包解密工具:https:&#x2F;&#x2F;share.weiyun.com&#x2F;uMqNGOXv 反编译（解包）工具:https:&#x2F;&#x2F;pan.baidu.com&#x2F;s&#x2F;1dg5SdCv_VgzYVeakALgyVg?pwd&amp;#x">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-01-04T01:11:50.000Z">
-<meta property="article:modified_time" content="2023-01-05T00:39:38.816Z">
+<meta property="og:image" content="https://blog.njcit.me/images/Windows%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8F%8D%E7%BC%96%E8%AF%91/image-20230106153452966.png">
+<meta property="og:image" content="https://blog.njcit.me/images/Windows%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8F%8D%E7%BC%96%E8%AF%91/image-20230106153628836.png">
+<meta property="og:image" content="https://blog.njcit.me/images/Windows%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8F%8D%E7%BC%96%E8%AF%91/image-20230106153830918.png">
+<meta property="article:published_time" content="2023-01-06T07:13:19.000Z">
+<meta property="article:modified_time" content="2023-01-06T09:30:06.096Z">
 <meta property="article:author" content="ccadmin">
-<meta property="article:tag" content="shodan">
+<meta property="article:tag" content="小程序">
+<meta property="article:tag" content="反编译">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.njcit.me/images/Windows%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8F%8D%E7%BC%96%E8%AF%91/image-20230106153452966.png">
 
-<link rel="canonical" href="https://blog.njcit.me/2023/01/04/shodan%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/">
+<link rel="canonical" href="https://blog.njcit.me/2023/01/06/Windows%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8F%8D%E7%BC%96%E8%AF%91/">
 
 
 <script id="page-configurations">
@@ -46,7 +51,7 @@
   };
 </script>
 
-  <title>shodan基础使用 | 这里有一个网站</title>
+  <title>Windows小程序反编译 | 这里有一个网站</title>
   
 
 
@@ -167,7 +172,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.njcit.me/2023/01/04/shodan%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/">
+    <link itemprop="mainEntityOfPage" href="https://blog.njcit.me/2023/01/06/Windows%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8F%8D%E7%BC%96%E8%AF%91/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -180,7 +185,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          shodan基础使用
+          Windows小程序反编译
         </h1>
 
         <div class="post-meta">
@@ -189,16 +194,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2023-01-04 09:11:50" itemprop="dateCreated datePublished" datetime="2023-01-04T09:11:50+08:00">2023-01-04</time>
+              <time title="创建时间：2023-01-06 15:13:19 / 修改时间：17:30:06" itemprop="dateCreated datePublished" datetime="2023-01-06T15:13:19+08:00">2023-01-06</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-01-05 08:39:38" itemprop="dateModified" datetime="2023-01-05T08:39:38+08:00">2023-01-05</time>
-              </span>
 
           
 
@@ -211,23 +210,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>shodan是一款网络空间搜索引擎，<a target="_blank" rel="noopener" href="https://www.shodan.io/">地址https://www.shodan.io/</a>。</p>
-<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><ul>
-<li><p>搜索列目录漏洞：<code>http.title:&quot;Index of /&quot; country:&quot;CN&quot;</code></p>
-</li>
-<li><p>搜索某个IP地址：<code>net:8.8.0.0/16</code> 或者<code>net:114.114.114.114</code></p>
-</li>
-<li><p>搜索域名&#x2F;主机名：<code>hostname:baidu.com</code></p>
-</li>
-<li><p>搜索指定端口：<code>port:80</code></p>
-</li>
-<li><p>搜索指定软件：<code>product:&quot;Apache httpd&quot;</code></p>
-</li>
-<li><p>搜索网页返回内容：<code>http.html:&quot;hello world&quot;</code></p>
-</li>
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Windows小程序是加密存储，没办法直接反编译（解包），需要先解密，然后再反编译，这篇文章主要介绍如何在Windows上不依赖手机和root来获取小程序的源码。</p>
+<h1 id="所需工具"><a href="#所需工具" class="headerlink" title="所需工具"></a>所需工具</h1><ul>
+<li>PC微信小程序包解密工具:<a target="_blank" rel="noopener" href="https://share.weiyun.com/uMqNGOXv">https://share.weiyun.com/uMqNGOXv</a></li>
+<li>反编译（解包）工具:<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1dg5SdCv_VgzYVeakALgyVg?pwd=rd4h">https://pan.baidu.com/s/1dg5SdCv_VgzYVeakALgyVg?pwd&#x3D;rd4h</a>（丢，收费了）</li>
+<li>工具包：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1Az--jmLIuN2YOkK03AsBCw?pwd=1111">https://pan.baidu.com/s/1Az--jmLIuN2YOkK03AsBCw?pwd=1111</a></li>
 </ul>
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/0c184915c118">https://www.jianshu.com/p/0c184915c118</a>  </p>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/nul1/p/11341376.html">https://www.cnblogs.com/nul1/p/11341376.html</a></p>
+<h1 id="过程记录"><a href="#过程记录" class="headerlink" title="过程记录"></a>过程记录</h1><p>首先获取小程序包，如果你没修改过微信文件的存储位置，那么默认在C:\Users\用户\Documents\WeChat Files\Applet中。里面会有一堆wx开头的文件夹，有两周方法确认哪个是你要找的小程序所在的文件夹：一是根据时间来判断，二是把所有文件夹都删除，重新打开小程序生成的文件夹就是。  </p>
+<p>我这里的文件路径是D:\Users\admin\Documents\WeChat Files\Applet\wxa9d6ad7b7a62a74a\862</p>
+<p><img src="/../images/Windows%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8F%8D%E7%BC%96%E8%AF%91/image-20230106153452966.png" alt="image-20230106153452966"></p>
+<p>使用第一个工具解密，不要把文件复制出来</p>
+<p><img src="/../images/Windows%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8F%8D%E7%BC%96%E8%AF%91/image-20230106153628836.png" alt="image-20230106153628836"></p>
+<p>解密成功的文件</p>
+<p><img src="/../images/Windows%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8F%8D%E7%BC%96%E8%AF%91/image-20230106153830918.png" alt="image-20230106153830918"></p>
+<p>未完待续</p>
 
     </div>
 
@@ -237,7 +233,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/shodan/" rel="tag"># shodan</a>
+              <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag"># 小程序</a>
+              <a href="/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/" rel="tag"># 反编译</a>
           </div>
 
         
@@ -246,13 +243,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/12/29/%E7%BD%91%E7%9B%98%E7%9B%B4%E9%93%BE%E4%B8%8B%E8%BD%BD%E5%8A%A9%E6%89%8B%E7%BB%95%E8%BF%87%E5%85%B3%E6%B3%A8%E5%85%AC%E4%BC%97%E5%8F%B7%E9%99%90%E5%88%B6/" rel="prev" title="网盘直链下载助手绕过关注公众号限制">
-      <i class="fa fa-chevron-left"></i> 网盘直链下载助手绕过关注公众号限制
+    <a href="/2023/01/06/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/" rel="prev" title="Linux硬盘踩坑记">
+      <i class="fa fa-chevron-left"></i> Linux硬盘踩坑记
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2023/01/04/Android%E9%80%86%E5%90%91%E5%B7%A5%E5%85%B7/" rel="next" title="Android逆向工具">
-      Android逆向工具 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -311,7 +305,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="nav-number">3.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%89%80%E9%9C%80%E5%B7%A5%E5%85%B7"><span class="nav-number">2.</span> <span class="nav-text">所需工具</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95"><span class="nav-number">3.</span> <span class="nav-text">过程记录</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
