@@ -188,7 +188,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2023-01-06 09:59:45 / 修改时间：10:27:05" itemprop="dateCreated datePublished" datetime="2023-01-06T09:59:45+08:00">2023-01-06</time>
+              <time title="创建时间：2023-01-06 09:59:45 / 修改时间：10:28:07" itemprop="dateCreated datePublished" datetime="2023-01-06T09:59:45+08:00">2023-01-06</time>
             </span>
 
           
@@ -205,7 +205,7 @@
           <h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h1><p>800多买了块14T的矿渣硬盘，挂在Kali Linux（实体机，非虚拟机）下面用来备份一些不怎么重要的数据。之前由于机箱电源键坏了带走了我一块3T的硬盘，电源键老化按下去弹不起来导致系统一直在强制重启，然后硬盘就挂了。挂了之前我实在<code>/etc/fstab</code>中实现的硬盘开机自挂载，然后就开不了机，只能重新接上显示器开机在菜单页面按e修改启动参数，进入类似维护模式的终端，去除相关条目才能开机。同事告诉我可以使用修改 <code>/etc/rc.local</code>来实现开机自动挂载，但是我改了没生效，可能是我改错了或者啥的，正好发现如下的坑。</p>
 <h1 id="症状"><a href="#症状" class="headerlink" title="症状"></a>症状</h1><p>在我修改完<code>/etc/rc.local</code>重启之后准备查看是否生效的时候，发现了硬盘设备名发生了变化，如下：重启前</p>
 <p><img src="/../images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106101218662.png" alt="image-20230106101218662"></p>
-<p>很明显我14TB硬盘的设备名是adb,重启后如下：</p>
+<p>很明显我14TB硬盘的设备名是sdb,重启后如下：</p>
 <p><img src="/../images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106101315352.png" alt="image-20230106101315352"></p>
 <p>很明显sdb已经不是之前的14T的硬盘了，再次重启查看如下：</p>
 <p><img src="/../images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106101426980.png" alt="image-20230106101426980"></p>
