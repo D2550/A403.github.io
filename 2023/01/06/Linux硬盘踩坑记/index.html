@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"blog.njcit.me","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="背景介绍800多买了块14T的矿渣硬盘，挂在Kali Linux（实体机，非虚拟机）下面用来备份一些不怎么重要的数据。之前由于机箱电源键坏了带走了我一块3T的硬盘，电源键老化按下去弹不起来导致系统一直在强制重启，然后硬盘就挂了。挂了之前我实在&#x2F;etc&#x2F;fstab中实现的硬盘开机自挂载，然后就开不了机，只能重新接上显示器开机在菜单页面按e修改启动参数，进入类似维护模式的终端，去除相关条目才能开机。同">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux硬盘踩坑记">
+<meta property="og:url" content="https://blog.njcit.me/2023/01/06/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/index.html">
+<meta property="og:site_name" content="这里有一个网站">
+<meta property="og:description" content="背景介绍800多买了块14T的矿渣硬盘，挂在Kali Linux（实体机，非虚拟机）下面用来备份一些不怎么重要的数据。之前由于机箱电源键坏了带走了我一块3T的硬盘，电源键老化按下去弹不起来导致系统一直在强制重启，然后硬盘就挂了。挂了之前我实在&#x2F;etc&#x2F;fstab中实现的硬盘开机自挂载，然后就开不了机，只能重新接上显示器开机在菜单页面按e修改启动参数，进入类似维护模式的终端，去除相关条目才能开机。同">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.njcit.me/images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106101218662.png">
+<meta property="og:image" content="https://blog.njcit.me/images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106101315352.png">
+<meta property="og:image" content="https://blog.njcit.me/images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106101426980.png">
+<meta property="og:image" content="https://blog.njcit.me/images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106101849155.png">
+<meta property="og:image" content="https://blog.njcit.me/images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106102029728.png">
+<meta property="og:image" content="https://blog.njcit.me/images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106102145317.png">
+<meta property="og:image" content="https://blog.njcit.me/images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106102308878.png">
+<meta property="og:image" content="https://blog.njcit.me/images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106102432377.png">
+<meta property="article:published_time" content="2023-01-06T01:59:45.000Z">
+<meta property="article:modified_time" content="2023-01-06T02:25:19.048Z">
+<meta property="article:author" content="ccadmin">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="分区">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.njcit.me/images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106101218662.png">
+
+<link rel="canonical" href="https://blog.njcit.me/2023/01/06/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Linux硬盘踩坑记 | 这里有一个网站</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">这里有一个网站</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">一个不怎么安全的网站</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.njcit.me/2023/01/06/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ccadmin">
+      <meta itemprop="description" content="web安全">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="这里有一个网站">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Linux硬盘踩坑记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-01-06 09:59:45 / 修改时间：10:25:19" itemprop="dateCreated datePublished" datetime="2023-01-06T09:59:45+08:00">2023-01-06</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h1><p>800多买了块14T的矿渣硬盘，挂在Kali Linux（实体机，非虚拟机）下面用来备份一些不怎么重要的数据。之前由于机箱电源键坏了带走了我一块3T的硬盘，电源键老化按下去弹不起来导致系统一直在强制重启，然后硬盘就挂了。挂了之前我实在<code>/etc/fstab</code>中实现的硬盘开机自挂载，然后就开不了机，只能重新接上显示器开机在菜单页面按e修改启动参数，进入类似维护模式的终端，去除相关条目才能开机。同事告诉我可以使用修改 <code>/etc/rc.local</code>来实现开机自动挂载，但是我改了没生效，可能是我改错了或者啥的，正好发现如下的坑。</p>
+<h1 id="症状"><a href="#症状" class="headerlink" title="症状"></a>症状</h1><p>在我修改完<code>/etc/rc.local</code>重启之后准备查看是否生效的时候，发现了硬盘设备名发生了变化，如下：重启前</p>
+<p><img src="/../images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106101218662.png" alt="image-20230106101218662"></p>
+<p>很明显我14TB硬盘的设备名是adb,重启后如下：</p>
+<p><img src="/../images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106101315352.png" alt="image-20230106101315352"></p>
+<p>很明显sdb已经不是之前的14T的硬盘了，再次重启查看如下：</p>
+<p><img src="/../images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106101426980.png" alt="image-20230106101426980"></p>
+<p>为啥截图使用的工具不一样呢。很明显我又不是在写教程，只是使用过程中发现的问题，只能使用之前命令过程中能作为证据的部分。</p>
+<h1 id="寻找原因"><a href="#寻找原因" class="headerlink" title="寻找原因"></a>寻找原因</h1><p>个人猜测可能和硬盘的上电顺序有关，也可能和硬盘安装的sata口有关，通过一番搜索，找到这篇文章：<a target="_blank" rel="noopener" href="https://www.mayanpeng.cn/archives/184.html%EF%BC%8C%E4%B9%9F%E9%83%A8%E5%88%86%E9%AA%8C%E8%AF%81%E4%BA%86%E8%87%AA%E5%B7%B1%E7%9A%84%E7%8C%9C%E6%83%B3%E3%80%82">https://www.mayanpeng.cn/archives/184.html，也部分验证了自己的猜想。</a></p>
+<p><img src="/../images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106101849155.png" alt="image-20230106101849155"></p>
+<h1 id="解决自动挂在的问题"><a href="#解决自动挂在的问题" class="headerlink" title="解决自动挂在的问题"></a>解决自动挂在的问题</h1><p>还是要使用<code>/etc/fstab</code>这个文件，只能祈祷硬盘活的久一点，但是我发现某个分区只有PARTUUID，没有UUID如下：</p>
+<p><img src="/../images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106102029728.png" alt="image-20230106102029728"></p>
+<p>当然<code>/etc/fstab</code>也是支持PARTUUID，问题不大，但是使用mount -a挂在报错如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">UUID=3e012233-b5b5-4644-880c-0a7feea73007 /mnt/hdd               ext4    defaults  0       0</span><br><span class="line">PARTUUID=318fa74d-3808-f049-9962-ca4002525e29 /mnt/14T               ext4    defaults  0       0</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106102145317.png" alt="image-20230106102145317"></p>
+<p>搜索得到是分区没有格式化，格式化再次挂载成功。查看也发现有了UUID。</p>
+<p><img src="/../images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106102308878.png" alt="image-20230106102308878"></p>
+<p>重启之后也正常</p>
+<p><img src="/../images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106102432377.png" alt="image-20230106102432377"></p>
+<h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><p><a target="_blank" rel="noopener" href="https://www.mayanpeng.cn/archives/184.html">https://www.mayanpeng.cn/archives/184.html</a>  </p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/will-xz/p/13532578.html">https://www.cnblogs.com/will-xz/p/13532578.html</a>  </p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/336758411dbf">https://www.jianshu.com/p/336758411dbf</a></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
+              <a href="/tags/%E5%88%86%E5%8C%BA/" rel="tag"># 分区</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/01/04/Android%E9%80%86%E5%90%91%E5%B7%A5%E5%85%B7/" rel="prev" title="Android逆向工具">
+      <i class="fa fa-chevron-left"></i> Android逆向工具
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%83%8C%E6%99%AF%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.</span> <span class="nav-text">背景介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%97%87%E7%8A%B6"><span class="nav-number">2.</span> <span class="nav-text">症状</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%BB%E6%89%BE%E5%8E%9F%E5%9B%A0"><span class="nav-number">3.</span> <span class="nav-text">寻找原因</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E8%87%AA%E5%8A%A8%E6%8C%82%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">4.</span> <span class="nav-text">解决自动挂在的问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0"><span class="nav-number">5.</span> <span class="nav-text">参考文章</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">ccadmin</p>
+  <div class="site-description" itemprop="description">web安全</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">ccadmin</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

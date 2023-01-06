@@ -163,6 +163,87 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://blog.njcit.me/2023/01/06/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="ccadmin">
+      <meta itemprop="description" content="web安全">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="这里有一个网站">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/01/06/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/" class="post-title-link" itemprop="url">Linux硬盘踩坑记</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-01-06 09:59:45 / 修改时间：10:25:19" itemprop="dateCreated datePublished" datetime="2023-01-06T09:59:45+08:00">2023-01-06</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h1><p>800多买了块14T的矿渣硬盘，挂在Kali Linux（实体机，非虚拟机）下面用来备份一些不怎么重要的数据。之前由于机箱电源键坏了带走了我一块3T的硬盘，电源键老化按下去弹不起来导致系统一直在强制重启，然后硬盘就挂了。挂了之前我实在<code>/etc/fstab</code>中实现的硬盘开机自挂载，然后就开不了机，只能重新接上显示器开机在菜单页面按e修改启动参数，进入类似维护模式的终端，去除相关条目才能开机。同事告诉我可以使用修改 <code>/etc/rc.local</code>来实现开机自动挂载，但是我改了没生效，可能是我改错了或者啥的，正好发现如下的坑。</p>
+<h1 id="症状"><a href="#症状" class="headerlink" title="症状"></a>症状</h1><p>在我修改完<code>/etc/rc.local</code>重启之后准备查看是否生效的时候，发现了硬盘设备名发生了变化，如下：重启前</p>
+<p><img src="/../images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106101218662.png" alt="image-20230106101218662"></p>
+<p>很明显我14TB硬盘的设备名是adb,重启后如下：</p>
+<p><img src="/../images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106101315352.png" alt="image-20230106101315352"></p>
+<p>很明显sdb已经不是之前的14T的硬盘了，再次重启查看如下：</p>
+<p><img src="/../images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106101426980.png" alt="image-20230106101426980"></p>
+<p>为啥截图使用的工具不一样呢。很明显我又不是在写教程，只是使用过程中发现的问题，只能使用之前命令过程中能作为证据的部分。</p>
+<h1 id="寻找原因"><a href="#寻找原因" class="headerlink" title="寻找原因"></a>寻找原因</h1><p>个人猜测可能和硬盘的上电顺序有关，也可能和硬盘安装的sata口有关，通过一番搜索，找到这篇文章：<a target="_blank" rel="noopener" href="https://www.mayanpeng.cn/archives/184.html%EF%BC%8C%E4%B9%9F%E9%83%A8%E5%88%86%E9%AA%8C%E8%AF%81%E4%BA%86%E8%87%AA%E5%B7%B1%E7%9A%84%E7%8C%9C%E6%83%B3%E3%80%82">https://www.mayanpeng.cn/archives/184.html，也部分验证了自己的猜想。</a></p>
+<p><img src="/../images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106101849155.png" alt="image-20230106101849155"></p>
+<h1 id="解决自动挂在的问题"><a href="#解决自动挂在的问题" class="headerlink" title="解决自动挂在的问题"></a>解决自动挂在的问题</h1><p>还是要使用<code>/etc/fstab</code>这个文件，只能祈祷硬盘活的久一点，但是我发现某个分区只有PARTUUID，没有UUID如下：</p>
+<p><img src="/../images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106102029728.png" alt="image-20230106102029728"></p>
+<p>当然<code>/etc/fstab</code>也是支持PARTUUID，问题不大，但是使用mount -a挂在报错如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">UUID=3e012233-b5b5-4644-880c-0a7feea73007 /mnt/hdd               ext4    defaults  0       0</span><br><span class="line">PARTUUID=318fa74d-3808-f049-9962-ca4002525e29 /mnt/14T               ext4    defaults  0       0</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106102145317.png" alt="image-20230106102145317"></p>
+<p>搜索得到是分区没有格式化，格式化再次挂载成功。查看也发现有了UUID。</p>
+<p><img src="/../images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106102308878.png" alt="image-20230106102308878"></p>
+<p>重启之后也正常</p>
+<p><img src="/../images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106102432377.png" alt="image-20230106102432377"></p>
+<h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><p><a target="_blank" rel="noopener" href="https://www.mayanpeng.cn/archives/184.html">https://www.mayanpeng.cn/archives/184.html</a>  </p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/will-xz/p/13532578.html">https://www.cnblogs.com/will-xz/p/13532578.html</a>  </p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/336758411dbf">https://www.jianshu.com/p/336758411dbf</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://blog.njcit.me/2023/01/04/Android%E9%80%86%E5%90%91%E5%B7%A5%E5%85%B7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -256,10 +337,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2023-01-04 09:11:50 / 修改时间：21:36:34" itemprop="dateCreated datePublished" datetime="2023-01-04T09:11:50+08:00">2023-01-04</time>
+              <time title="创建时间：2023-01-04 09:11:50" itemprop="dateCreated datePublished" datetime="2023-01-04T09:11:50+08:00">2023-01-04</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-01-05 08:39:38" itemprop="dateModified" datetime="2023-01-05T08:39:38+08:00">2023-01-05</time>
+              </span>
 
           
 
@@ -276,15 +363,15 @@
 <h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><ul>
 <li><p>搜索列目录漏洞：<code>http.title:&quot;Index of /&quot; country:&quot;CN&quot;</code></p>
 </li>
-<li><p>搜索某个IP地址：net:8.8.0.0&#x2F;16 或者net:114.114.114.114</p>
+<li><p>搜索某个IP地址：<code>net:8.8.0.0/16</code> 或者<code>net:114.114.114.114</code></p>
 </li>
-<li><p>搜索域名&#x2F;主机名：hostname:baidu.com</p>
+<li><p>搜索域名&#x2F;主机名：<code>hostname:baidu.com</code></p>
 </li>
-<li><p>搜索指定端口：port:80</p>
+<li><p>搜索指定端口：<code>port:80</code></p>
 </li>
-<li><p>搜索指定软件：product:”Apache httpd”</p>
+<li><p>搜索指定软件：<code>product:&quot;Apache httpd&quot;</code></p>
 </li>
-<li><p>搜索网页返回内容：http.html:”hello world”</p>
+<li><p>搜索网页返回内容：<code>http.html:&quot;hello world&quot;</code></p>
 </li>
 </ul>
 <h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/0c184915c118">https://www.jianshu.com/p/0c184915c118</a>  </p>
@@ -811,68 +898,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://blog.njcit.me/2022/12/07/Android%E9%80%86%E5%90%91%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="ccadmin">
-      <meta itemprop="description" content="web安全">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="这里有一个网站">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/12/07/Android%E9%80%86%E5%90%91%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Android逆向笔记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-12-07 14:31:16 / 修改时间：14:41:25" itemprop="dateCreated datePublished" datetime="2022-12-07T14:31:16+08:00">2022-12-07</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Android-逆向笔记"><a href="#Android-逆向笔记" class="headerlink" title="Android 逆向笔记"></a>Android 逆向笔记</h1><h2 id="查找入口activity"><a href="#查找入口activity" class="headerlink" title="查找入口activity"></a>查找入口activity</h2><p>搜索android.intent.action.MAIN,上面的就是入口</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:theme</span>=<span class="string">&quot;@style/base_AppTheme&quot;</span> <span class="attr">android:name</span>=<span class="string">&quot;com.sport.SplashActivity&quot;</span> <span class="attr">android:exported</span>=<span class="string">&quot;true&quot;</span> <span class="attr">android:initOrder</span>=<span class="string">&quot;1361&quot;</span> <span class="attr">android:screenOrientation</span>=<span class="string">&quot;portrait&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">&quot;android.intent.action.MAIN&quot;</span> <span class="attr">android:initOrder</span>=<span class="string">&quot;1361&quot;</span>/&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">&quot;android.intent.category.LAUNCHER&quot;</span> <span class="attr">android:initOrder</span>=<span class="string">&quot;1361&quot;</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/../images/Android%E9%80%86%E5%90%91%E7%AC%94%E8%AE%B0/image-20221207143642135.png" alt="image-20221207143642135"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -942,14 +967,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
