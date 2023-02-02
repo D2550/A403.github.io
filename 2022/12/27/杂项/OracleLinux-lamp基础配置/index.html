@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="一些基础配置配置静态IP1234ip addrnmcli con mod ens160 ipv4.addresses 192.168.20.138&#x2F;24nmcli con mod ens160 ipv4.gateway 192.168.20.1nmcli con mod ens160 ipv4.dns 223.5.5.5    安装lamp12yum install vim wget curl g">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OracleLinux_lamp基础配置">
+<meta property="og:url" content="https://blog.njcit.me/2022/12/27/%E6%9D%82%E9%A1%B9/OracleLinux-lamp%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:site_name" content="这里有一个网站">
+<meta property="og:description" content="一些基础配置配置静态IP1234ip addrnmcli con mod ens160 ipv4.addresses 192.168.20.138&#x2F;24nmcli con mod ens160 ipv4.gateway 192.168.20.1nmcli con mod ens160 ipv4.dns 223.5.5.5    安装lamp12yum install vim wget curl g">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.njcit.me/images/OracleLinux-lamp%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/image-20221227170033146.png">
+<meta property="og:image" content="https://blog.njcit.me/images/OracleLinux-lamp%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/image-20221227170725874.png">
+<meta property="article:published_time" content="2022-12-27T08:52:46.000Z">
+<meta property="article:modified_time" content="2022-12-27T09:07:37.665Z">
+<meta property="article:author" content="ccadmin">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.njcit.me/images/OracleLinux-lamp%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/image-20221227170033146.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>OracleLinux_lamp基础配置</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/D2550">项目</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇" href="/2022/12/27/%E6%9D%82%E9%A1%B9/powershell%E9%85%8D%E7%BD%AE/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2022/12/22/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/firefox%E4%BB%A3%E7%90%86%E7%9A%84%E4%B8%80%E4%BA%9B%E9%85%8D%E7%BD%AE/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blog.njcit.me/2022/12/27/%E6%9D%82%E9%A1%B9/OracleLinux-lamp%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blog.njcit.me/2022/12/27/%E6%9D%82%E9%A1%B9/OracleLinux-lamp%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/&text=OracleLinux_lamp基础配置"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blog.njcit.me/2022/12/27/%E6%9D%82%E9%A1%B9/OracleLinux-lamp%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/&title=OracleLinux_lamp基础配置"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.njcit.me/2022/12/27/%E6%9D%82%E9%A1%B9/OracleLinux-lamp%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/&is_video=false&description=OracleLinux_lamp基础配置"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=OracleLinux_lamp基础配置&body=Check out this article: https://blog.njcit.me/2022/12/27/%E6%9D%82%E9%A1%B9/OracleLinux-lamp%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blog.njcit.me/2022/12/27/%E6%9D%82%E9%A1%B9/OracleLinux-lamp%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/&title=OracleLinux_lamp基础配置"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blog.njcit.me/2022/12/27/%E6%9D%82%E9%A1%B9/OracleLinux-lamp%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/&title=OracleLinux_lamp基础配置"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blog.njcit.me/2022/12/27/%E6%9D%82%E9%A1%B9/OracleLinux-lamp%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/&title=OracleLinux_lamp基础配置"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blog.njcit.me/2022/12/27/%E6%9D%82%E9%A1%B9/OracleLinux-lamp%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/&title=OracleLinux_lamp基础配置"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blog.njcit.me/2022/12/27/%E6%9D%82%E9%A1%B9/OracleLinux-lamp%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/&name=OracleLinux_lamp基础配置&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blog.njcit.me/2022/12/27/%E6%9D%82%E9%A1%B9/OracleLinux-lamp%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/&t=OracleLinux_lamp基础配置"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE"><span class="toc-number">1.</span> <span class="toc-text">一些基础配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E9%9D%99%E6%80%81IP"><span class="toc-number">1.1.</span> <span class="toc-text">配置静态IP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85lamp"><span class="toc-number">1.2.</span> <span class="toc-text">安装lamp</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1"><span class="toc-number">1.3.</span> <span class="toc-text">启动服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEMySQL"><span class="toc-number">1.4.</span> <span class="toc-text">配置MySQL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95MySQL"><span class="toc-number">1.5.</span> <span class="toc-text">测试MySQL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E6%94%BEweb%E7%AB%AF%E5%8F%A3"><span class="toc-number">1.6.</span> <span class="toc-text">开放web端口</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        OracleLinux_lamp基础配置
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">ccadmin</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2022-12-27T08:52:46.000Z" itemprop="datePublished">2022-12-27</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/Linux/" rel="tag">Linux</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="一些基础配置"><a href="#一些基础配置" class="headerlink" title="一些基础配置"></a>一些基础配置</h1><h2 id="配置静态IP"><a href="#配置静态IP" class="headerlink" title="配置静态IP"></a>配置静态IP</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ip addr</span><br><span class="line">nmcli con mod ens160 ipv4.addresses 192.168.20.138/24</span><br><span class="line">nmcli con mod ens160 ipv4.gateway 192.168.20.1</span><br><span class="line">nmcli con mod ens160 ipv4.dns 223.5.5.5</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="安装lamp"><a href="#安装lamp" class="headerlink" title="安装lamp"></a>安装lamp</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install vim wget curl git</span><br><span class="line">yum install httpd mysql-server php*</span><br></pre></td></tr></table></figure>
+
+<h2 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">systemctl start httpd</span><br><span class="line">systemctl start mysqld</span><br><span class="line">systemctl <span class="built_in">enable</span> httpd</span><br><span class="line">systemctl <span class="built_in">enable</span> mysqld</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置MySQL"><a href="#配置MySQL" class="headerlink" title="配置MySQL"></a>配置MySQL</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost ~]<span class="comment"># mysql_secure_installation</span></span><br><span class="line"></span><br><span class="line">Securing the MySQL server deployment.</span><br><span class="line"></span><br><span class="line">Connecting to MySQL using a blank password.</span><br><span class="line"></span><br><span class="line">VALIDATE PASSWORD COMPONENT can be used to <span class="built_in">test</span> passwords</span><br><span class="line">and improve security. It checks the strength of password</span><br><span class="line">and allows the <span class="built_in">users</span> to <span class="built_in">set</span> only those passwords <span class="built_in">which</span> are</span><br><span class="line">secure enough. Would you like to setup VALIDATE PASSWORD component?</span><br><span class="line"></span><br><span class="line">Press y|Y <span class="keyword">for</span> Yes, any other key <span class="keyword">for</span> No: y</span><br><span class="line"></span><br><span class="line">There are three levels of password validation policy:</span><br><span class="line"></span><br><span class="line">LOW    Length &gt;= 8</span><br><span class="line">MEDIUM Length &gt;= 8, numeric, mixed <span class="keyword">case</span>, and special characters</span><br><span class="line">STRONG Length &gt;= 8, numeric, mixed <span class="keyword">case</span>, special characters and dictionary                  file</span><br><span class="line"></span><br><span class="line">Please enter 0 = LOW, 1 = MEDIUM and 2 = STRONG: 0</span><br><span class="line">Please <span class="built_in">set</span> the password <span class="keyword">for</span> root here.</span><br><span class="line"></span><br><span class="line">New password:</span><br><span class="line"></span><br><span class="line">Re-enter new password:</span><br><span class="line"></span><br><span class="line">Estimated strength of the password: 50</span><br><span class="line">Do you wish to <span class="built_in">continue</span> with the password provided?(Press y|Y <span class="keyword">for</span> Yes, any other key <span class="keyword">for</span> No) : y</span><br><span class="line">By default, a MySQL installation has an anonymous user,</span><br><span class="line">allowing anyone to <span class="built_in">log</span> into MySQL without having to have</span><br><span class="line">a user account created <span class="keyword">for</span> them. This is intended only <span class="keyword">for</span></span><br><span class="line">testing, and to make the installation go a bit smoother.</span><br><span class="line">You should remove them before moving into a production</span><br><span class="line">environment.</span><br><span class="line"></span><br><span class="line">Remove anonymous <span class="built_in">users</span>? (Press y|Y <span class="keyword">for</span> Yes, any other key <span class="keyword">for</span> No) : y</span><br><span class="line">Success.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Normally, root should only be allowed to connect from</span><br><span class="line"><span class="string">&#x27;localhost&#x27;</span>. This ensures that someone cannot guess at</span><br><span class="line">the root password from the network.</span><br><span class="line"></span><br><span class="line">Disallow root login remotely? (Press y|Y <span class="keyword">for</span> Yes, any other key <span class="keyword">for</span> No) : n</span><br><span class="line"></span><br><span class="line"> ... skipping.</span><br><span class="line">By default, MySQL comes with a database named <span class="string">&#x27;test&#x27;</span> that</span><br><span class="line">anyone can access. This is also intended only <span class="keyword">for</span> testing,</span><br><span class="line">and should be removed before moving into a production</span><br><span class="line">environment.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Remove <span class="built_in">test</span> database and access to it? (Press y|Y <span class="keyword">for</span> Yes, any other key <span class="keyword">for</span> No) : y</span><br><span class="line"> - Dropping <span class="built_in">test</span> database...</span><br><span class="line">Success.</span><br><span class="line"></span><br><span class="line"> - Removing privileges on <span class="built_in">test</span> database...</span><br><span class="line">Success.</span><br><span class="line"></span><br><span class="line">Reloading the privilege tables will ensure that all changes</span><br><span class="line">made so far will take effect immediately.</span><br><span class="line"></span><br><span class="line">Reload privilege tables now? (Press y|Y <span class="keyword">for</span> Yes, any other key <span class="keyword">for</span> No) : y</span><br><span class="line">Success.</span><br><span class="line"></span><br><span class="line">All <span class="keyword">done</span>!</span><br></pre></td></tr></table></figure>
+
+<h2 id="测试MySQL"><a href="#测试MySQL" class="headerlink" title="测试MySQL"></a>测试MySQL</h2><p><img src="/../images/OracleLinux-lamp%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/image-20221227170033146.png" alt="image-20221227170033146"></p>
+<h2 id="开放web端口"><a href="#开放web端口" class="headerlink" title="开放web端口"></a>开放web端口</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --add-service=http --permanent</span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+
+<p>访问测试</p>
+<p><img src="/../images/OracleLinux-lamp%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/image-20221227170725874.png" alt="image-20221227170725874"></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/D2550">项目</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE"><span class="toc-number">1.</span> <span class="toc-text">一些基础配置</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E9%9D%99%E6%80%81IP"><span class="toc-number">1.1.</span> <span class="toc-text">配置静态IP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85lamp"><span class="toc-number">1.2.</span> <span class="toc-text">安装lamp</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1"><span class="toc-number">1.3.</span> <span class="toc-text">启动服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEMySQL"><span class="toc-number">1.4.</span> <span class="toc-text">配置MySQL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95MySQL"><span class="toc-number">1.5.</span> <span class="toc-text">测试MySQL</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E6%94%BEweb%E7%AB%AF%E5%8F%A3"><span class="toc-number">1.6.</span> <span class="toc-text">开放web端口</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blog.njcit.me/2022/12/27/%E6%9D%82%E9%A1%B9/OracleLinux-lamp%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blog.njcit.me/2022/12/27/%E6%9D%82%E9%A1%B9/OracleLinux-lamp%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/&text=OracleLinux_lamp基础配置"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blog.njcit.me/2022/12/27/%E6%9D%82%E9%A1%B9/OracleLinux-lamp%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/&title=OracleLinux_lamp基础配置"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.njcit.me/2022/12/27/%E6%9D%82%E9%A1%B9/OracleLinux-lamp%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/&is_video=false&description=OracleLinux_lamp基础配置"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=OracleLinux_lamp基础配置&body=Check out this article: https://blog.njcit.me/2022/12/27/%E6%9D%82%E9%A1%B9/OracleLinux-lamp%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blog.njcit.me/2022/12/27/%E6%9D%82%E9%A1%B9/OracleLinux-lamp%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/&title=OracleLinux_lamp基础配置"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blog.njcit.me/2022/12/27/%E6%9D%82%E9%A1%B9/OracleLinux-lamp%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/&title=OracleLinux_lamp基础配置"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blog.njcit.me/2022/12/27/%E6%9D%82%E9%A1%B9/OracleLinux-lamp%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/&title=OracleLinux_lamp基础配置"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blog.njcit.me/2022/12/27/%E6%9D%82%E9%A1%B9/OracleLinux-lamp%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/&title=OracleLinux_lamp基础配置"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blog.njcit.me/2022/12/27/%E6%9D%82%E9%A1%B9/OracleLinux-lamp%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/&name=OracleLinux_lamp基础配置&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blog.njcit.me/2022/12/27/%E6%9D%82%E9%A1%B9/OracleLinux-lamp%E5%9F%BA%E7%A1%80%E9%85%8D%E7%BD%AE/&t=OracleLinux_lamp基础配置"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2023
+    ccadmin
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/D2550">项目</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>

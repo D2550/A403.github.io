@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="前言在测试微信小程序的过程中，发现通信的数据存在加密，如何在Windows使用burpsuite进行抓包可以参考我之前的文章，在对小程序进行反编译寻找加密方法和加密过程中，也发现了一些有意思的事，故此记录一下，如何对小程序进行反编译可以参考我之前的文章。 过程直接在vscode里面搜索crypt，可以发现如下的几个加密函数：   加密方法des-ecb-pkcs7，密钥：t2b4h6y4l5  第">
+<meta property="og:type" content="article">
+<meta property="og:title" content="记一次寻找微信小程序通信加密方法的过程">
+<meta property="og:url" content="https://blog.njcit.me/2023/01/10/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/index.html">
+<meta property="og:site_name" content="这里有一个网站">
+<meta property="og:description" content="前言在测试微信小程序的过程中，发现通信的数据存在加密，如何在Windows使用burpsuite进行抓包可以参考我之前的文章，在对小程序进行反编译寻找加密方法和加密过程中，也发现了一些有意思的事，故此记录一下，如何对小程序进行反编译可以参考我之前的文章。 过程直接在vscode里面搜索crypt，可以发现如下的几个加密函数：   加密方法des-ecb-pkcs7，密钥：t2b4h6y4l5  第">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.njcit.me/images/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/image-20230110115933928.png">
+<meta property="og:image" content="https://blog.njcit.me/images/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/image-20230110120014818.png">
+<meta property="og:image" content="https://blog.njcit.me/images/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/image-20230110134016276.png">
+<meta property="og:image" content="https://blog.njcit.me/images/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/image-20230110134543848.png">
+<meta property="og:image" content="https://blog.njcit.me/images/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/image-20230110134920445.png">
+<meta property="article:published_time" content="2023-01-10T02:47:57.000Z">
+<meta property="article:modified_time" content="2023-01-10T05:59:43.994Z">
+<meta property="article:author" content="ccadmin">
+<meta property="article:tag" content="微信小程序">
+<meta property="article:tag" content="加密">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://blog.njcit.me/images/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/image-20230110115933928.png">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>记一次寻找微信小程序通信加密方法的过程</title>
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="目录"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/D2550">项目</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" aria-label="上一篇" href="/2023/01/11/%E6%9D%82%E9%A1%B9/windows%E6%9D%82%E9%A1%B9/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" aria-label="下一篇" href="/2023/01/09/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%B5%8B%E8%AF%95%E5%89%8D%E7%AB%AF%E5%8A%A0%E5%AF%86%E7%9A%84%E8%BF%87%E7%A8%8B/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="分享文章" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">上一篇</span>
+      <span id="i-next" class="info" style="display:none;">下一篇</span>
+      <span id="i-top" class="info" style="display:none;">返回顶部</span>
+      <span id="i-share" class="info" style="display:none;">分享文章</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blog.njcit.me/2023/01/10/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blog.njcit.me/2023/01/10/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/&text=记一次寻找微信小程序通信加密方法的过程"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blog.njcit.me/2023/01/10/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/&title=记一次寻找微信小程序通信加密方法的过程"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.njcit.me/2023/01/10/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/&is_video=false&description=记一次寻找微信小程序通信加密方法的过程"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=记一次寻找微信小程序通信加密方法的过程&body=Check out this article: https://blog.njcit.me/2023/01/10/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blog.njcit.me/2023/01/10/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/&title=记一次寻找微信小程序通信加密方法的过程"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blog.njcit.me/2023/01/10/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/&title=记一次寻找微信小程序通信加密方法的过程"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blog.njcit.me/2023/01/10/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/&title=记一次寻找微信小程序通信加密方法的过程"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blog.njcit.me/2023/01/10/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/&title=记一次寻找微信小程序通信加密方法的过程"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blog.njcit.me/2023/01/10/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/&name=记一次寻找微信小程序通信加密方法的过程&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blog.njcit.me/2023/01/10/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/&t=记一次寻找微信小程序通信加密方法的过程"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%87%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">过程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%93%E5%B0%BE"><span class="toc-number">3.</span> <span class="toc-text">结尾</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        记一次寻找微信小程序通信加密方法的过程
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">ccadmin</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2023-01-10T02:47:57.000Z" itemprop="datePublished">2023-01-10</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link-link" href="/tags/%E5%8A%A0%E5%AF%86/" rel="tag">加密</a>, <a class="tag-link-link" href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">微信小程序</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在测试微信小程序的过程中，发现通信的数据存在加密，如何在Windows使用burpsuite进行抓包可以参考我之前的文章，在对小程序进行反编译寻找加密方法和加密过程中，也发现了一些有意思的事，故此记录一下，如何对小程序进行反编译可以参考我之前的文章。</p>
+<h1 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h1><p>直接在vscode里面搜索crypt，可以发现如下的几个加密函数：  </p>
+<p>加密方法des-ecb-pkcs7，密钥：t2b4h6y4l5</p>
+<p><img src="/../images/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/image-20230110115933928.png" alt="image-20230110115933928"></p>
+<p>第二处加密为aes-ecb-pkcs7,密钥：f0c7caf9a2b8a8ff</p>
+<p><img src="/../images/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/image-20230110120014818.png" alt="image-20230110120014818"></p>
+<p><img src="/../images/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/image-20230110134016276.png" alt="image-20230110134016276"></p>
+<p>这里又发现一处加密，应该是rsa加密，加密公钥为：   MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDGOJ8XSE9vjpoRMY8ekbTNbK5ISKDRvnFA&#x2F;6JLoqAFA2EhcoSMx5R&#x2F;X1jsRs1O1TxD5FspCS1Qh3swNB4A3cJwLcmwlsGmcK+GID30lXbkm1insPJD&#x2F;vfe2C9hUsdaXlrhwAG8hhH2CEKS0lzc11JWlKn9OQ4s9u8tITTVtZhO&#x2F;wIDAQAB</p>
+<p><img src="/../images/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/image-20230110134543848.png" alt="image-20230110134543848"></p>
+<p>这里还有一处des-cbc-pkcs7，key为21436587，iv为90785634</p>
+<p><img src="/../images/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/image-20230110134920445.png" alt="image-20230110134920445"></p>
+<p>里面还有很多没法直接一眼看出来的加密，等遇到再说吧。</p>
+<h1 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h1><p>未完待续</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">首页</a></li>
+         
+          <li><a href="/about/">关于</a></li>
+         
+          <li><a href="/archives/">归档</a></li>
+         
+          <li><a target="_blank" rel="noopener" href="https://github.com/D2550">项目</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BF%87%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">过程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%93%E5%B0%BE"><span class="toc-number">3.</span> <span class="toc-text">结尾</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blog.njcit.me/2023/01/10/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blog.njcit.me/2023/01/10/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/&text=记一次寻找微信小程序通信加密方法的过程"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blog.njcit.me/2023/01/10/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/&title=记一次寻找微信小程序通信加密方法的过程"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.njcit.me/2023/01/10/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/&is_video=false&description=记一次寻找微信小程序通信加密方法的过程"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=记一次寻找微信小程序通信加密方法的过程&body=Check out this article: https://blog.njcit.me/2023/01/10/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blog.njcit.me/2023/01/10/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/&title=记一次寻找微信小程序通信加密方法的过程"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blog.njcit.me/2023/01/10/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/&title=记一次寻找微信小程序通信加密方法的过程"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blog.njcit.me/2023/01/10/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/&title=记一次寻找微信小程序通信加密方法的过程"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blog.njcit.me/2023/01/10/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/&title=记一次寻找微信小程序通信加密方法的过程"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blog.njcit.me/2023/01/10/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/&name=记一次寻找微信小程序通信加密方法的过程&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blog.njcit.me/2023/01/10/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/&t=记一次寻找微信小程序通信加密方法的过程"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2023
+    ccadmin
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">首页</a></li><!--
+     --><!--
+       --><li><a href="/about/">关于</a></li><!--
+     --><!--
+       --><li><a href="/archives/">归档</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="https://github.com/D2550">项目</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
+    btn += '<i class="far fa-clone"></i>';
+    btn += '</span>'; 
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "复制成功！");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Umami Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
