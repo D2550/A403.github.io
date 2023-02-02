@@ -29,7 +29,7 @@
 <meta property="og:image" content="https://blog.njcit.me/images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221230135940231.png">
 <meta property="og:image" content="https://blog.njcit.me/images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221230140054622.png">
 <meta property="article:published_time" content="2022-12-29T01:07:17.000Z">
-<meta property="article:modified_time" content="2022-12-30T06:23:25.018Z">
+<meta property="article:modified_time" content="2023-02-02T06:06:58.942Z">
 <meta property="article:author" content="ccadmin">
 <meta property="article:tag" content="代码审计">
 <meta name="twitter:card" content="summary">
@@ -171,17 +171,17 @@
 <h1 id="基础配置"><a href="#基础配置" class="headerlink" title="基础配置"></a>基础配置</h1><h2 id="工具配置"><a href="#工具配置" class="headerlink" title="工具配置"></a>工具配置</h2><p>JDK 1.8<a target="_blank" rel="noopener" href="https://www.oracle.com/java/technologies/javase/javase8-archive-downloads.html">下载地址</a>  </p>
 <p>推荐使用IntelliJ IDEA Ultimate版本，下载地址：<a target="_blank" rel="noopener" href="https://www.jetbrains.com/idea/download/">IntelliJ IDEA</a>，学生可以免费领专业版，有钱可以支持正版，没钱淘宝买个学生账号。  </p>
 <p>推荐Free MyBatis Tool插件和官方中文语言包，其他的看着装就行。</p>
-<p><img src="/../images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221229093809581.png" alt="image-20221229093809581"></p>
+<p><img src="/../../images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221229093809581.png" alt="image-20221229093809581"></p>
 <p>Free MyBatis Tool插件可以快速定位MyBatis调用代码，例如：</p>
-<p><img src="/../images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221229094002013.png" alt="image-20221229094002013"></p>
-<p><img src="/../images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221229094023014.png" alt="image-20221229094023014"></p>
-<p><img src="/../images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221229094045404.png" alt="image-20221229094045404"></p>
+<p><img src="/../../images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221229094002013.png" alt="image-20221229094002013"></p>
+<p><img src="/../../images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221229094023014.png" alt="image-20221229094023014"></p>
+<p><img src="/../../images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221229094045404.png" alt="image-20221229094045404"></p>
 <h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p>RuoYi版本：v4.2，<a target="_blank" rel="noopener" href="https://gitee.com/y_project/RuoYi/tags">下载地址</a>，下载4.2的版本就行</p>
-<p><img src="/../images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221229094526076.png" alt="image-20221229094526076"></p>
+<p><img src="/../../images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221229094526076.png" alt="image-20221229094526076"></p>
 <p>使用idea直接打开项目，找到RuoYi-v4.2\ruoyi-admin\src\main\resources\application.yml，修改web端口（可选）</p>
-<p><img src="/../images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221229094724473.png" alt="image-20221229094724473"></p>
+<p><img src="/../../images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221229094724473.png" alt="image-20221229094724473"></p>
 <p>打开RuoYi-v4.2\ruoyi-admin\src\main\resources\application-druid.yml，修改数据库相关信息</p>
-<p><img src="/../images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221229095122611.png" alt="image-20221229095122611"></p>
+<p><img src="/../../images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221229095122611.png" alt="image-20221229095122611"></p>
 <p>mysql  Ver 8.0.30 for Linux on x86_64 不允许root远程登录，可以使用以下方法缓解</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CREATE USER &#x27;username&#x27;@&#x27;localhost&#x27; IDENTIFIED BY &#x27;password&#x27;;</span><br><span class="line"></span><br><span class="line">GRANT ALL PRIVILEGES ON *.* TO &#x27;username&#x27;@&#x27;localhost&#x27; WITH GRANT OPTION;</span><br><span class="line"></span><br><span class="line">CREATE USER &#x27;username&#x27;@&#x27;%&#x27; IDENTIFIED BY &#x27;password&#x27;;</span><br><span class="line"></span><br><span class="line">GRANT ALL PRIVILEGES ON *.* TO &#x27;username&#x27;@&#x27;%&#x27; WITH GRANT OPTION;</span><br><span class="line"></span><br><span class="line">FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
 
@@ -189,22 +189,22 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">create database ry;</span><br><span class="line">use ry;</span><br><span class="line">source /opt/quartz.sql</span><br><span class="line">source /opt/ry_20200323.sql</span><br></pre></td></tr></table></figure>
 
 <p>启动环境</p>
-<p><img src="/../images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221229095619047.png" alt="image-20221229095619047"></p>
+<p><img src="/../../images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221229095619047.png" alt="image-20221229095619047"></p>
 <p>访问<a target="_blank" rel="noopener" href="http://127.0.0.1:8081/login%EF%BC%8C%E8%87%AA%E5%B8%A6%E7%94%A8%E6%88%B7%E5%90%8D%E5%AF%86%E7%A0%81%EF%BC%8C%E6%B2%A1%E6%9C%89%E7%9A%84%E8%AF%9D%E8%AF%95%E8%AF%95admin/admin123">http://127.0.0.1:8081/login，自带用户名密码，没有的话试试admin/admin123</a></p>
-<p><img src="/../images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221229095706777.png" alt="image-20221229095706777"></p>
-<p><img src="/../images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221229095744497.png" alt="image-20221229095744497"></p>
+<p><img src="/../../images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221229095706777.png" alt="image-20221229095706777"></p>
+<p><img src="/../../images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221229095744497.png" alt="image-20221229095744497"></p>
 <p>基础环境配置到此结束。</p>
 <h1 id="漏洞分析"><a href="#漏洞分析" class="headerlink" title="漏洞分析"></a>漏洞分析</h1><h2 id="Shiro反序列化漏洞"><a href="#Shiro反序列化漏洞" class="headerlink" title="Shiro反序列化漏洞"></a>Shiro反序列化漏洞</h2><p>为啥说这篇文章好呢，因为他把你每个步骤需要按的键都给你了，这里就依葫芦画瓢。根据文章可知，一般情况下shiro的配置文件在shiroconfig.java中，在idea中，如果你想搜索全部代码的话，快捷键是按两次Shift，这里按两下shift然后搜索shiroconfig，结果如下：</p>
-<p><img src="/../images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221229101224122.png" alt="image-20221229101224122"></p>
+<p><img src="/../../images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221229101224122.png" alt="image-20221229101224122"></p>
 <p>在shiroconfig.java中搜索key可以找到shiro加密使用的密钥fCq+&#x2F;xW488hMTCD+cmJ3aQ&#x3D;&#x3D;，这里要注意，加密的方式是gcm：</p>
-<p><img src="/../images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221229101517335.png" alt="image-20221229101517335"></p>
+<p><img src="/../../images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221229101517335.png" alt="image-20221229101517335"></p>
 <p>查看设置的cookie:</p>
-<p><img src="/../images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221229101800526.png" alt="image-20221229101800526"></p>
+<p><img src="/../../images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221229101800526.png" alt="image-20221229101800526"></p>
 <p>shiro反序列化导致rce可以参考<a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/7793">链接</a>，这里就不多讲了，主要是我也不会。</p>
 <h2 id="SQL注入"><a href="#SQL注入" class="headerlink" title="SQL注入"></a>SQL注入</h2><p>这个版本官方发布了一些sql注入的补丁，具体注入点我们可以通过使用idea进行全局搜索来进行查找，在idea中按两次shift可以调出全局的搜索框，搜索常见的可以存在注入的点${xxx}找到的结果如下：</p>
-<p><img src="/../images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221230135940231.png" alt="image-20221230135940231"></p>
+<p><img src="/../../images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221230135940231.png" alt="image-20221230135940231"></p>
 <p>这里先定位到id为selectDeptList的sql语句，通过使用插件可以快速定位到Java代码：</p>
-<p><img src="/../images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221230140054622.png" alt="image-20221230140054622"></p>
+<p><img src="/../../images/RuoYi%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/image-20221230140054622.png" alt="image-20221230140054622"></p>
 
   </div>
 </article>

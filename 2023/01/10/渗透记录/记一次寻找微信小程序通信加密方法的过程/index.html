@@ -19,10 +19,10 @@
 <meta property="og:image" content="https://blog.njcit.me/images/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/image-20230110134543848.png">
 <meta property="og:image" content="https://blog.njcit.me/images/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/image-20230110134920445.png">
 <meta property="article:published_time" content="2023-01-10T02:47:57.000Z">
-<meta property="article:modified_time" content="2023-01-10T05:59:43.994Z">
+<meta property="article:modified_time" content="2023-02-02T06:07:22.615Z">
 <meta property="article:author" content="ccadmin">
-<meta property="article:tag" content="微信小程序">
 <meta property="article:tag" content="加密">
+<meta property="article:tag" content="微信小程序">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://blog.njcit.me/images/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/image-20230110115933928.png">
     
@@ -160,14 +160,14 @@
     <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在测试微信小程序的过程中，发现通信的数据存在加密，如何在Windows使用burpsuite进行抓包可以参考我之前的文章，在对小程序进行反编译寻找加密方法和加密过程中，也发现了一些有意思的事，故此记录一下，如何对小程序进行反编译可以参考我之前的文章。</p>
 <h1 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h1><p>直接在vscode里面搜索crypt，可以发现如下的几个加密函数：  </p>
 <p>加密方法des-ecb-pkcs7，密钥：t2b4h6y4l5</p>
-<p><img src="/../images/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/image-20230110115933928.png" alt="image-20230110115933928"></p>
+<p><img src="/../../images/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/image-20230110115933928.png" alt="image-20230110115933928"></p>
 <p>第二处加密为aes-ecb-pkcs7,密钥：f0c7caf9a2b8a8ff</p>
-<p><img src="/../images/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/image-20230110120014818.png" alt="image-20230110120014818"></p>
-<p><img src="/../images/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/image-20230110134016276.png" alt="image-20230110134016276"></p>
+<p><img src="/../../images/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/image-20230110120014818.png" alt="image-20230110120014818"></p>
+<p><img src="/../../images/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/image-20230110134016276.png" alt="image-20230110134016276"></p>
 <p>这里又发现一处加密，应该是rsa加密，加密公钥为：   MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDGOJ8XSE9vjpoRMY8ekbTNbK5ISKDRvnFA&#x2F;6JLoqAFA2EhcoSMx5R&#x2F;X1jsRs1O1TxD5FspCS1Qh3swNB4A3cJwLcmwlsGmcK+GID30lXbkm1insPJD&#x2F;vfe2C9hUsdaXlrhwAG8hhH2CEKS0lzc11JWlKn9OQ4s9u8tITTVtZhO&#x2F;wIDAQAB</p>
-<p><img src="/../images/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/image-20230110134543848.png" alt="image-20230110134543848"></p>
+<p><img src="/../../images/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/image-20230110134543848.png" alt="image-20230110134543848"></p>
 <p>这里还有一处des-cbc-pkcs7，key为21436587，iv为90785634</p>
-<p><img src="/../images/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/image-20230110134920445.png" alt="image-20230110134920445"></p>
+<p><img src="/../../images/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/image-20230110134920445.png" alt="image-20230110134920445"></p>
 <p>里面还有很多没法直接一眼看出来的加密，等遇到再说吧。</p>
 <h1 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h1><p>未完待续</p>
 
