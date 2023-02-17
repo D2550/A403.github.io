@@ -14,7 +14,7 @@
 <meta property="og:description" content="前言一款功能强大的安全评估工具，在各种比赛中，先用xray轮一下总有收获不是吗。 下载链接支持正版，抵制盗版，谨防后门。    xray: https:&#x2F;&#x2F;stack.chaitin.com&#x2F;tool&#x2F;detail?id&#x3D;1] rad: https:&#x2F;&#x2F;stack.chaitin.com&#x2F;tool&#x2F;detail?id&#x3D;2 super-xray:https:&#x2F;&#x2F;github.com&#x2F;4ra1n&#x2F;su">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-02-10T02:12:24.000Z">
-<meta property="article:modified_time" content="2023-02-10T02:40:02.912Z">
+<meta property="article:modified_time" content="2023-02-17T03:45:45.387Z">
 <meta property="article:author" content="ccadmin">
 <meta property="article:tag" content="xray">
 <meta property="article:tag" content="自动化">
@@ -75,6 +75,8 @@
     <br/>
     <span id="actions">
       <ul>
+        
+        <li><a class="icon" aria-label="上一篇" href="/2023/02/12/Android/frida%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
         
         
         <li><a class="icon" aria-label="下一篇" href="/2023/02/06/%E5%86%85%E7%BD%91/geacon-pro%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
@@ -165,8 +167,15 @@
 <p>从文件中读取url并进行扫描</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\xray_windows_amd64.exe ws --url-file url.txt --html-output aaaaaaa.html</span><br></pre></td></tr></table></figure>
 
-<p>或者使用super-xray图形化进行扫描</p>
-<h2 id="配置反链平台"><a href="#配置反链平台" class="headerlink" title="配置反链平台"></a>配置反链平台</h2><p>1111</p>
+<p>或者使用super-xray图形化进行扫描<br>xray 仅扫描log4j漏洞</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\xray_windows_amd64.exe ws --poc poc-go-apache-log4j2-rce --url-file url.txt --html-output aaaaaaa.html</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置反链平台"><a href="#配置反链平台" class="headerlink" title="配置反链平台"></a>配置反链平台</h2><p>在server config.yaml 配置如下,建议使用高端口。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">reverse:</span><br><span class="line">  db_file_path: &quot;xray.db&quot;                      # 反连平台数据库文件位置, 这是一个 KV 数据库</span><br><span class="line">  token: &quot;fake_token&quot;                             # 反连平台认证的 Token, 独立部署时不能为空</span><br><span class="line">  http:</span><br><span class="line">    enabled: true</span><br><span class="line">    listen_ip: 0.0.0.0</span><br><span class="line">    listen_port: &quot;4443&quot;</span><br><span class="line">    ip_header: &quot;&quot;                       # 在哪个 http header 中取 ip，为空代表从 REMOTE_ADDR 中取</span><br><span class="line">  dns:</span><br><span class="line">    enabled: false</span><br><span class="line">    listen_ip: 0.0.0.0</span><br><span class="line">    domain: &quot;&quot;                          # DNS 域名配置</span><br><span class="line">    is_domain_name_server: false        # 是否修改了域名的 ns 为反连平台，如果是，那 nslookup 等就不需要指定 dns 了</span><br><span class="line">    resolve:                            # DNS 静态解析规则</span><br><span class="line">    - type: A                           # A, AAAA, TXT 三种</span><br><span class="line">      record: localhost</span><br><span class="line">      value: 127.0.0.1</span><br><span class="line">      ttl: 60</span><br><span class="line">  client:</span><br><span class="line">    remote_server: false                # 是否是独立的远程 server，如果是要在下面配置好远程的服务端地址</span><br><span class="line">    http_base_url: &quot;&quot;                   # 默认将根据 ListenIP 和 ListenPort 生成，该地址是存在漏洞的目标反连回来的地址, 当反连平台前面有反代、绑定域名、端口映射时需要自行配置</span><br><span class="line">    dns_server_ip: &quot;&quot;                   # 和 http_base_url 类似，实际用来访问 dns 服务器的地址</span><br></pre></td></tr></table></figure>
+<p>client config.yaml配置如下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">reverse:</span><br><span class="line">  token: &quot;fake_token&quot;</span><br><span class="line">  client:</span><br><span class="line">    remote_server: true</span><br><span class="line">    http_base_url: &quot;http://1.1.1.1:4443&quot;</span><br></pre></td></tr></table></figure>
+
+
 <h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
 <li><a target="_blank" rel="noopener" href="https://docs.xray.cool/">https://docs.xray.cool/</a></li>
 </ul>
