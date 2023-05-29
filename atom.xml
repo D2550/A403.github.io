@@ -6,7 +6,7 @@
   <link href="https://blog.njcit.me/atom.xml" rel="self"/>
   
   <link href="https://blog.njcit.me/"/>
-  <updated>2023-05-24T02:13:28.295Z</updated>
+  <updated>2023-05-29T07:05:51.398Z</updated>
   <id>https://blog.njcit.me/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>书签分享</title>
+    <link href="https://blog.njcit.me/2023/05/29/%E6%9D%82%E9%A1%B9/%E4%B9%A6%E7%AD%BE/"/>
+    <id>https://blog.njcit.me/2023/05/29/%E6%9D%82%E9%A1%B9/%E4%B9%A6%E7%AD%BE/</id>
+    <published>2023-05-29T08:12:24.000Z</published>
+    <updated>2023-05-29T07:05:51.398Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="信安资讯"><a href="#信安资讯" class="headerlink" title="信安资讯"></a>信安资讯</h3><ul><li><a href="https://govuln.com/news/">安全文摘 - 『代码审计』知识星球</a></li><li><a href="https://paper.seebug.org/">Paper</a></li><li><a href="https://www.anquanke.com/">安全客 - 有思想的安全新媒体</a></li><li><a href="https://xz.aliyun.com/">先知社区</a></li><li><a href="http://www.freebuf.com/">FreeBuf互联网安全新媒体平台 | 关注黑客与极客</a></li><li><a href="https://bbs.pediy.com/">看雪安全论坛</a></li><li><a href="https://forum.90sec.com/c/article">技术文章的最新主题 - 90Sec</a></li><li><a href="https://wiki.moonteams.com/?page=1">暗月知识中心</a></li><li><a href="https://www.sec-in.com/">SecIN信息安全技术社区</a></li><li><a href="http://scz.617.cn:8/">青衣十三楼</a></li><li><a href="https://i.hacking8.com/">Hacking8 安全信息流</a></li><li><a href="https://tttang.com/">跳跳糖</a></li><li><a href="http://wechat.doonsec.com/">洞见微信聚合-安全圈微信搜索_订阅号及文章内容收录,一搜即达</a></li><li><a href="https://www.shentoushi.top/">渗透师 网络安全从业者安全导航</a></li></ul><h3 id="安全文章"><a href="#安全文章" class="headerlink" title="安全文章"></a>安全文章</h3><ul><li><a href="https://www.anquanke.com/post/id/197657">实用FRIDA进阶：内存漫游、hook anywhere、抓包 - 安全客，安全资讯平台</a></li></ul><h3 id="CTF"><a href="#CTF" class="headerlink" title="CTF"></a>CTF</h3><ul><li><a href="https://ctf-wiki.github.io/ctf-wiki/">Getting Started - CTF Wiki</a></li><li><a href="http://php.net/manual/zh/">PHP: PHP 手册 - Manual</a></li><li><a href="https://www.nssctf.cn/index">主页 | NSSCTF</a></li></ul><h3 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h3><ul><li><a href="https://wangdoc.com/clang/intro.html">C 语言简介 - C 语言教程 - 网道</a></li><li><a href="https://blog.chenyuan.me/Linux-setup/">Linux-setup - notebook</a></li><li><a href="https://chai2010.cn/advanced-go-programming-book/ch1-basic/ch1-01-genesis.html">Go语言创世纪 - Go语言高级编程</a></li><li><a href="https://books.studygolang.com/The-Golang-Standard-Library-by-Example/chapter02/02.1.html">strings — 字符串操作 · Go语言标准库</a></li><li><a href="https://websec.readthedocs.io/zh/latest/">Web安全学习笔记 — Web安全学习笔记 1.0 文档</a></li><li><a href="https://github.com/Neilpang/acme.sh/wiki/%E8%AF%B4%E6%98%8E">说明 · Neilpang&#x2F;acme.sh Wiki</a></li><li><a href="https://ctftime.org/">CTFtime.org &#x2F; All about CTF (Capture The Flag)</a></li><li><a href="https://github.com/hongriSec/PHP-Audit-Labs">hongriSec&#x2F;PHP-Audit-Labs: 一个关于PHP的代码审计项目</a></li><li><a href="https://wizardforcel.gitbooks.io/web-hacking-101/content/1.html">一、前言 · Web Hacking 101 中文版</a></li><li><a href="https://ninjia.gitbook.io/secskill/web/sql">1.1 SQL注入漏洞 - secskill</a></li><li><a href="https://yeasy.gitbook.io/docker_practice/">前言 - Docker —— 从入门到实践</a></li><li><a href="https://www.ired.team/offensive-security-experiments/offensive-security-cheetsheets">Red Teaming Experiments</a></li><li><a href="https://wiki.wgpsec.org/">狼组安全团队公开知识库</a></li><li><a href="https://baizesec.github.io/bylibrary/">白阁文库</a></li><li><a href="https://www.hacking8.com/cheatsheet">备忘录 - 像黑客一样学习</a></li><li><a href="http://wiki.peiqi.tech/">关于文库 · PeiQi WiKi文库</a></li><li><a href="https://fengchenzxc.github.io/">安全知识WIKI</a></li><li><a href="http://wiki.xypbk.com/">Qingy 漏洞库</a></li><li><a href="https://wiki.96.mk/">Wiki</a></li><li><a href="https://vulwiki.readthedocs.io/zh_CN/latest/web/fileinclude/">1.5.2 任意文件读取&#x2F;包含&#x2F;删除 - 漏洞知识库</a></li><li><a href="https://vulwiki.readthedocs.io/zh_CN/latest/#">漏洞知识库</a></li><li><a href="https://vulwiki.readthedocs.io/zh_CN/latest/web/sql/">1.1 SQL注入漏洞 - 漏洞知识库</a></li></ul><h3 id="网络空间搜索"><a href="#网络空间搜索" class="headerlink" title="网络空间搜索"></a>网络空间搜索</h3><ul><li><a href="https://fofa.info/">网络空间测绘，网络空间安全搜索引擎，网络空间搜索引擎，安全态势感知 - FOFA网络空间测绘系统</a></li><li><a href="https://www.zoomeye.org/">ZoomEye - Cyberspace Search Engine</a></li><li><a href="https://quake.360.cn/quake/#/index">360网络空间资产测绘</a></li><li><a href="https://www.shodan.io/">Shodan</a></li><li><a href="https://censys.io/">Censys</a></li><li><a href="https://hunter.qianxin.com/">鹰图平台</a></li><li><a href="https://crt.sh/">crt.sh | Certificate Search</a></li><li><a href="https://community.riskiq.com/">RiskIQ Community</a></li></ul><h3 id="加解密"><a href="#加解密" class="headerlink" title="加解密"></a>加解密</h3><ul><li><a href="https://the-x.cn/en-us/cryptography/Aes.aspx">AES decryption AES encryption AES Hex Key Supported - The X Online Tools</a></li><li><a href="https://www.somd5.com/">MD5免费在线解密破解_MD5在线加密-SOMD5</a></li><li><a href="http://www.objectif-securite.ch/en/ophcrack.php">Objectif Sécurité - Ophcrack</a></li><li><a href="http://md5decrypt.net/">Md5 Encryption &amp; Decryption Gratuite - Plus de 10.000.000.000 hashs</a></li></ul><h3 id="云查杀"><a href="#云查杀" class="headerlink" title="云查杀"></a>云查杀</h3><ul><li><a href="https://scanner.baidu.com/#/pages/intro">WEBDIR+ - WebShell 扫描服务 - OpenRASP 团队</a></li><li><a href="https://s.threatbook.com/">微步在线云沙箱</a></li><li><a href="http://virscan.org/">VirSCAN.org-多引擎在线病毒扫描网 v1.02，当前支持 41 款杀毒引擎</a></li><li><a href="https://www.virustotal.com/gui/home/upload">VirusTotal - Home</a></li><li><a href="https://habo.qq.com/">腾讯哈勃分析系统</a></li><li><a href="https://stack.chaitin.com/">CT Stack 安全社区</a></li><li><a href="http://www.yunsee.cn/">云悉WEB资产梳理|在线CMS指纹识别平台 - 云悉安全</a></li><li><a href="https://tool.lu/">在线工具 - 程序员的工具箱</a></li><li><a href="http://ceye.io/">CEYE - Monitor service for security testing</a></li><li><a href="http://www.javadecompilers.com/">Java decompiler online</a></li><li><a href="http://site.ip138.com/">域名查ip 域名解析 ip查询网站 ip反查域名 ip反查网站 同一ip网站 同ip网站域名ip查询</a></li><li><a href="https://bugs.hacking8.com/tiquan/">提权辅助网页</a></li><li><a href="https://ctf.gs/">CTF.GS_CTF网址导航_CTF练习平台收集</a></li><li><a href="https://regex101.com/">Online regex tester and debugger: PHP, PCRE, Python, Golang and JavaScript</a></li><li><a href="https://www.cvedetails.com/">CVE security vulnerability database. Security vulnerabilities, exploits, references and more</a></li><li><a href="https://nip.io/">nip.io - wildcard DNS for any IP Address</a></li><li><a href="https://www.exploit-db.com/">Exploit Database - Exploits for Penetration Testers, Researchers, and Ethical Hackers</a></li><li><a href="https://subdomainfinder.c99.nl/">Subdomain Finder</a></li><li><a href="https://xss.pt/xss.php?do=login">XSS平台 - （支持http&#x2F;https）XSS Platform</a></li><li><a href="http://finger.tidesec.com/">TideFinger 潮汐指纹</a></li><li><a href="https://rapiddns.io/subdomain">Subdomain - RapidDNS Rapid DNS Information Collection</a></li><li><a href="https://securitytrails.com/">The World&#39;s Largest Repository of Historical DNS data</a></li><li><a href="http://www.jackson-t.ca/runtime-exec-payloads.html">java.lang.Runtime.exec() Payload Workarounds - @Jackson_T</a></li><li><a href="https://rapiddns.io/sameip">Same IP Website - RapidDNS Rapid DNS Information Collection</a></li><li><a href="https://www.osint-labs.org/tools/">https://www.osint-labs.org/tools/</a></li><li><a href="https://www.revshells.com/">Online - Reverse Shell Generator</a></li><li><a href="https://y4er.com/">Y4er的博客</a></li><li><a href="https://cloudcone.com/">Managed Cloud Hosting, Dedicated Servers, Cloud Services - CloudCone</a></li><li><a href="http://eyes.sh/dns/">DNSLog管理</a></li></ul><h3 id="技巧"><a href="#技巧" class="headerlink" title="技巧"></a>技巧</h3><ul><li><a href="http://ip.zxinc.org/index.htm">IPv6地址查询网站</a></li><li><a href="https://www.v2ex.com/">V2EX</a></li><li><a href="https://greasyfork.org/zh-CN">Greasy Fork - 安全、实用的用户脚本大全</a></li><li><a href="http://24mail.chacuo.net/">临时邮箱、十分钟邮箱（10分钟)、临时邮、临时Email、快速注册Email、24Mail–查错网</a></li><li><a href="https://bandwagonhost.com/clientarea.php">Bandwagon Host - Client Area</a></li><li><a href="https://www.dynadot.com/account/">Account Summary</a></li><li><a href="https://pan.icu/">内核恐慌</a></li><li><a href="https://sm.ms/">Image Upload - SM.MS - Simple Free Image Hosting</a></li><li><a href="https://mail.protonmail.com/inbox">Login - ProtonMail</a></li><li><a href="https://orangefox.download/zh-CN">OrangeFox Recovery Downloads</a></li></ul>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h3 id=&quot;信安资讯&quot;&gt;&lt;a href=&quot;#信安资讯&quot; class=&quot;headerlink&quot; title=&quot;信安资讯&quot;&gt;&lt;/a&gt;信安资讯&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://govuln.com/news/&quot;&gt;安全文摘 - 『代码审计』知识星球&lt;/a&gt;</summary>
+      
+    
+    
+    
+    
+    <category term="书签" scheme="https://blog.njcit.me/tags/%E4%B9%A6%E7%AD%BE/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux配置速查</title>
@@ -190,7 +213,7 @@
     <published>2023-02-21T07:43:37.000Z</published>
     <updated>2023-02-21T08:24:24.017Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>好多命令平时用的少，经常忘，在此做一次记录。</p><h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="Ubuntu修改主机名"><a href="#Ubuntu修改主机名" class="headerlink" title="Ubuntu修改主机名"></a>Ubuntu修改主机名</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo hostnamectl set-hostname ty</span><br></pre></td></tr></table></figure><h2 id="Ubuntu修改SSH欢迎信息"><a href="#Ubuntu修改SSH欢迎信息" class="headerlink" title="Ubuntu修改SSH欢迎信息"></a>Ubuntu修改SSH欢迎信息</h2><p>修改&#x2F;etc&#x2F;update-motd.d&#x2F;目录下面的文件即可，不行就重启一下</p><h2 id="SSH密钥登录"><a href="#SSH密钥登录" class="headerlink" title="SSH密钥登录"></a>SSH密钥登录</h2><p>把公钥放在.ssh&#x2F;authorized_keys中即可</p><h2 id="scp"><a href="#scp" class="headerlink" title="scp"></a>scp</h2><p>指定端口：scp -P 2233 get_info.sh <a href="mailto:&#108;&#105;&#x65;&#109;&#x65;&#x72;&#64;&#49;&#x39;&#x32;&#x2e;&#x31;&#54;&#56;&#46;&#55;&#x36;&#x2e;&#x35;&#x32;">&#108;&#105;&#x65;&#109;&#x65;&#x72;&#64;&#49;&#x39;&#x32;&#x2e;&#x31;&#54;&#56;&#46;&#55;&#x36;&#x2e;&#x35;&#x32;</a>:&#x2F;usr&#x2F;local&#x2F;src  </p><p>传输目录scp -r &#x2F;opt&#x2F;  <a href="mailto:&#x6c;&#105;&#x65;&#x6d;&#x65;&#114;&#64;&#x31;&#x39;&#50;&#x2e;&#49;&#54;&#56;&#x2e;&#x37;&#x36;&#x2e;&#x35;&#x32;">&#x6c;&#105;&#x65;&#x6d;&#x65;&#114;&#64;&#x31;&#x39;&#50;&#x2e;&#49;&#54;&#56;&#x2e;&#x37;&#x36;&#x2e;&#x35;&#x32;</a>:&#x2F;usr&#x2F;local&#x2F;src  </p>]]></content>
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>好多命令平时用的少，经常忘，在此做一次记录。</p><h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="Ubuntu修改主机名"><a href="#Ubuntu修改主机名" class="headerlink" title="Ubuntu修改主机名"></a>Ubuntu修改主机名</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo hostnamectl set-hostname ty</span><br></pre></td></tr></table></figure><h2 id="Ubuntu修改SSH欢迎信息"><a href="#Ubuntu修改SSH欢迎信息" class="headerlink" title="Ubuntu修改SSH欢迎信息"></a>Ubuntu修改SSH欢迎信息</h2><p>修改&#x2F;etc&#x2F;update-motd.d&#x2F;目录下面的文件即可，不行就重启一下</p><h2 id="SSH密钥登录"><a href="#SSH密钥登录" class="headerlink" title="SSH密钥登录"></a>SSH密钥登录</h2><p>把公钥放在.ssh&#x2F;authorized_keys中即可</p><h2 id="scp"><a href="#scp" class="headerlink" title="scp"></a>scp</h2><p>指定端口：scp -P 2233 get_info.sh <a href="mailto:&#x6c;&#105;&#101;&#109;&#101;&#x72;&#64;&#49;&#57;&#50;&#x2e;&#x31;&#54;&#56;&#x2e;&#55;&#x36;&#46;&#53;&#x32;">&#x6c;&#105;&#101;&#109;&#101;&#x72;&#64;&#49;&#57;&#50;&#x2e;&#x31;&#54;&#56;&#x2e;&#55;&#x36;&#46;&#53;&#x32;</a>:&#x2F;usr&#x2F;local&#x2F;src  </p><p>传输目录scp -r &#x2F;opt&#x2F;  <a href="mailto:&#108;&#x69;&#x65;&#x6d;&#x65;&#114;&#64;&#x31;&#x39;&#50;&#46;&#x31;&#x36;&#x38;&#x2e;&#x37;&#54;&#x2e;&#x35;&#x32;">&#108;&#x69;&#x65;&#x6d;&#x65;&#114;&#64;&#x31;&#x39;&#50;&#46;&#x31;&#x36;&#x38;&#x2e;&#x37;&#54;&#x2e;&#x35;&#x32;</a>:&#x2F;usr&#x2F;local&#x2F;src  </p>]]></content>
     
     
       
@@ -451,30 +474,6 @@
     <category term="openwrt" scheme="https://blog.njcit.me/tags/openwrt/"/>
     
     <category term="路由器" scheme="https://blog.njcit.me/tags/%E8%B7%AF%E7%94%B1%E5%99%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>值得一看的网站</title>
-    <link href="https://blog.njcit.me/2023/01/18/%E9%93%BE%E6%8E%A5/index/"/>
-    <id>https://blog.njcit.me/2023/01/18/%E9%93%BE%E6%8E%A5/index/</id>
-    <published>2023-01-18T07:14:22.000Z</published>
-    <updated>2023-01-18T07:06:18.953Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li><a href="https://3gstudent.github.io/">https://3gstudent.github.io/</a></li><li><a href="https://www.somedoc.net/">https://www.somedoc.net/</a></li><li><a href="https://xz.aliyun.com/">https://xz.aliyun.com/</a></li><li><a href="https://tttang.com/">https://tttang.com/</a></li><li><a href="https://i.hacking8.com/">https://i.hacking8.com/</a></li><li><a href="https://bbs.kanxue.com/">https://bbs.kanxue.com/</a></li><li><a href="https://www.52pojie.cn/">https://www.52pojie.cn/</a></li><li><a href="https://www.anquanke.com/">https://www.anquanke.com/</a></li><li><a href="https://paper.seebug.org/">https://paper.seebug.org/</a></li><li><a href="https://govuln.com/news/">https://govuln.com/news/</a></li><li><a href="https://www.v2ex.com/">https://www.v2ex.com/</a></li><li><a href="https://pan.icu/">https://pan.icu/</a></li><li><a href="https://stack.chaitin.com/">https://stack.chaitin.com/</a></li><li><a href="https://tool.lu/">https://tool.lu/</a></li><li><a href="https://www.somd5.com/">https://www.somd5.com/</a></li><li><a href="https://www.virustotal.com/gui/home/upload">https://www.virustotal.com/gui/home/upload</a></li><li><a href="https://www.ired.team/offensive-security-experiments/offensive-security-cheetsheets">https://www.ired.team/offensive-security-experiments/offensive-security-cheetsheets</a></li><li><a href="https://websec.readthedocs.io/zh/latest/">https://websec.readthedocs.io/zh/latest/</a></li><li><a href="https://yeasy.gitbook.io/docker_practice/">https://yeasy.gitbook.io/docker_practice/</a></li><li><a href="http://wiki.peiqi.tech/">http://wiki.peiqi.tech/</a></li></ul>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;https://3gstudent.github.io/&quot;&gt;https://3gstudent.github.io/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://www.somedoc.net/&quot;&gt;https://www.som</summary>
-      
-    
-    
-    
-    
-    <category term="something" scheme="https://blog.njcit.me/tags/something/"/>
     
   </entry>
   
