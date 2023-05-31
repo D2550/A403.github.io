@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://blog.njcit.me/2023/05/31/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E4%B8%ADjwt%E7%9A%84%E5%BA%94%E7%94%A8/</loc>
+    <lastmod>2023-05-31</lastmod>
+  </url>
+  <url>
     <loc>https://blog.njcit.me/2023/05/30/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/hacktricks/</loc>
     <lastmod>2023-05-30</lastmod>
   </url>
