@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://blog.njcit.me/2023/06/08/CTF/john%E7%88%86%E7%A0%B4zip%E5%AF%86%E7%A0%81/</loc>
+    <lastmod>2023-06-08</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.njcit.me/2023/06/08/%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7/gobuster%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/</loc>
+    <lastmod>2023-06-08</lastmod>
+  </url>
+  <url>
+    <loc>https://blog.njcit.me/2023/06/05/%E5%AE%89%E5%8D%93%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87/</loc>
+    <lastmod>2023-06-05</lastmod>
+  </url>
+  <url>
     <loc>https://blog.njcit.me/2023/05/31/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E4%B8%ADjwt%E7%9A%84%E5%BA%94%E7%94%A8/</loc>
     <lastmod>2023-05-31</lastmod>
   </url>

@@ -6,7 +6,7 @@
   <link href="https://blog.njcit.me/atom.xml" rel="self"/>
   
   <link href="https://blog.njcit.me/"/>
-  <updated>2023-05-31T02:58:20.522Z</updated>
+  <updated>2023-06-08T08:24:33.809Z</updated>
   <id>https://blog.njcit.me/</id>
   
   <author>
@@ -15,6 +15,69 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>john爆破zip密码</title>
+    <link href="https://blog.njcit.me/2023/06/08/CTF/john%E7%88%86%E7%A0%B4zip%E5%AF%86%E7%A0%81/"/>
+    <id>https://blog.njcit.me/2023/06/08/CTF/john%E7%88%86%E7%A0%B4zip%E5%AF%86%E7%A0%81/</id>
+    <published>2023-06-08T08:20:07.000Z</published>
+    <updated>2023-06-08T08:24:33.809Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="使用教程"><a href="#使用教程" class="headerlink" title="使用教程"></a>使用教程</h1><p>注意，fish可能报错，建议zsh或者bash</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">zip2john flag.zip &gt; hash.txt</span><br><span class="line">cat hash.txt</span><br><span class="line">john --format=pkzip --mask=?d?d?d hash.txt</span><br></pre></td></tr></table></figure><p><img src="/../../source/images/john%E7%88%86%E7%A0%B4zip%E5%AF%86%E7%A0%81/image-20230608162412409.png" alt="image-20230608162412409"></p><p><img src="/../../source/images/john%E7%88%86%E7%A0%B4zip%E5%AF%86%E7%A0%81/image-20230608162420466.png" alt="image-20230608162420466"></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;使用教程&quot;&gt;&lt;a href=&quot;#使用教程&quot; class=&quot;headerlink&quot; title=&quot;使用教程&quot;&gt;&lt;/a&gt;使用教程&lt;/h1&gt;&lt;p&gt;注意，fish可能报错，建议zsh或者bash&lt;/p&gt;
+&lt;figure class=&quot;highlight plaintext</summary>
+      
+    
+    
+    
+    
+    <category term="ctf" scheme="https://blog.njcit.me/tags/ctf/"/>
+    
+    <category term="爆破" scheme="https://blog.njcit.me/tags/%E7%88%86%E7%A0%B4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>gobuster工具使用</title>
+    <link href="https://blog.njcit.me/2023/06/08/%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7/gobuster%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/"/>
+    <id>https://blog.njcit.me/2023/06/08/%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7/gobuster%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/</id>
+    <published>2023-06-08T07:12:21.000Z</published>
+    <updated>2023-06-08T07:26:07.511Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="工具下载"><a href="#工具下载" class="headerlink" title="工具下载"></a>工具下载</h1><p>kali</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install gobuster</span><br></pre></td></tr></table></figure><p>other os  </p><p><a href="https://github.com/OJ/gobuster">https://github.com/OJ/gobuster</a></p><h1 id="基础使用"><a href="#基础使用" class="headerlink" title="基础使用"></a>基础使用</h1><p>爆破dns,字典链接：<a href="https://github.com/danielmiessler/SecLists/blob/master/Discovery/DNS/subdomains-top1million-5000.txt">https://github.com/danielmiessler/SecLists/blob/master/Discovery/DNS/subdomains-top1million-5000.txt</a></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gobuster dns -d baidu.com -t 50 -w /mnt/14T/dict/SecLists/Discovery/DNS/subdomains-top1million-5000.txt</span><br></pre></td></tr></table></figure><p>爆破目录,字典链接：<a href="https://github.com/SexyBeast233/SecDictionary">https://github.com/SexyBeast233/SecDictionary</a></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gobuster dir -u &quot;http://www.xxxx.com/&quot; -w D:\pentest\dict\js.txt -k D:\tools\dicts\SecDictionary\filelak\H2-9000.txt</span><br></pre></td></tr></table></figure><p>其他使用见官方readme</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;工具下载&quot;&gt;&lt;a href=&quot;#工具下载&quot; class=&quot;headerlink&quot; title=&quot;工具下载&quot;&gt;&lt;/a&gt;工具下载&lt;/h1&gt;&lt;p&gt;kali&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;</summary>
+      
+    
+    
+    
+    
+    <category term="gobuster" scheme="https://blog.njcit.me/tags/gobuster/"/>
+    
+    <category term="工具" scheme="https://blog.njcit.me/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>安卓渗透测试环境准备</title>
+    <link href="https://blog.njcit.me/2023/06/05/%E5%AE%89%E5%8D%93%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87/"/>
+    <id>https://blog.njcit.me/2023/06/05/%E5%AE%89%E5%8D%93%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87/</id>
+    <published>2023-06-05T00:37:33.000Z</published>
+    <updated>2023-06-05T00:37:33.602Z</updated>
+    
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>渗透测试中jwt的应用</title>
@@ -260,7 +323,7 @@
     <published>2023-02-21T07:43:37.000Z</published>
     <updated>2023-02-21T08:24:24.017Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>好多命令平时用的少，经常忘，在此做一次记录。</p><h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="Ubuntu修改主机名"><a href="#Ubuntu修改主机名" class="headerlink" title="Ubuntu修改主机名"></a>Ubuntu修改主机名</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo hostnamectl set-hostname ty</span><br></pre></td></tr></table></figure><h2 id="Ubuntu修改SSH欢迎信息"><a href="#Ubuntu修改SSH欢迎信息" class="headerlink" title="Ubuntu修改SSH欢迎信息"></a>Ubuntu修改SSH欢迎信息</h2><p>修改&#x2F;etc&#x2F;update-motd.d&#x2F;目录下面的文件即可，不行就重启一下</p><h2 id="SSH密钥登录"><a href="#SSH密钥登录" class="headerlink" title="SSH密钥登录"></a>SSH密钥登录</h2><p>把公钥放在.ssh&#x2F;authorized_keys中即可</p><h2 id="scp"><a href="#scp" class="headerlink" title="scp"></a>scp</h2><p>指定端口：scp -P 2233 get_info.sh <a href="mailto:&#108;&#x69;&#x65;&#x6d;&#x65;&#x72;&#64;&#49;&#57;&#50;&#x2e;&#x31;&#x36;&#56;&#46;&#x37;&#54;&#x2e;&#53;&#x32;">&#108;&#x69;&#x65;&#x6d;&#x65;&#x72;&#64;&#49;&#57;&#50;&#x2e;&#x31;&#x36;&#56;&#46;&#x37;&#54;&#x2e;&#53;&#x32;</a>:&#x2F;usr&#x2F;local&#x2F;src  </p><p>传输目录scp -r &#x2F;opt&#x2F;  <a href="mailto:&#x6c;&#105;&#101;&#109;&#101;&#x72;&#64;&#x31;&#x39;&#50;&#46;&#49;&#x36;&#x38;&#46;&#55;&#x36;&#46;&#53;&#x32;">&#x6c;&#105;&#101;&#109;&#101;&#x72;&#64;&#x31;&#x39;&#50;&#46;&#49;&#x36;&#x38;&#46;&#55;&#x36;&#46;&#53;&#x32;</a>:&#x2F;usr&#x2F;local&#x2F;src  </p>]]></content>
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>好多命令平时用的少，经常忘，在此做一次记录。</p><h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="Ubuntu修改主机名"><a href="#Ubuntu修改主机名" class="headerlink" title="Ubuntu修改主机名"></a>Ubuntu修改主机名</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo hostnamectl set-hostname ty</span><br></pre></td></tr></table></figure><h2 id="Ubuntu修改SSH欢迎信息"><a href="#Ubuntu修改SSH欢迎信息" class="headerlink" title="Ubuntu修改SSH欢迎信息"></a>Ubuntu修改SSH欢迎信息</h2><p>修改&#x2F;etc&#x2F;update-motd.d&#x2F;目录下面的文件即可，不行就重启一下</p><h2 id="SSH密钥登录"><a href="#SSH密钥登录" class="headerlink" title="SSH密钥登录"></a>SSH密钥登录</h2><p>把公钥放在.ssh&#x2F;authorized_keys中即可</p><h2 id="scp"><a href="#scp" class="headerlink" title="scp"></a>scp</h2><p>指定端口：scp -P 2233 get_info.sh <a href="mailto:&#108;&#x69;&#101;&#x6d;&#101;&#x72;&#x40;&#49;&#x39;&#x32;&#x2e;&#x31;&#x36;&#x38;&#46;&#x37;&#54;&#46;&#53;&#x32;">&#108;&#x69;&#101;&#x6d;&#101;&#x72;&#x40;&#49;&#x39;&#x32;&#x2e;&#x31;&#x36;&#x38;&#46;&#x37;&#54;&#46;&#53;&#x32;</a>:&#x2F;usr&#x2F;local&#x2F;src  </p><p>传输目录scp -r &#x2F;opt&#x2F;  <a href="mailto:&#x6c;&#105;&#101;&#x6d;&#x65;&#114;&#x40;&#49;&#x39;&#x32;&#x2e;&#x31;&#54;&#x38;&#x2e;&#x37;&#x36;&#46;&#53;&#x32;">&#x6c;&#105;&#101;&#x6d;&#x65;&#114;&#x40;&#49;&#x39;&#x32;&#x2e;&#x31;&#54;&#x38;&#x2e;&#x37;&#x36;&#46;&#53;&#x32;</a>:&#x2F;usr&#x2F;local&#x2F;src  </p>]]></content>
     
     
       
@@ -404,75 +467,6 @@
     <category term="geacon_pro" scheme="https://blog.njcit.me/tags/geacon-pro/"/>
     
     <category term="cobaltstrike" scheme="https://blog.njcit.me/tags/cobaltstrike/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>渗透测试实用小工具</title>
-    <link href="https://blog.njcit.me/2023/02/03/%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AE%9E%E7%94%A8%E5%B0%8F%E5%B7%A5%E5%85%B7/"/>
-    <id>https://blog.njcit.me/2023/02/03/%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E5%AE%9E%E7%94%A8%E5%B0%8F%E5%B7%A5%E5%85%B7/</id>
-    <published>2023-02-03T01:14:09.000Z</published>
-    <updated>2023-02-28T01:13:03.935Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>工欲善<em>其事</em>，必先<em>利其</em>器。一个好的工具可以提升工作的效率，把自己从重复的工作中解放出来。</p><h1 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h1><h2 id="外网部分"><a href="#外网部分" class="headerlink" title="外网部分"></a>外网部分</h2><ul><li><p>springboot heapdump 敏感信息提取工具：<a href="https://github.com/whwlsfb/JDumpSpider">https://github.com/whwlsfb/JDumpSpider</a></p></li><li><p>redis利用工具：<a href="https://github.com/yuyan-sec/RedisEXP">https://github.com/yuyan-sec/RedisEXP</a></p></li><li><p>jwt密码爆破：<a href="https://github.com/brendan-rius/c-jwt-cracker">https://github.com/brendan-rius/c-jwt-cracker</a></p></li><li><p>漏洞验证框架：<a href="https://github.com/projectdiscovery/nuclei">https://github.com/projectdiscovery/nuclei</a></p></li><li><p>httpx: <a href="https://github.com/projectdiscovery/httpx">https://github.com/projectdiscovery/httpx</a></p></li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest</span><br><span class="line">httpx -l .\url.txt -title -status-code -tech-detect</span><br></pre></td></tr></table></figure><ul><li>ARL自动化资产收集：<a href="https://github.com/TophantTechnology/ARL">https://github.com/TophantTechnology/ARL</a></li></ul><h2 id="内网部分"><a href="#内网部分" class="headerlink" title="内网部分"></a>内网部分</h2><ul><li>CobaltStrike C2：<a href="https://github.com/H4de5-7/geacon_pro">https://github.com/H4de5-7/geacon_pro</a></li><li>Viper：<a href="https://github.com/FunnyWolf/Viper">https://github.com/FunnyWolf/Viper</a></li></ul><h2 id="Android部分"><a href="#Android部分" class="headerlink" title="Android部分"></a>Android部分</h2><ul><li>frida:<a href="https://frida.re/">https://frida.re/</a></li><li>jadx:<a href="https://github.com/skylot/jadx">https://github.com/skylot/jadx</a></li></ul><h2 id="杂项部分"><a href="#杂项部分" class="headerlink" title="杂项部分"></a>杂项部分</h2><ul><li>scoop:<a href="https://scoop.sh/">https://scoop.sh/</a></li><li>oh my zsh:<a href="https://ohmyz.sh/">https://ohmyz.sh/</a></li><li>oh my posh:<a href="https://ohmyposh.dev/">https://ohmyposh.dev/</a></li></ul><h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>感谢开源，从开源中来，到开源中去。</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;工欲善&lt;em&gt;其事&lt;/em&gt;，必先&lt;em&gt;利其&lt;/em&gt;器。一个好的工具可以提升工作的效率，把自己从重复的工作中解放出来。&lt;/p&gt;
-&lt;h1 </summary>
-      
-    
-    
-    
-    
-    <category term="工具" scheme="https://blog.njcit.me/tags/%E5%B7%A5%E5%85%B7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>二改frp使用技巧</title>
-    <link href="https://blog.njcit.me/2023/02/02/%E5%86%85%E7%BD%91/%E4%BA%8C%E6%94%B9frp%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/"/>
-    <id>https://blog.njcit.me/2023/02/02/%E5%86%85%E7%BD%91/%E4%BA%8C%E6%94%B9frp%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/</id>
-    <published>2023-02-02T03:14:11.000Z</published>
-    <updated>2023-02-02T06:05:44.050Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>今年的华为行动来的格外的早一些，过完年环境忘得差不多了，打内网没有frp怎么行，搞到一半发现有更方便的防止溯源的方法，文末说一下，就这样。</p><h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p>魔改frp的下载<a href="https://github.com/Goqi/Erfrp">链接</a>,生成自定义加密的服务器IP的方法可以参考issue，这个就不多讲了，重点讲一下安全配置，默认情况下生成的配置文件是不带密码，这里放上两个官方带密码的例子：  </p><p>服务端：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line">bind_addr = 0.0.0.0</span><br><span class="line">bind_port = 5000</span><br><span class="line"># 开启kcp模式</span><br><span class="line">kcp_bind_port =5000</span><br><span class="line">authentication_method = token</span><br><span class="line">token = you_token</span><br><span class="line"># IP 与 bind_addr 默认相同，可以不设置</span><br><span class="line"># dashboard_addr = 0.0.0.0</span><br><span class="line"># 端口必须设置，只有设置web页面才生效</span><br><span class="line">dashboard_port = 5001</span><br><span class="line"># 用户密码保平安</span><br><span class="line">dashboard_user = root</span><br><span class="line">dashboard_pwd = password</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>客户端：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line">server_addr = p0vj/==</span><br><span class="line"># kcp监听的端口</span><br><span class="line">server_port = 5000</span><br><span class="line">protocol = kcp</span><br><span class="line">tls_enable = true</span><br><span class="line">authentication_method = token</span><br><span class="line">token = you_token</span><br><span class="line"></span><br><span class="line">[plugin_socks5]</span><br><span class="line">type = tcp</span><br><span class="line">remote_port = 11111</span><br><span class="line">plugin = socks5</span><br></pre></td></tr></table></figure><p>远程加载</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frpc.exe -c http://127.0.0.1/frpc.ini</span><br></pre></td></tr></table></figure><h1 id="其他方案"><a href="#其他方案" class="headerlink" title="其他方案"></a>其他方案</h1><p>可以使用这个<a href="https://github.com/Ggasdfg321/FreeFRP">https://github.com/Ggasdfg321/FreeFRP</a>来搜索互联网上未授权的frp。</p><h1 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h1><p>感谢开源</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h1&gt;&lt;p&gt;今年的华为行动来的格外的早一些，过完年环境忘得差不多了，打内网没有frp怎么行，搞到一半发现有更方便的防止溯源的方法，文末说一下，就这样。&lt;</summary>
-      
-    
-    
-    
-    
-    <category term="内网" scheme="https://blog.njcit.me/tags/%E5%86%85%E7%BD%91/"/>
-    
-    <category term="frp" scheme="https://blog.njcit.me/tags/frp/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>nali数据库分享</title>
-    <link href="https://blog.njcit.me/2023/02/01/%E6%9D%82%E9%A1%B9/nali%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%86%E4%BA%AB/"/>
-    <id>https://blog.njcit.me/2023/02/01/%E6%9D%82%E9%A1%B9/nali%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%86%E4%BA%AB/</id>
-    <published>2023-02-01T00:54:05.000Z</published>
-    <updated>2023-05-15T01:35:39.117Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p>链接：<a href="https://wwi.lanzoup.com/iDva60maofkh">https://wwi.lanzoup.com/iDva60maofkh</a>  </p><p>在新机器上用scoop装nali，发现域名解析失败了：</p><p><img src="/../../images/nali%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%86%E4%BA%AB/image-20230201085739354.png" alt="image-20230201085739354"></p><p>用我上面的文件保存在如下路径C:\Users\{user}\AppData\Local\nali,即可h</p><p><img src="/../../images/nali%E6%95%B0%E6%8D%AE%E5%BA%93%E5%88%86%E4%BA%AB/image-20230201085849260.png" alt="image-20230201085849260"></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;正文&quot;&gt;&lt;a href=&quot;#正文&quot; class=&quot;headerlink&quot; title=&quot;正文&quot;&gt;&lt;/a&gt;正文&lt;/h1&gt;&lt;p&gt;链接：&lt;a href=&quot;https://wwi.lanzoup.com/iDva60maofkh&quot;&gt;https://wwi.lanzoup.</summary>
-      
-    
-    
-    
-    
-    <category term="nali" scheme="https://blog.njcit.me/tags/nali/"/>
     
   </entry>
   
