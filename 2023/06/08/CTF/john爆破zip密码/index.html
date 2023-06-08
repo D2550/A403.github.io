@@ -6,17 +6,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="使用教程注意，fish可能报错，建议zsh或者bash 123zip2john flag.zip &gt; hash.txtcat hash.txtjohn --format&#x3D;pkzip --mask&#x3D;?d?d?d hash.txt">
+    <meta name="description" content="使用教程注意，fish可能报错，建议zsh或者bash 123zip2john flag.zip &gt; hash.txtcat hash.txtjohn --format&#x3D;pkzip --mask&#x3D;?d?d?d hash.txt    john理论上是支持字典的（未实测） 1john --wordlist&#x3D;&#x2F;usr&#x2F;share&#x2F;wordlists&#x2F;rockyou.txt --format&#x3D;ra">
 <meta property="og:type" content="article">
 <meta property="og:title" content="john爆破zip密码">
 <meta property="og:url" content="https://blog.njcit.me/2023/06/08/CTF/john%E7%88%86%E7%A0%B4zip%E5%AF%86%E7%A0%81/index.html">
 <meta property="og:site_name" content="这里有一个网站">
-<meta property="og:description" content="使用教程注意，fish可能报错，建议zsh或者bash 123zip2john flag.zip &gt; hash.txtcat hash.txtjohn --format&#x3D;pkzip --mask&#x3D;?d?d?d hash.txt">
+<meta property="og:description" content="使用教程注意，fish可能报错，建议zsh或者bash 123zip2john flag.zip &gt; hash.txtcat hash.txtjohn --format&#x3D;pkzip --mask&#x3D;?d?d?d hash.txt    john理论上是支持字典的（未实测） 1john --wordlist&#x3D;&#x2F;usr&#x2F;share&#x2F;wordlists&#x2F;rockyou.txt --format&#x3D;ra">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://blog.njcit.me/source/images/john%E7%88%86%E7%A0%B4zip%E5%AF%86%E7%A0%81/image-20230608162412409.png">
 <meta property="og:image" content="https://blog.njcit.me/source/images/john%E7%88%86%E7%A0%B4zip%E5%AF%86%E7%A0%81/image-20230608162420466.png">
+<meta property="og:image" content="https://blog.njcit.me/source/images/john%E7%88%86%E7%A0%B4zip%E5%AF%86%E7%A0%81/image-91.png">
 <meta property="article:published_time" content="2023-06-08T08:20:07.000Z">
-<meta property="article:modified_time" content="2023-06-08T08:24:33.809Z">
+<meta property="article:modified_time" content="2023-06-08T09:02:58.416Z">
 <meta property="article:author" content="ccadmin">
 <meta property="article:tag" content="ctf">
 <meta property="article:tag" content="爆破">
@@ -109,7 +110,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">使用教程</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">使用教程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-number">2.</span> <span class="toc-text">参考链接</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -158,6 +159,11 @@
 
 <p><img src="/../../source/images/john%E7%88%86%E7%A0%B4zip%E5%AF%86%E7%A0%81/image-20230608162412409.png" alt="image-20230608162412409"></p>
 <p><img src="/../../source/images/john%E7%88%86%E7%A0%B4zip%E5%AF%86%E7%A0%81/image-20230608162420466.png" alt="image-20230608162420466"></p>
+<p>john理论上是支持字典的（未实测）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">john --wordlist=/usr/share/wordlists/rockyou.txt --format=raw-sha1 crack.txt</span><br></pre></td></tr></table></figure>
+
+<p><img src="/../../source/images/john%E7%88%86%E7%A0%B4zip%E5%AF%86%E7%A0%81/image-91.png" alt="image-91"></p>
+<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><p><a target="_blank" rel="noopener" href="https://www.freecodecamp.org/news/crack-passwords-using-john-the-ripper-pentesting-tutorial/">https://www.freecodecamp.org/news/crack-passwords-using-john-the-ripper-pentesting-tutorial/</a></p>
 
   </div>
 </article>
@@ -183,7 +189,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">使用教程</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">使用教程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-number">2.</span> <span class="toc-text">参考链接</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
