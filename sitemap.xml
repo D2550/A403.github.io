@@ -668,6 +668,13 @@
   </url>
   
   <url>
+    <loc>https://blog.njcit.me/tags/nali/</loc>
+    <lastmod>2023-06-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.njcit.me/tags/openwrt/</loc>
     <lastmod>2023-06-08</lastmod>
     <changefreq>weekly</changefreq>
@@ -676,13 +683,6 @@
   
   <url>
     <loc>https://blog.njcit.me/tags/%E8%B7%AF%E7%94%B1%E5%99%A8/</loc>
-    <lastmod>2023-06-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.njcit.me/tags/nali/</loc>
     <lastmod>2023-06-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
