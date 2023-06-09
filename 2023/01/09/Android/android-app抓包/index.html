@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="前言在Android 7.0之后，app默认就不信任用户安装的证书。有如下几种解决方案：   安装burpsuite证书到系统证书中，可以使用magisk模块。参考1https:&#x2F;&#x2F;github.com&#x2F;qxqzx3489&#x2F;magisk_install_burpCA,参考2https:&#x2F;&#x2F;github.com&#x2F;Magisk-Modules-Repo&#x2F;movecert    使用xpoesd模块,参">
+    <meta name="description" content="前言 在Android 7.0之后，app默认就不信任用户安装的证书。有如下几种解决方案：   安装burpsuite证书到系统证书中，可以使用magisk模块。参考1https:&#x2F;&#x2F;github.com&#x2F;qxqzx3489&#x2F;magisk_install_burpCA,参考2https:&#x2F;&#x2F;github.com&#x2F;Magisk-Modules-Repo&#x2F;movecert   使用xpoesd模块,参">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android_app抓包">
 <meta property="og:url" content="https://blog.njcit.me/2023/01/09/Android/android-app%E6%8A%93%E5%8C%85/index.html">
 <meta property="og:site_name" content="这里有一个网站">
-<meta property="og:description" content="前言在Android 7.0之后，app默认就不信任用户安装的证书。有如下几种解决方案：   安装burpsuite证书到系统证书中，可以使用magisk模块。参考1https:&#x2F;&#x2F;github.com&#x2F;qxqzx3489&#x2F;magisk_install_burpCA,参考2https:&#x2F;&#x2F;github.com&#x2F;Magisk-Modules-Repo&#x2F;movecert    使用xpoesd模块,参">
+<meta property="og:description" content="前言 在Android 7.0之后，app默认就不信任用户安装的证书。有如下几种解决方案：   安装burpsuite证书到系统证书中，可以使用magisk模块。参考1https:&#x2F;&#x2F;github.com&#x2F;qxqzx3489&#x2F;magisk_install_burpCA,参考2https:&#x2F;&#x2F;github.com&#x2F;Magisk-Modules-Repo&#x2F;movecert   使用xpoesd模块,参">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-01-09T06:44:19.000Z">
 <meta property="article:modified_time" content="2023-01-09T07:14:17.179Z">
@@ -152,31 +152,34 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在Android 7.0之后，app默认就不信任用户安装的证书。有如下几种解决方案：</p>
+    <h1 id="前言">前言</h1>
+<p>在Android
+7.0之后，app默认就不信任用户安装的证书。有如下几种解决方案：</p>
 <ul>
-<li><ol>
-<li>安装burpsuite证书到系统证书中，可以使用magisk模块。参考1<a target="_blank" rel="noopener" href="https://github.com/qxqzx3489/magisk_install_burpCA">https://github.com/qxqzx3489/magisk_install_burpCA</a>,参考2<a target="_blank" rel="noopener" href="https://github.com/Magisk-Modules-Repo/movecert">https://github.com/Magisk-Modules-Repo/movecert</a></li>
-</ol>
-</li>
-<li><ol start="2">
-<li>使用xpoesd模块,参考<a target="_blank" rel="noopener" href="https://github.com/5up3rc/JustTrustMe">https://github.com/5up3rc/JustTrustMe</a>,<a target="_blank" rel="noopener" href="https://github.com/AndroidAppSec/resources/tree/master/%E9%80%9A%E4%BF%A1%E5%AE%89%E5%85%A8/xposed">https://github.com/AndroidAppSec/resources/tree/master/%E9%80%9A%E4%BF%A1%E5%AE%89%E5%85%A8/xposed</a></li>
-</ol>
-</li>
-<li><ol start="3">
+<li><ol type="1">
+<li>安装burpsuite证书到系统证书中，可以使用magisk模块。参考1<a
+target="_blank" rel="noopener" href="https://github.com/qxqzx3489/magisk_install_burpCA">https://github.com/qxqzx3489/magisk_install_burpCA</a>,参考2<a
+target="_blank" rel="noopener" href="https://github.com/Magisk-Modules-Repo/movecert">https://github.com/Magisk-Modules-Repo/movecert</a></li>
+</ol></li>
+<li><ol start="2" type="1">
+<li>使用xpoesd模块,参考<a
+target="_blank" rel="noopener" href="https://github.com/5up3rc/JustTrustMe">https://github.com/5up3rc/JustTrustMe</a>,<a
+target="_blank" rel="noopener" href="https://github.com/AndroidAppSec/resources/tree/master/%E9%80%9A%E4%BF%A1%E5%AE%89%E5%85%A8/xposed">https://github.com/AndroidAppSec/resources/tree/master/%E9%80%9A%E4%BF%A1%E5%AE%89%E5%85%A8/xposed</a></li>
+</ol></li>
+<li><ol start="3" type="1">
 <li>修改app文件，见参考链接</li>
-</ol>
-</li>
-<li><ol start="4">
+</ol></li>
+<li><ol start="4" type="1">
 <li>使用frida hookcheckServerTrusted</li>
-</ol>
-</li>
+</ol></li>
 </ul>
-<h1 id="frida-命令"><a href="#frida-命令" class="headerlink" title="frida 命令"></a>frida 命令</h1><p>建议用python3.9</p>
+<h1 id="frida-命令">frida 命令</h1>
+<p>建议用python3.9</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">objection -g 天翼生活 explore</span><br><span class="line">android sslpinning <span class="built_in">disable</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><ul>
-<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/454356245">https://zhuanlan.zhihu.com/p/454356245</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.anquanke.com/post/id/197657">https://www.anquanke.com/post/id/197657</a></li>
+<h1 id="参考文章">参考文章</h1>
+<ul>
+<li>https://zhuanlan.zhihu.com/p/454356245</li>
+<li>https://www.anquanke.com/post/id/197657</li>
 </ul>
 
   </div>

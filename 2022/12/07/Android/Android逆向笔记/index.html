@@ -6,20 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="Android 逆向笔记查找入口activity搜索android.intent.action.MAIN,上面的就是入口 123456&lt;activity android:theme&#x3D;&quot;@style&#x2F;base_AppTheme&quot; android:name&#x3D;&quot;com.sport.SplashActivity&quot; android:exported&#x3D;&quot;">
+    <meta name="description" content="Android 逆向笔记 查找入口activity 搜索android.intent.action.MAIN,上面的就是入口 123456&lt;activity android:theme&#x3D;&quot;@style&#x2F;base_AppTheme&quot; android:name&#x3D;&quot;com.sport.SplashActivity&quot; android:exported&#x3D;&amp;quo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android逆向笔记">
 <meta property="og:url" content="https://blog.njcit.me/2022/12/07/Android/Android%E9%80%86%E5%90%91%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="这里有一个网站">
-<meta property="og:description" content="Android 逆向笔记查找入口activity搜索android.intent.action.MAIN,上面的就是入口 123456&lt;activity android:theme&#x3D;&quot;@style&#x2F;base_AppTheme&quot; android:name&#x3D;&quot;com.sport.SplashActivity&quot; android:exported&#x3D;&quot;">
+<meta property="og:description" content="Android 逆向笔记 查找入口activity 搜索android.intent.action.MAIN,上面的就是入口 123456&lt;activity android:theme&#x3D;&quot;@style&#x2F;base_AppTheme&quot; android:name&#x3D;&quot;com.sport.SplashActivity&quot; android:exported&#x3D;&amp;quo">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://blog.njcit.me/images/Android%E9%80%86%E5%90%91%E7%AC%94%E8%AE%B0/image-20221207143642135.png">
+<meta property="og:image" content="https://blog.njcit.me/2022/12/07/images/Android%E9%80%86%E5%90%91%E7%AC%94%E8%AE%B0/image-20221207143642135.png">
 <meta property="article:published_time" content="2022-12-07T06:31:16.000Z">
 <meta property="article:modified_time" content="2023-02-02T06:08:50.149Z">
 <meta property="article:author" content="ccadmin">
 <meta property="article:tag" content="Android逆向">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog.njcit.me/images/Android%E9%80%86%E5%90%91%E7%AC%94%E8%AE%B0/image-20221207143642135.png">
+<meta name="twitter:image" content="https://blog.njcit.me/2022/12/07/images/Android%E9%80%86%E5%90%91%E7%AC%94%E8%AE%B0/image-20221207143642135.png">
     
     
       
@@ -109,7 +109,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Android-%E9%80%86%E5%90%91%E7%AC%94%E8%AE%B0"><span class="toc-number">1.</span> <span class="toc-text">Android 逆向笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E5%85%A5%E5%8F%A3activity"><span class="toc-number">1.1.</span> <span class="toc-text">查找入口activity</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#android-%E9%80%86%E5%90%91%E7%AC%94%E8%AE%B0"><span class="toc-number">1.</span> <span class="toc-text">Android 逆向笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E5%85%A5%E5%8F%A3activity"><span class="toc-number">1.1.</span> <span class="toc-text">查找入口activity</span></a></li></ol></li></ol>
     </div>
   </span>
 </div>
@@ -153,10 +153,15 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h1 id="Android-逆向笔记"><a href="#Android-逆向笔记" class="headerlink" title="Android 逆向笔记"></a>Android 逆向笔记</h1><h2 id="查找入口activity"><a href="#查找入口activity" class="headerlink" title="查找入口activity"></a>查找入口activity</h2><p>搜索android.intent.action.MAIN,上面的就是入口</p>
+    <h1 id="android-逆向笔记">Android 逆向笔记</h1>
+<h2 id="查找入口activity">查找入口activity</h2>
+<p>搜索android.intent.action.MAIN,上面的就是入口</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:theme</span>=<span class="string">&quot;@style/base_AppTheme&quot;</span> <span class="attr">android:name</span>=<span class="string">&quot;com.sport.SplashActivity&quot;</span> <span class="attr">android:exported</span>=<span class="string">&quot;true&quot;</span> <span class="attr">android:initOrder</span>=<span class="string">&quot;1361&quot;</span> <span class="attr">android:screenOrientation</span>=<span class="string">&quot;portrait&quot;</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">&quot;android.intent.action.MAIN&quot;</span> <span class="attr">android:initOrder</span>=<span class="string">&quot;1361&quot;</span>/&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">&quot;android.intent.category.LAUNCHER&quot;</span> <span class="attr">android:initOrder</span>=<span class="string">&quot;1361&quot;</span>/&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/../../images/Android%E9%80%86%E5%90%91%E7%AC%94%E8%AE%B0/image-20221207143642135.png" alt="image-20221207143642135"></p>
+<figure>
+<img src="../../images/Android逆向笔记/image-20221207143642135.png"
+alt="image-20221207143642135" />
+<figcaption aria-hidden="true">image-20221207143642135</figcaption>
+</figure>
 
   </div>
 </article>
@@ -182,7 +187,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Android-%E9%80%86%E5%90%91%E7%AC%94%E8%AE%B0"><span class="toc-number">1.</span> <span class="toc-text">Android 逆向笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E5%85%A5%E5%8F%A3activity"><span class="toc-number">1.1.</span> <span class="toc-text">查找入口activity</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#android-%E9%80%86%E5%90%91%E7%AC%94%E8%AE%B0"><span class="toc-number">1.</span> <span class="toc-text">Android 逆向笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E5%85%A5%E5%8F%A3activity"><span class="toc-number">1.1.</span> <span class="toc-text">查找入口activity</span></a></li></ol></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">

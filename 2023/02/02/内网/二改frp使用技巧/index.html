@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="前言今年的华为行动来的格外的早一些，过完年环境忘得差不多了，打内网没有frp怎么行，搞到一半发现有更方便的防止溯源的方法，文末说一下，就这样。 正文魔改frp的下载链接,生成自定义加密的服务器IP的方法可以参考issue，这个就不多讲了，重点讲一下安全配置，默认情况下生成的配置文件是不带密码，这里放上两个官方带密码的例子：   服务端： 123456789101112131415[common]b">
+    <meta name="description" content="前言 今年的华为行动来的格外的早一些，过完年环境忘得差不多了，打内网没有frp怎么行，搞到一半发现有更方便的防止溯源的方法，文末说一下，就这样。 正文 魔改frp的下载链接,生成自定义加密的服务器IP的方法可以参考issue，这个就不多讲了，重点讲一下安全配置，默认情况下生成的配置文件是不带密码，这里放上两个官方带密码的例子： 服务端： 123456789101112131415[common]b">
 <meta property="og:type" content="article">
 <meta property="og:title" content="二改frp使用技巧">
 <meta property="og:url" content="https://blog.njcit.me/2023/02/02/%E5%86%85%E7%BD%91/%E4%BA%8C%E6%94%B9frp%E4%BD%BF%E7%94%A8%E6%8A%80%E5%B7%A7/index.html">
 <meta property="og:site_name" content="这里有一个网站">
-<meta property="og:description" content="前言今年的华为行动来的格外的早一些，过完年环境忘得差不多了，打内网没有frp怎么行，搞到一半发现有更方便的防止溯源的方法，文末说一下，就这样。 正文魔改frp的下载链接,生成自定义加密的服务器IP的方法可以参考issue，这个就不多讲了，重点讲一下安全配置，默认情况下生成的配置文件是不带密码，这里放上两个官方带密码的例子：   服务端： 123456789101112131415[common]b">
+<meta property="og:description" content="前言 今年的华为行动来的格外的早一些，过完年环境忘得差不多了，打内网没有frp怎么行，搞到一半发现有更方便的防止溯源的方法，文末说一下，就这样。 正文 魔改frp的下载链接,生成自定义加密的服务器IP的方法可以参考issue，这个就不多讲了，重点讲一下安全配置，默认情况下生成的配置文件是不带密码，这里放上两个官方带密码的例子： 服务端： 123456789101112131415[common]b">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-02-02T03:14:11.000Z">
 <meta property="article:modified_time" content="2023-02-02T06:05:44.050Z">
@@ -152,19 +152,22 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>今年的华为行动来的格外的早一些，过完年环境忘得差不多了，打内网没有frp怎么行，搞到一半发现有更方便的防止溯源的方法，文末说一下，就这样。</p>
-<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><p>魔改frp的下载<a target="_blank" rel="noopener" href="https://github.com/Goqi/Erfrp">链接</a>,生成自定义加密的服务器IP的方法可以参考issue，这个就不多讲了，重点讲一下安全配置，默认情况下生成的配置文件是不带密码，这里放上两个官方带密码的例子：  </p>
+    <h1 id="前言">前言</h1>
+<p>今年的华为行动来的格外的早一些，过完年环境忘得差不多了，打内网没有frp怎么行，搞到一半发现有更方便的防止溯源的方法，文末说一下，就这样。</p>
+<h1 id="正文">正文</h1>
+<p>魔改frp的下载<a
+target="_blank" rel="noopener" href="https://github.com/Goqi/Erfrp">链接</a>,生成自定义加密的服务器IP的方法可以参考issue，这个就不多讲了，重点讲一下安全配置，默认情况下生成的配置文件是不带密码，这里放上两个官方带密码的例子：</p>
 <p>服务端：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line">bind_addr = 0.0.0.0</span><br><span class="line">bind_port = 5000</span><br><span class="line"># 开启kcp模式</span><br><span class="line">kcp_bind_port =5000</span><br><span class="line">authentication_method = token</span><br><span class="line">token = you_token</span><br><span class="line"># IP 与 bind_addr 默认相同，可以不设置</span><br><span class="line"># dashboard_addr = 0.0.0.0</span><br><span class="line"># 端口必须设置，只有设置web页面才生效</span><br><span class="line">dashboard_port = 5001</span><br><span class="line"># 用户密码保平安</span><br><span class="line">dashboard_user = root</span><br><span class="line">dashboard_pwd = password</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
 <p>客户端：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[common]</span><br><span class="line">server_addr = p0vj/==</span><br><span class="line"># kcp监听的端口</span><br><span class="line">server_port = 5000</span><br><span class="line">protocol = kcp</span><br><span class="line">tls_enable = true</span><br><span class="line">authentication_method = token</span><br><span class="line">token = you_token</span><br><span class="line"></span><br><span class="line">[plugin_socks5]</span><br><span class="line">type = tcp</span><br><span class="line">remote_port = 11111</span><br><span class="line">plugin = socks5</span><br></pre></td></tr></table></figure>
-
 <p>远程加载</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">frpc.exe -c http://127.0.0.1/frpc.ini</span><br></pre></td></tr></table></figure>
-
-<h1 id="其他方案"><a href="#其他方案" class="headerlink" title="其他方案"></a>其他方案</h1><p>可以使用这个<a target="_blank" rel="noopener" href="https://github.com/Ggasdfg321/FreeFRP">https://github.com/Ggasdfg321/FreeFRP</a>来搜索互联网上未授权的frp。</p>
-<h1 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h1><p>感谢开源</p>
+<h1 id="其他方案">其他方案</h1>
+<p>可以使用这个<a
+target="_blank" rel="noopener" href="https://github.com/Ggasdfg321/FreeFRP">https://github.com/Ggasdfg321/FreeFRP</a>来搜索互联网上未授权的frp。</p>
+<h1 id="结尾">结尾</h1>
+<p>感谢开源</p>
 
   </div>
 </article>

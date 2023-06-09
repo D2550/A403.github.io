@@ -6,28 +6,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="背景介绍800多买了块14T的矿渣硬盘，挂在Kali Linux（实体机，非虚拟机）下面用来备份一些不怎么重要的数据。之前由于机箱电源键坏了带走了我一块3T的硬盘，电源键老化按下去弹不起来导致系统一直在强制重启，然后硬盘就挂了。挂了之前我实在&#x2F;etc&#x2F;fstab中实现的硬盘开机自挂载，然后就开不了机，只能重新接上显示器开机在菜单页面按e修改启动参数，进入类似维护模式的终端，去除相关条目才能开机。同">
+    <meta name="description" content="背景介绍 800多买了块14T的矿渣硬盘，挂在Kali Linux（实体机，非虚拟机）下面用来备份一些不怎么重要的数据。之前由于机箱电源键坏了带走了我一块3T的硬盘，电源键老化按下去弹不起来导致系统一直在强制重启，然后硬盘就挂了。挂了之前我实在&#x2F;etc&#x2F;fstab中实现的硬盘开机自挂载，然后就开不了机，只能重新接上显示器开机在菜单页面按e修改启动参数，进入类似维护模式的终端，去除相关条目才能开机。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux硬盘踩坑记">
 <meta property="og:url" content="https://blog.njcit.me/2023/01/06/%E6%9D%82%E9%A1%B9/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/index.html">
 <meta property="og:site_name" content="这里有一个网站">
-<meta property="og:description" content="背景介绍800多买了块14T的矿渣硬盘，挂在Kali Linux（实体机，非虚拟机）下面用来备份一些不怎么重要的数据。之前由于机箱电源键坏了带走了我一块3T的硬盘，电源键老化按下去弹不起来导致系统一直在强制重启，然后硬盘就挂了。挂了之前我实在&#x2F;etc&#x2F;fstab中实现的硬盘开机自挂载，然后就开不了机，只能重新接上显示器开机在菜单页面按e修改启动参数，进入类似维护模式的终端，去除相关条目才能开机。同">
+<meta property="og:description" content="背景介绍 800多买了块14T的矿渣硬盘，挂在Kali Linux（实体机，非虚拟机）下面用来备份一些不怎么重要的数据。之前由于机箱电源键坏了带走了我一块3T的硬盘，电源键老化按下去弹不起来导致系统一直在强制重启，然后硬盘就挂了。挂了之前我实在&#x2F;etc&#x2F;fstab中实现的硬盘开机自挂载，然后就开不了机，只能重新接上显示器开机在菜单页面按e修改启动参数，进入类似维护模式的终端，去除相关条目才能开机。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://blog.njcit.me/images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106101218662.png">
-<meta property="og:image" content="https://blog.njcit.me/images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106101315352.png">
-<meta property="og:image" content="https://blog.njcit.me/images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106101426980.png">
-<meta property="og:image" content="https://blog.njcit.me/images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106101849155.png">
-<meta property="og:image" content="https://blog.njcit.me/images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106102029728.png">
-<meta property="og:image" content="https://blog.njcit.me/images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106102145317.png">
-<meta property="og:image" content="https://blog.njcit.me/images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106102308878.png">
-<meta property="og:image" content="https://blog.njcit.me/images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106102432377.png">
+<meta property="og:image" content="https://blog.njcit.me/2023/01/06/images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106101218662.png">
+<meta property="og:image" content="https://blog.njcit.me/2023/01/06/images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106101315352.png">
+<meta property="og:image" content="https://blog.njcit.me/2023/01/06/images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106101426980.png">
+<meta property="og:image" content="https://blog.njcit.me/2023/01/06/images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106101849155.png">
+<meta property="og:image" content="https://blog.njcit.me/2023/01/06/images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106102029728.png">
+<meta property="og:image" content="https://blog.njcit.me/2023/01/06/images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106102145317.png">
+<meta property="og:image" content="https://blog.njcit.me/2023/01/06/images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106102308878.png">
+<meta property="og:image" content="https://blog.njcit.me/2023/01/06/images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106102432377.png">
 <meta property="article:published_time" content="2023-01-06T01:59:45.000Z">
 <meta property="article:modified_time" content="2023-02-02T06:08:12.275Z">
 <meta property="article:author" content="ccadmin">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="分区">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog.njcit.me/images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106101218662.png">
+<meta name="twitter:image" content="https://blog.njcit.me/2023/01/06/images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106101218662.png">
     
     
       
@@ -161,29 +161,69 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h1 id="背景介绍"><a href="#背景介绍" class="headerlink" title="背景介绍"></a>背景介绍</h1><p>800多买了块14T的矿渣硬盘，挂在Kali Linux（实体机，非虚拟机）下面用来备份一些不怎么重要的数据。之前由于机箱电源键坏了带走了我一块3T的硬盘，电源键老化按下去弹不起来导致系统一直在强制重启，然后硬盘就挂了。挂了之前我实在<code>/etc/fstab</code>中实现的硬盘开机自挂载，然后就开不了机，只能重新接上显示器开机在菜单页面按e修改启动参数，进入类似维护模式的终端，去除相关条目才能开机。同事告诉我可以使用修改 <code>/etc/rc.local</code>来实现开机自动挂载，但是我改了没生效，可能是我改错了或者啥的，正好发现如下的坑。</p>
-<h1 id="症状"><a href="#症状" class="headerlink" title="症状"></a>症状</h1><p>在我修改完<code>/etc/rc.local</code>重启之后准备查看是否生效的时候，发现了硬盘设备名发生了变化，如下：重启前</p>
-<p><img src="/../../images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106101218662.png" alt="image-20230106101218662"></p>
+    <h1 id="背景介绍">背景介绍</h1>
+<p>800多买了块14T的矿渣硬盘，挂在Kali
+Linux（实体机，非虚拟机）下面用来备份一些不怎么重要的数据。之前由于机箱电源键坏了带走了我一块3T的硬盘，电源键老化按下去弹不起来导致系统一直在强制重启，然后硬盘就挂了。挂了之前我实在<code>/etc/fstab</code>中实现的硬盘开机自挂载，然后就开不了机，只能重新接上显示器开机在菜单页面按e修改启动参数，进入类似维护模式的终端，去除相关条目才能开机。同事告诉我可以使用修改
+<code>/etc/rc.local</code>来实现开机自动挂载，但是我改了没生效，可能是我改错了或者啥的，正好发现如下的坑。</p>
+<h1 id="症状">症状</h1>
+<p>在我修改完<code>/etc/rc.local</code>重启之后准备查看是否生效的时候，发现了硬盘设备名发生了变化，如下：重启前</p>
+<figure>
+<img src="../../images/Linux硬盘踩坑记/image-20230106101218662.png"
+alt="image-20230106101218662" />
+<figcaption aria-hidden="true">image-20230106101218662</figcaption>
+</figure>
 <p>很明显我14TB硬盘的设备名是sdb,重启后如下：</p>
-<p><img src="/../../images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106101315352.png" alt="image-20230106101315352"></p>
+<figure>
+<img src="../../images/Linux硬盘踩坑记/image-20230106101315352.png"
+alt="image-20230106101315352" />
+<figcaption aria-hidden="true">image-20230106101315352</figcaption>
+</figure>
 <p>很明显sdb已经不是之前的14T的硬盘了，再次重启查看如下：</p>
-<p><img src="/../../images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106101426980.png" alt="image-20230106101426980"></p>
+<figure>
+<img src="../../images/Linux硬盘踩坑记/image-20230106101426980.png"
+alt="image-20230106101426980" />
+<figcaption aria-hidden="true">image-20230106101426980</figcaption>
+</figure>
 <p>为啥截图使用的工具不一样呢。很明显我又不是在写教程，只是使用过程中发现的问题，只能使用之前命令过程中能作为证据的部分。</p>
-<h1 id="寻找原因"><a href="#寻找原因" class="headerlink" title="寻找原因"></a>寻找原因</h1><p>个人猜测可能和硬盘的上电顺序有关，也可能和硬盘安装的sata口有关，通过一番搜索，找到这篇文章：<a target="_blank" rel="noopener" href="https://www.mayanpeng.cn/archives/184.html">https://www.mayanpeng.cn/archives/184.html</a>，也部分验证了自己的猜想。</p>
-<p><img src="/../../images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106101849155.png" alt="image-20230106101849155"></p>
-<h1 id="解决自动挂在的问题"><a href="#解决自动挂在的问题" class="headerlink" title="解决自动挂在的问题"></a>解决自动挂在的问题</h1><p>还是要使用<code>/etc/fstab</code>这个文件，只能祈祷硬盘活的久一点，但是我发现某个分区只有PARTUUID，没有UUID如下：</p>
-<p><img src="/../../images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106102029728.png" alt="image-20230106102029728"></p>
-<p>当然<code>/etc/fstab</code>也是支持PARTUUID，问题不大，但是使用mount -a挂在报错如下：</p>
+<h1 id="寻找原因">寻找原因</h1>
+<p>个人猜测可能和硬盘的上电顺序有关，也可能和硬盘安装的sata口有关，通过一番搜索，找到这篇文章：<a
+target="_blank" rel="noopener" href="https://www.mayanpeng.cn/archives/184.html">https://www.mayanpeng.cn/archives/184.html</a>，也部分验证了自己的猜想。</p>
+<figure>
+<img src="../../images/Linux硬盘踩坑记/image-20230106101849155.png"
+alt="image-20230106101849155" />
+<figcaption aria-hidden="true">image-20230106101849155</figcaption>
+</figure>
+<h1 id="解决自动挂在的问题">解决自动挂在的问题</h1>
+<p>还是要使用<code>/etc/fstab</code>这个文件，只能祈祷硬盘活的久一点，但是我发现某个分区只有PARTUUID，没有UUID如下：</p>
+<figure>
+<img src="../../images/Linux硬盘踩坑记/image-20230106102029728.png"
+alt="image-20230106102029728" />
+<figcaption aria-hidden="true">image-20230106102029728</figcaption>
+</figure>
+<p>当然<code>/etc/fstab</code>也是支持PARTUUID，问题不大，但是使用mount
+-a挂在报错如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">UUID=3e012233-b5b5-4644-880c-0a7feea73007 /mnt/hdd               ext4    defaults  0       0</span><br><span class="line">PARTUUID=318fa74d-3808-f049-9962-ca4002525e29 /mnt/14T               ext4    defaults  0       0</span><br></pre></td></tr></table></figure>
-
-<p><img src="/../../images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106102145317.png" alt="image-20230106102145317"></p>
+<figure>
+<img src="../../images/Linux硬盘踩坑记/image-20230106102145317.png"
+alt="image-20230106102145317" />
+<figcaption aria-hidden="true">image-20230106102145317</figcaption>
+</figure>
 <p>搜索得到是分区没有格式化，格式化再次挂载成功。查看也发现有了UUID。</p>
-<p><img src="/../../images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106102308878.png" alt="image-20230106102308878"></p>
+<figure>
+<img src="../../images/Linux硬盘踩坑记/image-20230106102308878.png"
+alt="image-20230106102308878" />
+<figcaption aria-hidden="true">image-20230106102308878</figcaption>
+</figure>
 <p>重启之后也正常</p>
-<p><img src="/../../images/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/image-20230106102432377.png" alt="image-20230106102432377"></p>
-<h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><p><a target="_blank" rel="noopener" href="https://www.mayanpeng.cn/archives/184.html">https://www.mayanpeng.cn/archives/184.html</a>  </p>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/will-xz/p/13532578.html">https://www.cnblogs.com/will-xz/p/13532578.html</a>  </p>
-<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/336758411dbf">https://www.jianshu.com/p/336758411dbf</a></p>
+<figure>
+<img src="../../images/Linux硬盘踩坑记/image-20230106102432377.png"
+alt="image-20230106102432377" />
+<figcaption aria-hidden="true">image-20230106102432377</figcaption>
+</figure>
+<h1 id="参考文章">参考文章</h1>
+<p>https://www.mayanpeng.cn/archives/184.html</p>
+<p>https://www.cnblogs.com/will-xz/p/13532578.html</p>
+<p>https://www.jianshu.com/p/336758411dbf</p>
 
   </div>
 </article>

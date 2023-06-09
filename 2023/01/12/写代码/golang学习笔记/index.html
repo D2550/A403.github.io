@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="前言随着golang越来越火，终于下定决心系统学一下golang，本身有一点Java&#x2F;Python&#x2F;PHP基础，以为只要学一下golang的语法就可以愉快的开发了，实际操作发现不是这样，本篇文章主要记录学习golang过程中遇到的坑。 正文编译Windows 下编译 Mac 和 Linux 64位可执行程序 123456789SET CGO_ENABLED&#x3D;0SET GOOS&#x3D;">
+    <meta name="description" content="前言 随着golang越来越火，终于下定决心系统学一下golang，本身有一点Java&#x2F;Python&#x2F;PHP基础，以为只要学一下golang的语法就可以愉快的开发了，实际操作发现不是这样，本篇文章主要记录学习golang过程中遇到的坑。 正文 编译 Windows 下编译 Mac 和 Linux 64位可执行程序 123456789SET CGO_ENABLED&#x3D;0SET GOOS&#x3D;darwinS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="golang学习笔记">
 <meta property="og:url" content="https://blog.njcit.me/2023/01/12/%E5%86%99%E4%BB%A3%E7%A0%81/golang%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="这里有一个网站">
-<meta property="og:description" content="前言随着golang越来越火，终于下定决心系统学一下golang，本身有一点Java&#x2F;Python&#x2F;PHP基础，以为只要学一下golang的语法就可以愉快的开发了，实际操作发现不是这样，本篇文章主要记录学习golang过程中遇到的坑。 正文编译Windows 下编译 Mac 和 Linux 64位可执行程序 123456789SET CGO_ENABLED&#x3D;0SET GOOS&#x3D;">
+<meta property="og:description" content="前言 随着golang越来越火，终于下定决心系统学一下golang，本身有一点Java&#x2F;Python&#x2F;PHP基础，以为只要学一下golang的语法就可以愉快的开发了，实际操作发现不是这样，本篇文章主要记录学习golang过程中遇到的坑。 正文 编译 Windows 下编译 Mac 和 Linux 64位可执行程序 123456789SET CGO_ENABLED&#x3D;0SET GOOS&#x3D;darwinS">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-01-12T12:38:52.000Z">
 <meta property="article:modified_time" content="2023-02-06T02:25:36.361Z">
@@ -152,15 +152,17 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>随着golang越来越火，终于下定决心系统学一下golang，本身有一点Java&#x2F;Python&#x2F;PHP基础，以为只要学一下golang的语法就可以愉快的开发了，实际操作发现不是这样，本篇文章主要记录学习golang过程中遇到的坑。</p>
-<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="编译"><a href="#编译" class="headerlink" title="编译"></a>编译</h2><p>Windows 下编译 Mac 和 Linux 64位可执行程序</p>
+    <h1 id="前言">前言</h1>
+<p>随着golang越来越火，终于下定决心系统学一下golang，本身有一点Java/Python/PHP基础，以为只要学一下golang的语法就可以愉快的开发了，实际操作发现不是这样，本篇文章主要记录学习golang过程中遇到的坑。</p>
+<h1 id="正文">正文</h1>
+<h2 id="编译">编译</h2>
+<p>Windows 下编译 Mac 和 Linux 64位可执行程序</p>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">SET</span> CGO_ENABLED=<span class="number">0</span></span><br><span class="line"><span class="built_in">SET</span> GOOS=darwin</span><br><span class="line"><span class="built_in">SET</span> GOARCH=amd64</span><br><span class="line">go build main.go</span><br><span class="line"></span><br><span class="line"><span class="built_in">SET</span> CGO_ENABLED=<span class="number">0</span></span><br><span class="line"><span class="built_in">SET</span> GOOS=linux</span><br><span class="line"><span class="built_in">SET</span> GOARCH=amd64</span><br><span class="line">go build main.go</span><br></pre></td></tr></table></figure>
-
 <p>Linux 下编译 Mac 和 Windows 64位可执行程序</p>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CGO_ENABLED=<span class="number">0</span> GOOS=darwin GOARCH=amd64 go build main.go</span><br><span class="line">CGO_ENABLED=<span class="number">0</span> GOOS=windows GOARCH=amd64 go build main.go</span><br></pre></td></tr></table></figure>
-
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/panshiqu/article/details/53788067">https://blog.csdn.net/panshiqu/article/details/53788067</a></li>
+<h1 id="参考链接">参考链接</h1>
+<ul>
+<li>https://blog.csdn.net/panshiqu/article/details/53788067</li>
 </ul>
 
   </div>

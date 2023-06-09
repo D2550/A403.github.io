@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="前言scoop是一个包管理软件，可以通过一条命令安装&#x2F;更新卸载软件，scoop拥有大量软件，基本上常用的软件都在scoop里面能找到。 安装安装建议使用pwsh和Windows终端 12Set-ExecutionPolicy RemoteSigned -Scope CurrentUserirm get.scoop.sh | iex 配置额外的bucket查看bucket列表 123456">
+    <meta name="description" content="前言 scoop是一个包管理软件，可以通过一条命令安装&#x2F;更新卸载软件，scoop拥有大量软件，基本上常用的软件都在scoop里面能找到。 # 安装 ## 安装 建议使用pwsh和Windows终端 12Set-ExecutionPolicy RemoteSigned -Scope CurrentUserirm get.scoop.sh | iex ## 配置额外的bucket 查看bucket列表">
 <meta property="og:type" content="article">
 <meta property="og:title" content="scoop基础使用">
 <meta property="og:url" content="https://blog.njcit.me/2023/02/19/scoop%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/index.html">
 <meta property="og:site_name" content="这里有一个网站">
-<meta property="og:description" content="前言scoop是一个包管理软件，可以通过一条命令安装&#x2F;更新卸载软件，scoop拥有大量软件，基本上常用的软件都在scoop里面能找到。 安装安装建议使用pwsh和Windows终端 12Set-ExecutionPolicy RemoteSigned -Scope CurrentUserirm get.scoop.sh | iex 配置额外的bucket查看bucket列表 123456">
+<meta property="og:description" content="前言 scoop是一个包管理软件，可以通过一条命令安装&#x2F;更新卸载软件，scoop拥有大量软件，基本上常用的软件都在scoop里面能找到。 # 安装 ## 安装 建议使用pwsh和Windows终端 12Set-ExecutionPolicy RemoteSigned -Scope CurrentUserirm get.scoop.sh | iex ## 配置额外的bucket 查看bucket列表">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-02-19T10:06:47.000Z">
 <meta property="article:modified_time" content="2023-02-19T10:28:18.582Z">
@@ -106,7 +106,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-1"><span class="toc-number">2.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E9%A2%9D%E5%A4%96%E7%9A%84bucket"><span class="toc-number">2.2.</span> <span class="toc-text">配置额外的bucket</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-number">3.</span> <span class="toc-text">参考链接</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -145,20 +145,13 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>scoop是一个包管理软件，可以通过一条命令安装&#x2F;更新卸载软件，scoop拥有大量软件，基本上常用的软件都在scoop里面能找到。</p>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="安装-1"><a href="#安装-1" class="headerlink" title="安装"></a>安装</h2><p>建议使用pwsh和Windows终端</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Set-ExecutionPolicy RemoteSigned -Scope CurrentUser</span><br><span class="line">irm get.scoop.sh | iex</span><br></pre></td></tr></table></figure>
-<h2 id="配置额外的bucket"><a href="#配置额外的bucket" class="headerlink" title="配置额外的bucket"></a>配置额外的bucket</h2><p>查看bucket列表</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">scoop bucket known</span><br><span class="line"></span><br><span class="line">main</span><br><span class="line">extras</span><br><span class="line">versions</span><br><span class="line">nirsoft</span><br><span class="line">sysinternals</span><br><span class="line">php</span><br><span class="line">nerd-fonts</span><br><span class="line">nonportable</span><br><span class="line">java</span><br><span class="line">games</span><br></pre></td></tr></table></figure>
-<p>添加bucket(要先安装git)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scoop bucket add extras</span><br></pre></td></tr></table></figure>
-<p>查看本地的bucket列表</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scoop bucket list</span><br></pre></td></tr></table></figure>
-<p>修改安装位置,注意：已经安装的软件可能出现问题，建议重新安装。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$env:SCOOP=&#x27;D:\Applications\Scoop&#x27;</span><br><span class="line">[Environment]::SetEnvironmentVariable(&#x27;SCOOP&#x27;, $env:SCOOP, &#x27;User&#x27;)</span><br><span class="line">$env:SCOOP_GLOBAL=&#x27;F:\GlobalScoopApps&#x27;</span><br><span class="line">[Environment]::SetEnvironmentVariable(&#x27;SCOOP_GLOBAL&#x27;, $env:SCOOP_GLOBAL, &#x27;Machine&#x27;)</span><br></pre></td></tr></table></figure>
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
-<li><a target="_blank" rel="noopener" href="https://scoop.sh/">https://scoop.sh/</a></li>
-</ul>
+    <h1 id="前言">前言</h1>
+<p>scoop是一个包管理软件，可以通过一条命令安装/更新卸载软件，scoop拥有大量软件，基本上常用的软件都在scoop里面能找到。
+# 安装 ## 安装 建议使用pwsh和Windows终端 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Set-ExecutionPolicy RemoteSigned -Scope CurrentUser</span><br><span class="line">irm get.scoop.sh | iex</span><br></pre></td></tr></table></figure> ##
+配置额外的bucket 查看bucket列表 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">scoop bucket known</span><br><span class="line"></span><br><span class="line">main</span><br><span class="line">extras</span><br><span class="line">versions</span><br><span class="line">nirsoft</span><br><span class="line">sysinternals</span><br><span class="line">php</span><br><span class="line">nerd-fonts</span><br><span class="line">nonportable</span><br><span class="line">java</span><br><span class="line">games</span><br></pre></td></tr></table></figure> 添加bucket(要先安装git)
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scoop bucket add extras</span><br></pre></td></tr></table></figure> 查看本地的bucket列表 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scoop bucket list</span><br></pre></td></tr></table></figure>
+修改安装位置,注意：已经安装的软件可能出现问题，建议重新安装。
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$env:SCOOP=&#x27;D:\Applications\Scoop&#x27;</span><br><span class="line">[Environment]::SetEnvironmentVariable(&#x27;SCOOP&#x27;, $env:SCOOP, &#x27;User&#x27;)</span><br><span class="line">$env:SCOOP_GLOBAL=&#x27;F:\GlobalScoopApps&#x27;</span><br><span class="line">[Environment]::SetEnvironmentVariable(&#x27;SCOOP_GLOBAL&#x27;, $env:SCOOP_GLOBAL, &#x27;Machine&#x27;)</span><br></pre></td></tr></table></figure> # 参考链接 - https://scoop.sh/</p>
 
   </div>
 </article>
@@ -184,7 +177,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-1"><span class="toc-number">2.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E9%A2%9D%E5%A4%96%E7%9A%84bucket"><span class="toc-number">2.2.</span> <span class="toc-text">配置额外的bucket</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-number">3.</span> <span class="toc-text">参考链接</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">

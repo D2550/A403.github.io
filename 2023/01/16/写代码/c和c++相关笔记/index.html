@@ -6,17 +6,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-    <meta name="description" content="前言多线程卷起来，要把理论落实到实践中去，一点点积累起来逆向的基础，一点点学习和杀软对抗，迟早有一天我也能成为re大佬。这篇文章主要记录一下学习隐藏导入表的学习记录。 正文c编译环境搭建 下载MinGW并将bin目录加入环境变量；  下载vscode  下载visualstudio   环境搭建到此为止 学习笔记隐藏User32.dll导入表隐藏前的源码 123456789#include&lt;">
+    <meta name="description" content="前言 多线程卷起来，要把理论落实到实践中去，一点点积累起来逆向的基础，一点点学习和杀软对抗，迟早有一天我也能成为re大佬。这篇文章主要记录一下学习隐藏导入表的学习记录。 正文 c编译环境搭建  下载MinGW并将bin目录加入环境变量； 下载vscode 下载visualstudio  环境搭建到此为止 学习笔记 隐藏User32.dll导入表 隐藏前的源码 123456789#include&amp;l">
 <meta property="og:type" content="article">
 <meta property="og:title" content="c和c++相关笔记">
 <meta property="og:url" content="https://blog.njcit.me/2023/01/16/%E5%86%99%E4%BB%A3%E7%A0%81/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="这里有一个网站">
-<meta property="og:description" content="前言多线程卷起来，要把理论落实到实践中去，一点点积累起来逆向的基础，一点点学习和杀软对抗，迟早有一天我也能成为re大佬。这篇文章主要记录一下学习隐藏导入表的学习记录。 正文c编译环境搭建 下载MinGW并将bin目录加入环境变量；  下载vscode  下载visualstudio   环境搭建到此为止 学习笔记隐藏User32.dll导入表隐藏前的源码 123456789#include&lt;">
+<meta property="og:description" content="前言 多线程卷起来，要把理论落实到实践中去，一点点积累起来逆向的基础，一点点学习和杀软对抗，迟早有一天我也能成为re大佬。这篇文章主要记录一下学习隐藏导入表的学习记录。 正文 c编译环境搭建  下载MinGW并将bin目录加入环境变量； 下载vscode 下载visualstudio  环境搭建到此为止 学习笔记 隐藏User32.dll导入表 隐藏前的源码 123456789#include&amp;l">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://blog.njcit.me/images/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230117144042599.png">
-<meta property="og:image" content="https://blog.njcit.me/images/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230117144224707.png">
-<meta property="og:image" content="https://blog.njcit.me/images/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230117144717784.png">
-<meta property="og:image" content="https://blog.njcit.me/images/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230117144926796.png">
+<meta property="og:image" content="https://blog.njcit.me/2023/01/16/images/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230117144042599.png">
+<meta property="og:image" content="https://blog.njcit.me/2023/01/16/images/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230117144224707.png">
+<meta property="og:image" content="https://blog.njcit.me/2023/01/16/images/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230117144717784.png">
+<meta property="og:image" content="https://blog.njcit.me/2023/01/16/images/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230117144926796.png">
 <meta property="article:published_time" content="2023-01-16T01:37:52.000Z">
 <meta property="article:modified_time" content="2023-02-02T06:07:47.033Z">
 <meta property="article:author" content="ccadmin">
@@ -24,7 +24,7 @@
 <meta property="article:tag" content="c++">
 <meta property="article:tag" content="代码">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog.njcit.me/images/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230117144042599.png">
+<meta name="twitter:image" content="https://blog.njcit.me/2023/01/16/images/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230117144042599.png">
     
     
       
@@ -114,7 +114,7 @@
 
     </div>
     <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E6%96%87"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#c%E7%BC%96%E8%AF%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-number">2.1.</span> <span class="toc-text">c编译环境搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0"><span class="toc-number">2.2.</span> <span class="toc-text">学习笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%90%E8%97%8FUser32-dll%E5%AF%BC%E5%85%A5%E8%A1%A8"><span class="toc-number">2.2.1.</span> <span class="toc-text">隐藏User32.dll导入表</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-number">3.</span> <span class="toc-text">参考链接</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E6%96%87"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#c%E7%BC%96%E8%AF%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-number">2.1.</span> <span class="toc-text">c编译环境搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0"><span class="toc-number">2.2.</span> <span class="toc-text">学习笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%90%E8%97%8Fuser32.dll%E5%AF%BC%E5%85%A5%E8%A1%A8"><span class="toc-number">2.2.1.</span> <span class="toc-text">隐藏User32.dll导入表</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-number">3.</span> <span class="toc-text">参考链接</span></a></li></ol>
     </div>
   </span>
 </div>
@@ -158,35 +158,57 @@
   
 
   <div class="content" itemprop="articleBody">
-    <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>多线程卷起来，要把理论落实到实践中去，一点点积累起来逆向的基础，一点点学习和杀软对抗，迟早有一天我也能成为re大佬。这篇文章主要记录一下学习隐藏导入表的学习记录。</p>
-<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="c编译环境搭建"><a href="#c编译环境搭建" class="headerlink" title="c编译环境搭建"></a>c编译环境搭建</h2><ul>
-<li><p>下载<a target="_blank" rel="noopener" href="https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/">MinGW</a>并将bin目录加入环境变量；</p>
-</li>
-<li><p>下载<a target="_blank" rel="noopener" href="https://code.visualstudio.com/">vscode</a></p>
-</li>
-<li><p>下载<a target="_blank" rel="noopener" href="https://visualstudio.microsoft.com/zh-hans/">visualstudio</a></p>
-</li>
+    <h1 id="前言">前言</h1>
+<p>多线程卷起来，要把理论落实到实践中去，一点点积累起来逆向的基础，一点点学习和杀软对抗，迟早有一天我也能成为re大佬。这篇文章主要记录一下学习隐藏导入表的学习记录。</p>
+<h1 id="正文">正文</h1>
+<h2 id="c编译环境搭建">c编译环境搭建</h2>
+<ul>
+<li><p>下载<a
+target="_blank" rel="noopener" href="https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/">MinGW</a>并将bin目录加入环境变量；</p></li>
+<li><p>下载<a target="_blank" rel="noopener" href="https://code.visualstudio.com/">vscode</a></p></li>
+<li><p>下载<a
+target="_blank" rel="noopener" href="https://visualstudio.microsoft.com/zh-hans/">visualstudio</a></p></li>
 </ul>
 <p>环境搭建到此为止</p>
-<h2 id="学习笔记"><a href="#学习笔记" class="headerlink" title="学习笔记"></a>学习笔记</h2><h3 id="隐藏User32-dll导入表"><a href="#隐藏User32-dll导入表" class="headerlink" title="隐藏User32.dll导入表"></a>隐藏User32.dll导入表</h3><p>隐藏前的源码</p>
+<h2 id="学习笔记">学习笔记</h2>
+<h3 id="隐藏user32.dll导入表">隐藏User32.dll导入表</h3>
+<p>隐藏前的源码</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;Windows.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;hello world\n&quot;</span>);</span><br><span class="line">    MessageBox(<span class="number">0</span>, TEXT(<span class="string">&quot;hello world&quot;</span>), <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>隐藏后的源码</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;Windows.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="title function_">int</span><span class="params">(WINAPI * pMessageBox)</span> <span class="params">(</span></span><br><span class="line"><span class="params"></span></span><br><span class="line"><span class="params">    HWND    hWnd,</span></span><br><span class="line"><span class="params">    LPCTSTR lpText,</span></span><br><span class="line"><span class="params">    LPCTSTR lpCaption,</span></span><br><span class="line"><span class="params">    UINT    uType</span></span><br><span class="line"><span class="params">    )</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;hello world\n&quot;</span>);</span><br><span class="line">    pMessageBox MyMessageBox = (pMessageBox)GetProcAddress(LoadLibrary(<span class="string">&quot;User32.dll&quot;</span>), <span class="string">&quot;MessageBoxA&quot;</span>);</span><br><span class="line">    MyMessageBox(<span class="number">0</span>, TEXT(<span class="string">&quot;hello world&quot;</span>), <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>首先查看GetProcAddress的文档，可以直接在参考链接3进行搜索，其他api也可以在里面搜索，不做过多赘述。</p>
 <p>可以看到GetProcAddress这个函数需要传入两个参数，向我这样的初学者可能不太理解，直接看官方给的例子：</p>
-<p><img src="/../../images/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230117144042599.png" alt="image-20230117144042599"></p>
-<p><img src="/../../images/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230117144224707.png" alt="image-20230117144224707"></p>
+<figure>
+<img src="../../images/c和c++相关笔记/image-20230117144042599.png"
+alt="image-20230117144042599" />
+<figcaption aria-hidden="true">image-20230117144042599</figcaption>
+</figure>
+<figure>
+<img src="../../images/c和c++相关笔记/image-20230117144224707.png"
+alt="image-20230117144224707" />
+<figcaption aria-hidden="true">image-20230117144224707</figcaption>
+</figure>
 <p>可以看到首先使用typedef定义了一个类似结构体的东东。</p>
-<p><img src="/../../images/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230117144717784.png" alt="image-20230117144717784"></p>
+<figure>
+<img src="../../images/c和c++相关笔记/image-20230117144717784.png"
+alt="image-20230117144717784" />
+<figcaption aria-hidden="true">image-20230117144717784</figcaption>
+</figure>
 <p>上面已经说的很详细了，这里就不再解读了。</p>
-<p><img src="/../../images/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230117144926796.png" alt="image-20230117144926796"></p>
+<figure>
+<img src="../../images/c和c++相关笔记/image-20230117144926796.png"
+alt="image-20230117144926796" />
+<figcaption aria-hidden="true">image-20230117144926796</figcaption>
+</figure>
 <p>MessageBox的语法上图已经给出来了。通过上面的一些微软的官方文档，就很容易理解上述隐藏user32.dll的代码是啥意思了，亦可以照猫画虎隐藏其他dll文件。</p>
-<h1 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h1><ul>
-<li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/cpp/c-language/?view=msvc-170">c语言参考文档</a></li>
-<li><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/12035">通过隐藏导入表的方式规避杀软</a></li>
-<li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/win32/api/">win32api文档</a></li>
+<h1 id="参考链接">参考链接</h1>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/cpp/c-language/?view=msvc-170">c语言参考文档</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://xz.aliyun.com/t/12035">通过隐藏导入表的方式规避杀软</a></li>
+<li><a
+target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/win32/api/">win32api文档</a></li>
 </ul>
 
   </div>
@@ -213,7 +235,7 @@
     </div>
 
     <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E6%96%87"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#c%E7%BC%96%E8%AF%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-number">2.1.</span> <span class="toc-text">c编译环境搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0"><span class="toc-number">2.2.</span> <span class="toc-text">学习笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%90%E8%97%8FUser32-dll%E5%AF%BC%E5%85%A5%E8%A1%A8"><span class="toc-number">2.2.1.</span> <span class="toc-text">隐藏User32.dll导入表</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-number">3.</span> <span class="toc-text">参考链接</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E6%96%87"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#c%E7%BC%96%E8%AF%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-number">2.1.</span> <span class="toc-text">c编译环境搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0"><span class="toc-number">2.2.</span> <span class="toc-text">学习笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%90%E8%97%8Fuser32.dll%E5%AF%BC%E5%85%A5%E8%A1%A8"><span class="toc-number">2.2.1.</span> <span class="toc-text">隐藏User32.dll导入表</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-number">3.</span> <span class="toc-text">参考链接</span></a></li></ol>
     </div>
 
     <div id="share-footer" style="display: none">
