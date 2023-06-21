@@ -1,11 +1,21 @@
+
+
 <!DOCTYPE html>
-<html lang=zh>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
 <head>
-    <!-- so meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="ccadmin">
+  <meta name="keywords" content="web安全,渗透测试,移动安全">
+  
     <meta name="description" content="web安全">
 <meta property="og:type" content="website">
 <meta property="og:title" content="这里有一个网站">
@@ -14,400 +24,742 @@
 <meta property="og:description" content="web安全">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="ccadmin">
-<meta name="twitter:card" content="summary">
-    
-    
-      
-        
-          <link rel="shortcut icon" href="/images/favicon.ico">
-        
-      
-      
-        
-          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
-        
-      
-      
-        
-          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-        
-      
-    
-    <!-- title -->
-    <title>这里有一个网站</title>
-    <!-- styles -->
-    
-<link rel="stylesheet" href="/css/style.css">
+<meta property="article:tag" content="web安全,渗透测试,移动安全">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>这里有一个网站</title>
 
-    <!-- persian styles -->
-    
-    <!-- rss -->
-    
-    
-	<!-- mathjax -->
-	
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.njcit.me","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
 <meta name="generator" content="Hexo 7.0.0-rc1"><link rel="alternate" href="/atom.xml" title="这里有一个网站" type="application/atom+xml">
 </head>
 
-<body class="max-width mx-auto px3 ltr">
-    
-    <div class="content index py4">
-        
-          <header id="header">
-  <a href="/">
+
+<body>
   
-    
-      <div id="logo" style="background-image: url(/images/logo.png);"></div>
-    
-  
-    <div id="title">
-      <h1>这里有一个网站</h1>
-    </div>
-  </a>
-  <div id="nav">
-    <ul>
-      <li class="icon">
-        <a href="#" aria-label="目录"><i class="fas fa-bars fa-2x"></i></a>
-      </li>
-      <!--
-     --><li><a href="/">首页</a></li><!--
-   --><!--
-     --><li><a href="/about/">关于</a></li><!--
-   --><!--
-     --><li><a href="/archives/">归档</a></li><!--
-   --><!--
-     --><li><a target="_blank" rel="noopener" href="https://github.com/D2550">项目</a></li><!--
-   -->
-    </ul>
-  </div>
-</header>
 
-        
-        <section id="about">
-  
-    <p>web安全</p>
-
-  
-  
-    <p>
-      在这里找到我：
-      
-      
-      
-        
-          <a class="icon" target="_blank" rel="noopener me" href="https://github.com/D2550" aria-label="github">
-            <i class="fab fa-github"></i><!--
-      ---></a><!--
-    ---><!--
-    ---> 和 
-        
-      
-        
-          <a class="icon" target="_blank" rel="noopener" href="mailto:ccadmin@88.com" aria-label="mail">
-            <i class="fas fa-envelope"></i><!--
-      ---></a>
-        <!--
-    --->.
-        
-      
-    </p>
-  
-</section>
-
-<section id="writing">
-  <span class="h1"><a href="/archives/">文章</a></span>
-  
-  <span class="h2">标签</span>
-  <span class="widget tagcloud">
-    <a href="/tags/AI/" style="font-size: 10px;">AI</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/Android%E9%80%86%E5%90%91/" style="font-size: 13.33px;">Android逆向</a> <a href="/tags/Linux/" style="font-size: 20px;">Linux</a> <a href="/tags/burpsuite/" style="font-size: 10px;">burpsuite</a> <a href="/tags/bypass/" style="font-size: 13.33px;">bypass</a> <a href="/tags/c/" style="font-size: 10px;">c</a> <a href="/tags/c/" style="font-size: 10px;">c++</a> <a href="/tags/cobaltstrike/" style="font-size: 10px;">cobaltstrike</a> <a href="/tags/ctf/" style="font-size: 10px;">ctf</a> <a href="/tags/exp/" style="font-size: 16.67px;">exp</a> <a href="/tags/frp/" style="font-size: 10px;">frp</a> <a href="/tags/geacon-pro/" style="font-size: 10px;">geacon_pro</a> <a href="/tags/gobuster/" style="font-size: 10px;">gobuster</a> <a href="/tags/golang/" style="font-size: 10px;">golang</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/hvv/" style="font-size: 10px;">hvv</a> <a href="/tags/jwt/" style="font-size: 10px;">jwt</a> <a href="/tags/metasploit/" style="font-size: 10px;">metasploit</a> <a href="/tags/nali/" style="font-size: 10px;">nali</a> <a href="/tags/openwrt/" style="font-size: 10px;">openwrt</a> <a href="/tags/powershell/" style="font-size: 10px;">powershell</a> <a href="/tags/quake/" style="font-size: 10px;">quake</a> <a href="/tags/shell/" style="font-size: 10px;">shell</a> <a href="/tags/shodan/" style="font-size: 10px;">shodan</a> <a href="/tags/something/" style="font-size: 10px;">something</a> <a href="/tags/tricks/" style="font-size: 10px;">tricks</a> <a href="/tags/waf/" style="font-size: 10px;">waf</a> <a href="/tags/xray/" style="font-size: 10px;">xray</a> <a href="/tags/%E4%B9%A6%E7%AD%BE/" style="font-size: 10px;">书签</a> <a href="/tags/%E4%BB%A3%E7%A0%81/" style="font-size: 10px;">代码</a> <a href="/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/" style="font-size: 13.33px;">代码审计</a> <a href="/tags/%E4%BC%98%E5%8C%96/" style="font-size: 10px;">优化</a> <a href="/tags/%E5%86%85%E7%BD%91/" style="font-size: 10px;">内网</a> <a href="/tags/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/" style="font-size: 10px;">内网渗透</a> <a href="/tags/%E5%88%86%E5%8C%BA/" style="font-size: 10px;">分区</a> <a href="/tags/%E5%88%B7%E6%9C%BA/" style="font-size: 10px;">刷机</a> <a href="/tags/%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">前端</a> <a href="/tags/%E5%8A%A0%E5%AF%86/" style="font-size: 16.67px;">加密</a> <a href="/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/" style="font-size: 10px;">反序列化</a> <a href="/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/" style="font-size: 10px;">反编译</a> <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 13.33px;">小程序</a> <a href="/tags/%E5%B7%A5%E5%85%B7/" style="font-size: 13.33px;">工具</a> <a href="/tags/%E5%BC%80%E5%8F%91/" style="font-size: 10px;">开发</a> <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" style="font-size: 10px;">微信小程序</a> <a href="/tags/%E6%8A%93%E5%8C%85/" style="font-size: 13.33px;">抓包</a> <a href="/tags/%E6%94%BB%E9%98%B2%E6%BC%94%E7%BB%83/" style="font-size: 10px;">攻防演练</a> <a href="/tags/%E6%9D%82%E8%B0%88/" style="font-size: 10px;">杂谈</a> <a href="/tags/%E6%9D%82%E9%A1%B9/" style="font-size: 13.33px;">杂项</a> <a href="/tags/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" style="font-size: 10px;">渗透测试</a> <a href="/tags/%E6%BC%8F%E6%B4%9E%E6%89%AB%E6%8F%8F/" style="font-size: 10px;">漏洞扫描</a> <a href="/tags/%E7%81%AB%E7%8B%90/" style="font-size: 10px;">火狐</a> <a href="/tags/%E7%88%86%E7%A0%B4/" style="font-size: 10px;">爆破</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B4%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/" style="font-size: 10px;">网络空间搜索引擎</a> <a href="/tags/%E8%87%AA%E5%8A%A8%E5%8C%96/" style="font-size: 10px;">自动化</a> <a href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8/" style="font-size: 10px;">路由器</a>
-  </span>
-  <span class="h2">最新发布</span>
-  
-  <ul class="post-list">
-    
-    
-      
-    
-    
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2023-01-11T08:55:05.000Z" itemprop="datePublished">2023-01-11</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2023/01/11/%E6%9D%82%E9%A1%B9/%E5%8A%A0%E5%AF%86%E6%B5%8B%E8%AF%95/">加密测试</a>
+  <header>
     
 
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
 
-</span>
-      </li>
-    
-      <li class="post-item">
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-    <div class="meta">
-      
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
         
-          <time datetime="2023-01-11T08:14:23.000Z" itemprop="datePublished">2023-01-11</time>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
         
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2023/01/11/%E6%9D%82%E9%A1%B9/windows%E6%9D%82%E9%A1%B9/">windows杂项</a>
-    
-
-
-</span>
-      </li>
-    
-      <li class="post-item">
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
         
-    <div class="meta">
-      
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
         
-          <time datetime="2023-01-10T02:47:57.000Z" itemprop="datePublished">2023-01-10</time>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
         
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2023/01/10/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/">记一次寻找微信小程序通信加密方法的过程</a>
-    
-
-
-</span>
-      </li>
-    
-      <li class="post-item">
         
-    <div class="meta">
-      
-        
-          <time datetime="2023-01-09T08:32:20.000Z" itemprop="datePublished">2023-01-09</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2023/01/09/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%B5%8B%E8%AF%95%E5%89%8D%E7%AB%AF%E5%8A%A0%E5%AF%86%E7%9A%84%E8%BF%87%E7%A8%8B/">记一次测试前端加密的过程</a>
-    
-
-
-</span>
-      </li>
-    
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2023-01-09T06:44:19.000Z" itemprop="datePublished">2023-01-09</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2023/01/09/Android/android-app%E6%8A%93%E5%8C%85/">Android_app抓包</a>
-    
-
-
-</span>
-      </li>
-    
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2023-01-09T01:41:26.000Z" itemprop="datePublished">2023-01-09</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2023/01/09/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/Windows%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%92%8C%E5%BE%AE%E4%BF%A1%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8A%93%E5%8C%85/">Windows微信小程序和微信浏览器抓包</a>
-    
-
-
-</span>
-      </li>
-    
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2023-01-06T07:13:19.000Z" itemprop="datePublished">2023-01-06</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2023/01/06/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/Windows%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8F%8D%E7%BC%96%E8%AF%91/">Windows小程序反编译</a>
-    
-
-
-</span>
-      </li>
-    
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2023-01-06T01:59:45.000Z" itemprop="datePublished">2023-01-06</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2023/01/06/%E6%9D%82%E9%A1%B9/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/">Linux硬盘踩坑记</a>
-    
-
-
-</span>
-      </li>
-    
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2023-01-04T06:22:47.000Z" itemprop="datePublished">2023-01-04</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2023/01/04/Android/Android%E9%80%86%E5%90%91%E5%B7%A5%E5%85%B7/">Android逆向工具</a>
-    
-
-
-</span>
-      </li>
-    
-      <li class="post-item">
-        
-    <div class="meta">
-      
-        
-          <time datetime="2023-01-04T01:11:50.000Z" itemprop="datePublished">2023-01-04</time>
-        
-      
-    </div>
-
-
-        <span>
-    
-        <a class="" href="/2023/01/04/%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B4%E6%90%9C%E7%B4%A2/shodan%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8/">shodan基础使用</a>
-    
-
-
-</span>
-      </li>
-    
-  </ul>
-  
-    
-    <div class="pagination">
-        
-            <a href="/page/3/"><i class="fas fa-angle-left"></i></a>
-        
-        <span class="page-number">第 4 页，共 5 页</span>
-        
-            <a href="/page/5/"><i class="fas fa-angle-right"></i>
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
             </a>
+          </li>
+          
         
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
     </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="An elegant Material-Design theme for Hexo"></span>
+          
+        </div>
+
+        
+      </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div id="board"
+          style="margin-top: 0">
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/01/12/%E5%86%99%E4%BB%A3%E7%A0%81/golang%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" target="_self">
+          golang学习笔记
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/01/12/%E5%86%99%E4%BB%A3%E7%A0%81/golang%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" target="_self">
+        <div>
+          前言 随着golang越来越火，终于下定决心系统学一下golang，本身有一点Java/Python/PHP基础，以为只要学一下golang的语法就可以愉快的开发了，实际操作发现不是这样，本篇文章主要记录学习golang过程中遇到的坑。 正文 编译 Windows 下编译 Mac 和 Linux 64位可执行程序 123456789SET CGO_ENABLED=0SET GOOS=darwinS
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-01-12 20:38" pubdate>
+              2023-01-12
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%BC%80%E5%8F%91/">#开发</a>
+            
+              <a href="/tags/golang/">#golang</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/01/11/%E6%9D%82%E9%A1%B9/%E5%8A%A0%E5%AF%86%E6%B5%8B%E8%AF%95/" target="_self">
+          加密测试
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/01/11/%E6%9D%82%E9%A1%B9/%E5%8A%A0%E5%AF%86%E6%B5%8B%E8%AF%95/" target="_self">
+        <div>
+          Here's something encrypted, password is required to continue reading.
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-01-11 16:55" pubdate>
+              2023-01-11
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%8A%A0%E5%AF%86/">#加密</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/01/11/%E6%9D%82%E9%A1%B9/windows%E6%9D%82%E9%A1%B9/" target="_self">
+          windows杂项
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/01/11/%E6%9D%82%E9%A1%B9/windows%E6%9D%82%E9%A1%B9/" target="_self">
+        <div>
+          前言 本片文章主要记录一些奇奇怪怪的东西，不定期更新 正文 查看系统配置 1neofetch  powershell命令历史文件位置,文件名ConsoleHost_history.txt 1cd %USERPROFILE%\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadLine powershell 配置文件路径 1&quot;D:\User
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-01-11 16:14" pubdate>
+              2023-01-11
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%9D%82%E9%A1%B9/">#杂项</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/01/10/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/" target="_self">
+          记一次寻找微信小程序通信加密方法的过程
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/01/10/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/%E8%AE%B0%E4%B8%80%E6%AC%A1%E5%AF%BB%E6%89%BE%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B/" target="_self">
+        <div>
+          前言 在测试微信小程序的过程中，发现通信的数据存在加密，如何在Windows使用burpsuite进行抓包可以参考我之前的文章，在对小程序进行反编译寻找加密方法和加密过程中，也发现了一些有意思的事，故此记录一下，如何对小程序进行反编译可以参考我之前的文章。 过程 直接在vscode里面搜索crypt，可以发现如下的几个加密函数： 加密方法des-ecb-pkcs7，密钥：t2b4h6y4l5  第
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-01-10 10:47" pubdate>
+              2023-01-10
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%8A%A0%E5%AF%86/">#加密</a>
+            
+              <a href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/">#微信小程序</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/01/09/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%B5%8B%E8%AF%95%E5%89%8D%E7%AB%AF%E5%8A%A0%E5%AF%86%E7%9A%84%E8%BF%87%E7%A8%8B/" target="_self">
+          记一次测试前端加密的过程
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/01/09/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/%E8%AE%B0%E4%B8%80%E6%AC%A1%E6%B5%8B%E8%AF%95%E5%89%8D%E7%AB%AF%E5%8A%A0%E5%AF%86%E7%9A%84%E8%BF%87%E7%A8%8B/" target="_self">
+        <div>
+          前言 在对某电信运营商网站的测试过程中，发现传输的数据包全部加密如下：  于是开始寻找加密的方法以及相关密钥。 过程 通过查看js文件，发现网站疑似采用des加密，如下图：  可以得知des加密的key是：HHRENPTDXXDDESCRPYCODEKEY，加密的mode和padding分别是ECB和Pkcs7，同时发现自带了一个解密函数，尝试在console调用一下试试：  发现报错，这里小小的
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-01-09 16:32" pubdate>
+              2023-01-09
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%8A%A0%E5%AF%86/">#加密</a>
+            
+              <a href="/tags/%E5%89%8D%E7%AB%AF/">#前端</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/01/09/Android/android-app%E6%8A%93%E5%8C%85/" target="_self">
+          Android_app抓包
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/01/09/Android/android-app%E6%8A%93%E5%8C%85/" target="_self">
+        <div>
+          前言 在Android 7.0之后，app默认就不信任用户安装的证书。有如下几种解决方案：   安装burpsuite证书到系统证书中，可以使用magisk模块。参考1https://github.com/qxqzx3489/magisk_install_burpCA,参考2https://github.com/Magisk-Modules-Repo/movecert   使用xpoesd模块,参
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-01-09 14:44" pubdate>
+              2023-01-09
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Android/">#Android</a>
+            
+              <a href="/tags/%E6%8A%93%E5%8C%85/">#抓包</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/01/09/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/Windows%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%92%8C%E5%BE%AE%E4%BF%A1%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8A%93%E5%8C%85/" target="_self">
+          Windows微信小程序和微信浏览器抓包
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/01/09/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/Windows%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%92%8C%E5%BE%AE%E4%BF%A1%E6%B5%8F%E8%A7%88%E5%99%A8%E6%8A%93%E5%8C%85/" target="_self">
+        <div>
+          所需工具  proxifier：https://www.proxifier.com/ burpsuite：https://portswigger.net/burp/releases  proxifier注册码 123L6Z8A-XY2J4-BTZ3P-ZZ7DF-A2Q9C（Portable Edition）5EZ8G-C3WL5-B56YG-SCXM9-6QZAP（Standard Editio
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-01-09 09:41" pubdate>
+              2023-01-09
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E6%8A%93%E5%8C%85/">#抓包</a>
+            
+              <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">#小程序</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/01/06/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/Windows%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8F%8D%E7%BC%96%E8%AF%91/" target="_self">
+          Windows小程序反编译
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/01/06/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/Windows%E5%B0%8F%E7%A8%8B%E5%BA%8F%E5%8F%8D%E7%BC%96%E8%AF%91/" target="_self">
+        <div>
+          2023/05/24 update 可以使用https://github.com/r3x5ur/unveilr一键反编译,编译命令，遇到问题可以看issue： node scripts\pkg.js 12345ls release/node scripts/pkg.jsyarn run buildyarn add --dev @rollup/plugin-jsonsudo npm i -g cor
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-01-06 15:13" pubdate>
+              2023-01-06
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%B0%8F%E7%A8%8B%E5%BA%8F/">#小程序</a>
+            
+              <a href="/tags/%E5%8F%8D%E7%BC%96%E8%AF%91/">#反编译</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/01/06/%E6%9D%82%E9%A1%B9/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/" target="_self">
+          Linux硬盘踩坑记
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/01/06/%E6%9D%82%E9%A1%B9/Linux%E7%A1%AC%E7%9B%98%E8%B8%A9%E5%9D%91%E8%AE%B0/" target="_self">
+        <div>
+          背景介绍 800多买了块14T的矿渣硬盘，挂在Kali Linux（实体机，非虚拟机）下面用来备份一些不怎么重要的数据。之前由于机箱电源键坏了带走了我一块3T的硬盘，电源键老化按下去弹不起来导致系统一直在强制重启，然后硬盘就挂了。挂了之前我实在/etc/fstab中实现的硬盘开机自挂载，然后就开不了机，只能重新接上显示器开机在菜单页面按e修改启动参数，进入类似维护模式的终端，去除相关条目才能开机。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-01-06 09:59" pubdate>
+              2023-01-06
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Linux/">#Linux</a>
+            
+              <a href="/tags/%E5%88%86%E5%8C%BA/">#分区</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2023/01/04/Android/Android%E9%80%86%E5%90%91%E5%B7%A5%E5%85%B7/" target="_self">
+          Android逆向工具
+        </a>
+      </h1>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/01/04/Android/Android%E9%80%86%E5%90%91%E5%B7%A5%E5%85%B7/" target="_self">
+        <div>
+          前言 工欲善其事，必先利其器，一款好的工具可以加快你工作的进度，记录一下常用或以后可能会遇到的工具。 工具  jadx:https://github.com/skylot/jadx/releases/tag/v1.4.5 JD-GUI:http://java-decompiler.github.io/ JEB:https://down.52pojie.cn/Tools/Android_Tools/
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-01-04 14:22" pubdate>
+              2023-01-04
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/Android%E9%80%86%E5%90%91/">#Android逆向</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/page/3/#board"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/#board">5</a><a class="page-number" href="/page/6/#board">6</a><a class="extend next" rel="next" href="/page/5/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
 
 
   
-</section>
-
-
-
-        
-        <footer id="footer">
-  <div class="footer-left">
-    Copyright &copy;
-    
-    
-    2016-2023
-    ccadmin
-  </div>
-  <div class="footer-right">
-    <nav>
-      <ul>
-        <!--
-       --><li><a href="/">首页</a></li><!--
-     --><!--
-       --><li><a href="/about/">关于</a></li><!--
-     --><!--
-       --><li><a href="/archives/">归档</a></li><!--
-     --><!--
-       --><li><a target="_blank" rel="noopener" href="https://github.com/D2550">项目</a></li><!--
-     -->
-      </ul>
-    </nav>
-  </div>
-</footer>
-
-    </div>
-    <!-- styles -->
-
-
-
-  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
-
-
-    <!-- jquery -->
- 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
+    <script  src="/js/img-lazyload.js" ></script>
+  
 
 
 
 
-<!-- clipboard -->
+  <script  src="/js/local-search.js" ></script>
 
 
-<script src="/js/main.js"></script>
 
-<!-- search -->
 
-<!-- Google Analytics -->
 
-<!-- Baidu Analytics -->
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
 
-<!-- Cloudflare Analytics -->
 
-<!-- Umami Analytics -->
+  
 
-<!-- Disqus Comments -->
-
-<!-- utterances Comments -->
-
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
 </html>

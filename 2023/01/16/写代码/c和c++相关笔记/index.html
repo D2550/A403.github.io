@@ -1,11 +1,21 @@
+
+
 <!DOCTYPE html>
-<html lang=zh>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
 <head>
-    <!-- so meta -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="HandheldFriendly" content="True">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="ccadmin">
+  <meta name="keywords" content="web安全,渗透测试,移动安全">
+  
     <meta name="description" content="前言 多线程卷起来，要把理论落实到实践中去，一点点积累起来逆向的基础，一点点学习和杀软对抗，迟早有一天我也能成为re大佬。这篇文章主要记录一下学习隐藏导入表的学习记录。 正文 c编译环境搭建  下载MinGW并将bin目录加入环境变量； 下载vscode 下载visualstudio  环境搭建到此为止 学习笔记 隐藏User32.dll导入表 隐藏前的源码 123456789#include&amp;l">
 <meta property="og:type" content="article">
 <meta property="og:title" content="c和c++相关笔记">
@@ -13,152 +23,266 @@
 <meta property="og:site_name" content="这里有一个网站">
 <meta property="og:description" content="前言 多线程卷起来，要把理论落实到实践中去，一点点积累起来逆向的基础，一点点学习和杀软对抗，迟早有一天我也能成为re大佬。这篇文章主要记录一下学习隐藏导入表的学习记录。 正文 c编译环境搭建  下载MinGW并将bin目录加入环境变量； 下载vscode 下载visualstudio  环境搭建到此为止 学习笔记 隐藏User32.dll导入表 隐藏前的源码 123456789#include&amp;l">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://blog.njcit.me/2023/01/16/images/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230117144042599.png">
-<meta property="og:image" content="https://blog.njcit.me/2023/01/16/images/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230117144224707.png">
-<meta property="og:image" content="https://blog.njcit.me/2023/01/16/images/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230117144717784.png">
-<meta property="og:image" content="https://blog.njcit.me/2023/01/16/images/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230117144926796.png">
+<meta property="og:image" content="https://blog.njcit.me/2023/01/16/%E5%86%99%E4%BB%A3%E7%A0%81/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230117144042599.png">
+<meta property="og:image" content="https://blog.njcit.me/2023/01/16/%E5%86%99%E4%BB%A3%E7%A0%81/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230117144224707.png">
+<meta property="og:image" content="https://blog.njcit.me/2023/01/16/%E5%86%99%E4%BB%A3%E7%A0%81/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230117144717784.png">
+<meta property="og:image" content="https://blog.njcit.me/2023/01/16/%E5%86%99%E4%BB%A3%E7%A0%81/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230117144926796.png">
 <meta property="article:published_time" content="2023-01-16T01:37:52.000Z">
-<meta property="article:modified_time" content="2023-02-02T06:07:47.033Z">
+<meta property="article:modified_time" content="2023-06-21T02:26:44.116Z">
 <meta property="article:author" content="ccadmin">
 <meta property="article:tag" content="c">
 <meta property="article:tag" content="c++">
 <meta property="article:tag" content="代码">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://blog.njcit.me/2023/01/16/images/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230117144042599.png">
-    
-    
-      
-        
-          <link rel="shortcut icon" href="/images/favicon.ico">
-        
-      
-      
-        
-          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
-        
-      
-      
-        
-          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-        
-      
-    
-    <!-- title -->
-    <title>c和c++相关笔记</title>
-    <!-- styles -->
-    
-<link rel="stylesheet" href="/css/style.css">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://blog.njcit.me/2023/01/16/%E5%86%99%E4%BB%A3%E7%A0%81/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230117144042599.png">
+  
+  
+  
+  <title>c和c++相关笔记 - 这里有一个网站</title>
 
-    <!-- persian styles -->
-    
-    <!-- rss -->
-    
-    
-	<!-- mathjax -->
-	
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"blog.njcit.me","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
 <meta name="generator" content="Hexo 7.0.0-rc1"><link rel="alternate" href="/atom.xml" title="这里有一个网站" type="application/atom+xml">
 </head>
 
-<body class="max-width mx-auto px3 ltr">
-    
-      <div id="header-post">
-  <a id="menu-icon" href="#" aria-label="目录"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="menu-icon-tablet" href="#" aria-label="目录"><i class="fas fa-bars fa-lg"></i></a>
-  <a id="top-icon-tablet" href="#" aria-label="顶部" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
-  <span id="menu">
-    <span id="nav">
-      <ul>
-        <!--
-       --><li><a href="/">首页</a></li><!--
-     --><!--
-       --><li><a href="/about/">关于</a></li><!--
-     --><!--
-       --><li><a href="/archives/">归档</a></li><!--
-     --><!--
-       --><li><a target="_blank" rel="noopener" href="https://github.com/D2550">项目</a></li><!--
-     -->
-      </ul>
-    </span>
-    <br/>
-    <span id="actions">
-      <ul>
-        
-        <li><a class="icon" aria-label="上一篇" href="/2023/01/18/%E5%86%85%E7%BD%91/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
-        
-        
-        <li><a class="icon" aria-label="下一篇" href="/2023/01/12/%E5%86%99%E4%BB%A3%E7%A0%81/golang%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
-        
-        <li><a class="icon" aria-label="返回顶部" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
-        <li><a class="icon" aria-label="分享文章" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
-      </ul>
-      <span id="i-prev" class="info" style="display:none;">上一篇</span>
-      <span id="i-next" class="info" style="display:none;">下一篇</span>
-      <span id="i-top" class="info" style="display:none;">返回顶部</span>
-      <span id="i-share" class="info" style="display:none;">分享文章</span>
-    </span>
-    <br/>
-    <div id="share" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blog.njcit.me/2023/01/16/%E5%86%99%E4%BB%A3%E7%A0%81/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blog.njcit.me/2023/01/16/%E5%86%99%E4%BB%A3%E7%A0%81/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/&text=c和c++相关笔记"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blog.njcit.me/2023/01/16/%E5%86%99%E4%BB%A3%E7%A0%81/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/&title=c和c++相关笔记"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.njcit.me/2023/01/16/%E5%86%99%E4%BB%A3%E7%A0%81/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/&is_video=false&description=c和c++相关笔记"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=c和c++相关笔记&body=Check out this article: https://blog.njcit.me/2023/01/16/%E5%86%99%E4%BB%A3%E7%A0%81/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blog.njcit.me/2023/01/16/%E5%86%99%E4%BB%A3%E7%A0%81/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/&title=c和c++相关笔记"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blog.njcit.me/2023/01/16/%E5%86%99%E4%BB%A3%E7%A0%81/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/&title=c和c++相关笔记"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blog.njcit.me/2023/01/16/%E5%86%99%E4%BB%A3%E7%A0%81/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/&title=c和c++相关笔记"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blog.njcit.me/2023/01/16/%E5%86%99%E4%BB%A3%E7%A0%81/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/&title=c和c++相关笔记"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blog.njcit.me/2023/01/16/%E5%86%99%E4%BB%A3%E7%A0%81/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/&name=c和c++相关笔记&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blog.njcit.me/2023/01/16/%E5%86%99%E4%BB%A3%E7%A0%81/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/&t=c和c++相关笔记"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
-</ul>
 
-    </div>
-    <div id="toc">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E6%96%87"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#c%E7%BC%96%E8%AF%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-number">2.1.</span> <span class="toc-text">c编译环境搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0"><span class="toc-number">2.2.</span> <span class="toc-text">学习笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%90%E8%97%8Fuser32.dll%E5%AF%BC%E5%85%A5%E8%A1%A8"><span class="toc-number">2.2.1.</span> <span class="toc-text">隐藏User32.dll导入表</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-number">3.</span> <span class="toc-text">参考链接</span></a></li></ol>
-    </div>
-  </span>
-</div>
-
-    
-    <div class="content index py4">
-        
-        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-  <header>
-    
-    <h1 class="posttitle" itemprop="name headline">
-        c和c++相关笔记
-    </h1>
-
-
-
-    <div class="meta">
-      <span class="author" itemprop="author" itemscope itemtype="http://schema.org/Person">
-        <span itemprop="name">ccadmin</span>
-      </span>
-      
-    <div class="postdate">
-      
-        <time datetime="2023-01-16T01:37:52.000Z" itemprop="datePublished">2023-01-16</time>
-        
-      
-    </div>
-
-
-      
-
-      
-    <div class="article-tag">
-        <i class="fas fa-tag"></i>
-        <a class="tag-link-link" href="/tags/c/" rel="tag">c</a>, <a class="tag-link-link" href="/tags/c/" rel="tag">c++</a>, <a class="tag-link-link" href="/tags/%E4%BB%A3%E7%A0%81/" rel="tag">代码</a>
-    </div>
-
-
-    </div>
-  </header>
+<body>
   
 
-  <div class="content" itemprop="articleBody">
-    <h1 id="前言">前言</h1>
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="c和c++相关笔记"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-01-16 09:37" pubdate>
+          2023年1月16日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          9 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">c和c++相关笔记</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="前言">前言</h1>
 <p>多线程卷起来，要把理论落实到实践中去，一点点积累起来逆向的基础，一点点学习和杀软对抗，迟早有一天我也能成为re大佬。这篇文章主要记录一下学习隐藏导入表的学习记录。</p>
 <h1 id="正文">正文</h1>
 <h2 id="c编译环境搭建">c编译环境搭建</h2>
@@ -173,33 +297,17 @@ target="_blank" rel="noopener" href="https://visualstudio.microsoft.com/zh-hans/
 <h2 id="学习笔记">学习笔记</h2>
 <h3 id="隐藏user32.dll导入表">隐藏User32.dll导入表</h3>
 <p>隐藏前的源码</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;Windows.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;hello world\n&quot;</span>);</span><br><span class="line">    MessageBox(<span class="number">0</span>, TEXT(<span class="string">&quot;hello world&quot;</span>), <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;Windows.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span><br>&#123;<br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;hello world\n&quot;</span>);<br>    MessageBox(<span class="hljs-number">0</span>, TEXT(<span class="hljs-string">&quot;hello world&quot;</span>), <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>隐藏后的源码</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;Windows.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="title function_">int</span><span class="params">(WINAPI * pMessageBox)</span> <span class="params">(</span></span><br><span class="line"><span class="params"></span></span><br><span class="line"><span class="params">    HWND    hWnd,</span></span><br><span class="line"><span class="params">    LPCTSTR lpText,</span></span><br><span class="line"><span class="params">    LPCTSTR lpCaption,</span></span><br><span class="line"><span class="params">    UINT    uType</span></span><br><span class="line"><span class="params">    )</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">&quot;hello world\n&quot;</span>);</span><br><span class="line">    pMessageBox MyMessageBox = (pMessageBox)GetProcAddress(LoadLibrary(<span class="string">&quot;User32.dll&quot;</span>), <span class="string">&quot;MessageBoxA&quot;</span>);</span><br><span class="line">    MyMessageBox(<span class="number">0</span>, TEXT(<span class="string">&quot;hello world&quot;</span>), <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;stdio.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span><span class="hljs-string">&lt;Windows.h&gt;</span></span><br><br><span class="hljs-keyword">typedef</span> <span class="hljs-title function_">int</span><span class="hljs-params">(WINAPI * pMessageBox)</span> <span class="hljs-params">(</span><br><span class="hljs-params"></span><br><span class="hljs-params">    HWND    hWnd,</span><br><span class="hljs-params">    LPCTSTR lpText,</span><br><span class="hljs-params">    LPCTSTR lpCaption,</span><br><span class="hljs-params">    UINT    uType</span><br><span class="hljs-params">    )</span>;<br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span><br>&#123;<br><br><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;hello world\n&quot;</span>);<br>    pMessageBox MyMessageBox = (pMessageBox)GetProcAddress(LoadLibrary(<span class="hljs-string">&quot;User32.dll&quot;</span>), <span class="hljs-string">&quot;MessageBoxA&quot;</span>);<br>    MyMessageBox(<span class="hljs-number">0</span>, TEXT(<span class="hljs-string">&quot;hello world&quot;</span>), <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>首先查看GetProcAddress的文档，可以直接在参考链接3进行搜索，其他api也可以在里面搜索，不做过多赘述。</p>
 <p>可以看到GetProcAddress这个函数需要传入两个参数，向我这样的初学者可能不太理解，直接看官方给的例子：</p>
-<figure>
-<img src="../../images/c和c++相关笔记/image-20230117144042599.png"
-alt="image-20230117144042599" />
-<figcaption aria-hidden="true">image-20230117144042599</figcaption>
-</figure>
-<figure>
-<img src="../../images/c和c++相关笔记/image-20230117144224707.png"
-alt="image-20230117144224707" />
-<figcaption aria-hidden="true">image-20230117144224707</figcaption>
-</figure>
+<img src="/2023/01/16/%E5%86%99%E4%BB%A3%E7%A0%81/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230117144042599.png" srcset="/img/loading.gif" lazyload class="" title="image-20230117144042599">
+<img src="/2023/01/16/%E5%86%99%E4%BB%A3%E7%A0%81/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230117144224707.png" srcset="/img/loading.gif" lazyload class="" title="image-20230117144224707">
 <p>可以看到首先使用typedef定义了一个类似结构体的东东。</p>
-<figure>
-<img src="../../images/c和c++相关笔记/image-20230117144717784.png"
-alt="image-20230117144717784" />
-<figcaption aria-hidden="true">image-20230117144717784</figcaption>
-</figure>
+<img src="/2023/01/16/%E5%86%99%E4%BB%A3%E7%A0%81/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230117144717784.png" srcset="/img/loading.gif" lazyload class="" title="image-20230117144717784">
 <p>上面已经说的很详细了，这里就不再解读了。</p>
-<figure>
-<img src="../../images/c和c++相关笔记/image-20230117144926796.png"
-alt="image-20230117144926796" />
-<figcaption aria-hidden="true">image-20230117144926796</figcaption>
-</figure>
+<img src="/2023/01/16/%E5%86%99%E4%BB%A3%E7%A0%81/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/image-20230117144926796.png" srcset="/img/loading.gif" lazyload class="" title="image-20230117144926796">
 <p>MessageBox的语法上图已经给出来了。通过上面的一些微软的官方文档，就很容易理解上述隐藏user32.dll的代码是啥意思了，亦可以照猫画虎隐藏其他dll文件。</p>
 <h1 id="参考链接">参考链接</h1>
 <ul>
@@ -211,142 +319,355 @@ target="_blank" rel="noopener" href="https://xz.aliyun.com/t/12035">通过隐藏
 target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/windows/win32/api/">win32api文档</a></li>
 </ul>
 
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/c/">#c</a>
+      
+        <a href="/tags/c/">#c++</a>
+      
+        <a href="/tags/%E4%BB%A3%E7%A0%81/">#代码</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>c和c++相关笔记</div>
+      <div>https://blog.njcit.me/2023/01/16/写代码/c和c++相关笔记/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>ccadmin</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年1月16日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
   </div>
-</article>
 
 
 
-        
-          <div id="footer-post-container">
-  <div id="footer-post">
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/01/18/%E5%86%85%E7%BD%91/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/" title="内网渗透记录">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">内网渗透记录</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/01/12/%E5%86%99%E4%BB%A3%E7%A0%81/golang%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="golang学习笔记">
+                        <span class="hidden-mobile">golang学习笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
 
-    <div id="nav-footer" style="display: none">
-      <ul>
-         
-          <li><a href="/">首页</a></li>
-         
-          <li><a href="/about/">关于</a></li>
-         
-          <li><a href="/archives/">归档</a></li>
-         
-          <li><a target="_blank" rel="noopener" href="https://github.com/D2550">项目</a></li>
-        
-      </ul>
+            
+          </article>
+        </div>
+      </div>
     </div>
 
-    <div id="toc-footer" style="display: none">
-      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AD%A3%E6%96%87"><span class="toc-number">2.</span> <span class="toc-text">正文</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#c%E7%BC%96%E8%AF%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="toc-number">2.1.</span> <span class="toc-text">c编译环境搭建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0"><span class="toc-number">2.2.</span> <span class="toc-text">学习笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9A%90%E8%97%8Fuser32.dll%E5%AF%BC%E5%85%A5%E8%A1%A8"><span class="toc-number">2.2.1.</span> <span class="toc-text">隐藏User32.dll导入表</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-number">3.</span> <span class="toc-text">参考链接</span></a></li></ol>
-    </div>
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
 
-    <div id="share-footer" style="display: none">
-      <ul>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://blog.njcit.me/2023/01/16/%E5%86%99%E4%BB%A3%E7%A0%81/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://blog.njcit.me/2023/01/16/%E5%86%99%E4%BB%A3%E7%A0%81/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/&text=c和c++相关笔记"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://blog.njcit.me/2023/01/16/%E5%86%99%E4%BB%A3%E7%A0%81/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/&title=c和c++相关笔记"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://blog.njcit.me/2023/01/16/%E5%86%99%E4%BB%A3%E7%A0%81/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/&is_video=false&description=c和c++相关笔记"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" href="mailto:?subject=c和c++相关笔记&body=Check out this article: https://blog.njcit.me/2023/01/16/%E5%86%99%E4%BB%A3%E7%A0%81/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://blog.njcit.me/2023/01/16/%E5%86%99%E4%BB%A3%E7%A0%81/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/&title=c和c++相关笔记"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://blog.njcit.me/2023/01/16/%E5%86%99%E4%BB%A3%E7%A0%81/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/&title=c和c++相关笔记"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://blog.njcit.me/2023/01/16/%E5%86%99%E4%BB%A3%E7%A0%81/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/&title=c和c++相关笔记"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://blog.njcit.me/2023/01/16/%E5%86%99%E4%BB%A3%E7%A0%81/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/&title=c和c++相关笔记"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://blog.njcit.me/2023/01/16/%E5%86%99%E4%BB%A3%E7%A0%81/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/&name=c和c++相关笔记&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
-  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://blog.njcit.me/2023/01/16/%E5%86%99%E4%BB%A3%E7%A0%81/c%E5%92%8Cc++%E7%9B%B8%E5%85%B3%E7%AC%94%E8%AE%B0/&t=c和c++相关笔记"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
-</ul>
+
+
+  </aside>
+
 
     </div>
-
-    <div id="actions-footer">
-        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> 菜单</a>
-        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目录</a>
-        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> 分享</a>
-        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 返回顶部</a>
-    </div>
-
   </div>
 </div>
 
-        
-        <footer id="footer">
-  <div class="footer-left">
-    Copyright &copy;
-    
-    
-    2016-2023
-    ccadmin
-  </div>
-  <div class="footer-right">
-    <nav>
-      <ul>
-        <!--
-       --><li><a href="/">首页</a></li><!--
-     --><!--
-       --><li><a href="/about/">关于</a></li><!--
-     --><!--
-       --><li><a href="/archives/">归档</a></li><!--
-     --><!--
-       --><li><a target="_blank" rel="noopener" href="https://github.com/D2550">项目</a></li><!--
-     -->
-      </ul>
-    </nav>
-  </div>
-</footer>
 
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
     </div>
-    <!-- styles -->
+  </div>
+</div>
 
+    
 
+    
+  </main>
 
-  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
-
-
-    <!-- jquery -->
- 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script> 
-
-
-
-
-<!-- clipboard -->
-
+  <footer>
+    <div class="footer-inner">
   
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script> 
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
   
-  <script type="text/javascript">
-  $(function() {
-    // copy-btn HTML
-    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"复制到粘贴板！\">";
-    btn += '<i class="far fa-clone"></i>';
-    btn += '</span>'; 
-    // mount it!
-    $(".highlight table").before(btn);
-    var clip = new ClipboardJS('.btn-copy', {
-      text: function(trigger) {
-        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
-      }
-    });
-    clip.on('success', function(e) {
-      e.trigger.setAttribute('aria-label', "复制成功！");
-      e.clearSelection();
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
     })
-  })
   </script>
 
 
-<script src="/js/main.js"></script>
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
-<!-- search -->
 
-<!-- Google Analytics -->
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
 
-<!-- Baidu Analytics -->
 
-<!-- Cloudflare Analytics -->
 
-<!-- Umami Analytics -->
 
-<!-- Disqus Comments -->
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
 
-<!-- utterances Comments -->
 
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
 </html>
