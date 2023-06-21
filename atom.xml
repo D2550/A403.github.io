@@ -6,7 +6,7 @@
   <link href="https://blog.njcit.me/atom.xml" rel="self"/>
   
   <link href="https://blog.njcit.me/"/>
-  <updated>2023-06-12T08:32:02.618Z</updated>
+  <updated>2023-06-21T09:04:25.314Z</updated>
   <id>https://blog.njcit.me/</id>
   
   <author>
@@ -17,19 +17,19 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>dirseach使用</title>
+    <title>dirsearch使用</title>
     <link href="https://blog.njcit.me/2023/06/12/%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7/dirsearch%E4%BD%BF%E7%94%A8/"/>
     <id>https://blog.njcit.me/2023/06/12/%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7/dirsearch%E4%BD%BF%E7%94%A8/</id>
     <published>2023-06-12T00:51:30.000Z</published>
-    <updated>2023-06-12T08:32:02.618Z</updated>
+    <updated>2023-06-21T09:04:25.314Z</updated>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<h1 id="前言">前言</h1><p>渗透无非就是三板斧，扫目录，漏扫，弱口令，第一步当然要扫描目录，很早之前扫目录大家用的都是御剑，御剑太老了，而且扫描速率太快得得容易闪退，扫扫一些比较老得asp/aspx得站还可以，新的Java架构得网站就不得行了，字典也不得行，有新的专业扫描得工具<ahref="https://github.com/maurosoria/dirsearch">https://github.com/maurosoria/dirsearch</a>为何不用呢</p><h1 id="使用">使用</h1><h2 id="安装">安装</h2><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk">git clone https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/maurosoria/</span>dirsearch.git --depth <span class="hljs-number">1</span><br>cd dirsearch<br>pip3 install -r requirements.txt<br></code></pre></td></tr></table></figure><p>如果pip安装版本冲突之类得，就把requirements.txt中的版本号去掉即可</p><h2 id="使用-1">使用</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs stylus">python3 dirsearch<span class="hljs-selector-class">.py</span> -u https:<span class="hljs-comment">//target</span><br>python3 dirsearch<span class="hljs-selector-class">.py</span> -e php,<span class="hljs-selector-tag">html</span>,js -u https:<span class="hljs-comment">//target</span><br></code></pre></td></tr></table></figure><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">python3 dirsearch.py -e php,html,js -u https:<span class="hljs-regexp">//</span>target -w <span class="hljs-regexp">/path/</span>to/wordlist<br></code></pre></td></tr></table></figure><h1 id="参考文档">参考文档</h1><ul><li>https://github.com/maurosoria/dirsearch/tree/master</li></ul>]]></content>
     
     
       
       
-    <summary type="html">
-</summary>
+    <summary type="html">&lt;h1 id=&quot;前言&quot;&gt;前言&lt;/h1&gt;
+&lt;p&gt;渗透无非就是三板斧，扫目录，漏扫，弱口令，第一步当然要扫描目录，很早之前扫目录大家用的都是御剑，御剑太老了，而且扫描速率太快得得容易闪退，扫扫一些比较老得asp/aspx得站还可以，新的Java架构得网站就不得行了，字典也不得行，有新</summary>
       
     
     
