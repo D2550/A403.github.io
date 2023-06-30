@@ -16,22 +16,22 @@
   <meta name="author" content="ccadmin">
   <meta name="keywords" content="web安全,渗透测试,移动安全">
   
-    <meta name="description" content="前言 渗透无非就是三板斧，扫目录，漏扫，弱口令，第一步当然要扫描目录，很早之前扫目录大家用的都是御剑，御剑太老了，而且扫描速率太快得得容易闪退，扫扫一些比较老得asp&#x2F;aspx得站还可以，新的Java架构得网站就不得行了，字典也不得行，有新的专业扫描得工具https:&#x2F;&#x2F;github.com&#x2F;maurosoria&#x2F;dirsearch为何不用呢 使用 安装 123git clone https:&#x2F;&#x2F;">
+    <meta name="description" content="前言 大部分情况下都能sqlmap一把梭，当然也有不能一把梭的地方这时候就需要手动进行注入了。 基础 获取当前用户 1select user() 查询当前版本 1select @@version 查询当前数据库 1select database() 查询当前用户权限下的所有数据库 1select schema_name from information_schema.schemata 已知数据库名">
 <meta property="og:type" content="article">
-<meta property="og:title" content="dirsearch使用">
-<meta property="og:url" content="https://blog.njcit.me/2023/06/12/%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7/dirsearch%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:title" content="MySQL手动注入笔记">
+<meta property="og:url" content="https://blog.njcit.me/2023/06/29/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/MySQL%E6%89%8B%E5%8A%A8%E6%B3%A8%E5%85%A5%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="这里有一个网站">
-<meta property="og:description" content="前言 渗透无非就是三板斧，扫目录，漏扫，弱口令，第一步当然要扫描目录，很早之前扫目录大家用的都是御剑，御剑太老了，而且扫描速率太快得得容易闪退，扫扫一些比较老得asp&#x2F;aspx得站还可以，新的Java架构得网站就不得行了，字典也不得行，有新的专业扫描得工具https:&#x2F;&#x2F;github.com&#x2F;maurosoria&#x2F;dirsearch为何不用呢 使用 安装 123git clone https:&#x2F;&#x2F;">
+<meta property="og:description" content="前言 大部分情况下都能sqlmap一把梭，当然也有不能一把梭的地方这时候就需要手动进行注入了。 基础 获取当前用户 1select user() 查询当前版本 1select @@version 查询当前数据库 1select database() 查询当前用户权限下的所有数据库 1select schema_name from information_schema.schemata 已知数据库名">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-06-12T00:51:30.000Z">
-<meta property="article:modified_time" content="2023-06-21T09:04:25.314Z">
+<meta property="article:published_time" content="2023-06-29T06:34:54.000Z">
+<meta property="article:modified_time" content="2023-06-29T01:09:15.404Z">
 <meta property="article:author" content="ccadmin">
-<meta property="article:tag" content="dirsearch">
+<meta property="article:tag" content="注入, MySQL">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>dirsearch使用 - 这里有一个网站</title>
+  <title>MySQL手动注入笔记 - 这里有一个网站</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -198,7 +198,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="dirsearch使用"></span>
+            <span id="subtitle" data-typed-text="MySQL手动注入笔记"></span>
           
         </div>
 
@@ -209,8 +209,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-06-12 08:51" pubdate>
-          2023年6月12日 早上
+        <time datetime="2023-06-29 14:34" pubdate>
+          2023年6月29日 下午
         </time>
       </span>
     
@@ -221,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          529 字
+          347 字
         
       </span>
     
@@ -232,7 +232,7 @@
         
         
         
-          5 分钟
+          3 分钟
         
       </span>
     
@@ -270,25 +270,26 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">dirsearch使用</h1>
+            <h1 style="display: none">MySQL手动注入笔记</h1>
             
             
               <div class="markdown-body">
                 
                 <h1 id="前言">前言</h1>
-<p>渗透无非就是三板斧，扫目录，漏扫，弱口令，第一步当然要扫描目录，很早之前扫目录大家用的都是御剑，御剑太老了，而且扫描速率太快得得容易闪退，扫扫一些比较老得asp/aspx得站还可以，新的Java架构得网站就不得行了，字典也不得行，有新的专业扫描得工具<a
-target="_blank" rel="noopener" href="https://github.com/maurosoria/dirsearch">https://github.com/maurosoria/dirsearch</a>为何不用呢</p>
-<h1 id="使用">使用</h1>
-<h2 id="安装">安装</h2>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs awk">git clone https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/maurosoria/</span>dirsearch.git --depth <span class="hljs-number">1</span><br>cd dirsearch<br>pip3 install -r requirements.txt<br></code></pre></td></tr></table></figure>
-<p>如果pip安装版本冲突之类得，就把requirements.txt中的版本号去掉即可</p>
-<h2 id="使用-1">使用</h2>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs stylus">python3 dirsearch<span class="hljs-selector-class">.py</span> -u https:<span class="hljs-comment">//target</span><br>python3 dirsearch<span class="hljs-selector-class">.py</span> -e php,<span class="hljs-selector-tag">html</span>,js -u https:<span class="hljs-comment">//target</span><br></code></pre></td></tr></table></figure>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">python3 dirsearch.py -e php,html,js -u https:<span class="hljs-regexp">//</span>target -w <span class="hljs-regexp">/path/</span>to/wordlist<br></code></pre></td></tr></table></figure>
-<h1 id="参考文档">参考文档</h1>
-<ul>
-<li>https://github.com/maurosoria/dirsearch/tree/master</li>
-</ul>
+<p>大部分情况下都能sqlmap一把梭，当然也有不能一把梭的地方这时候就需要手动进行注入了。</p>
+<h1 id="基础">基础</h1>
+<p>获取当前用户</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> <span class="hljs-keyword">user</span>()<br></code></pre></td></tr></table></figure>
+<p>查询当前版本</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> @<span class="hljs-variable">@version</span><br></code></pre></td></tr></table></figure>
+<p>查询当前数据库</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> database()<br></code></pre></td></tr></table></figure>
+<p>查询当前用户权限下的所有数据库</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> schema_name <span class="hljs-keyword">from</span> information_schema.schemata<br></code></pre></td></tr></table></figure>
+<p>已知数据库名查询表名</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> table_name  <span class="hljs-keyword">from</span> information_schema.tables <span class="hljs-keyword">where</span> table_schema<span class="hljs-operator">=</span>database()<br></code></pre></td></tr></table></figure>
+<p>查询字段名</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">select</span> column_name <span class="hljs-keyword">from</span> information_schema.columns <span class="hljs-keyword">where</span> table_name<span class="hljs-operator">=</span><span class="hljs-string">&#x27;users&#x27;</span> <br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -301,7 +302,7 @@ target="_blank" rel="noopener" href="https://github.com/maurosoria/dirsearch">ht
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/dirsearch/">#dirsearch</a>
+        <a href="/tags/%E6%B3%A8%E5%85%A5-MySQL/">#注入, MySQL</a>
       
     </div>
   
@@ -313,8 +314,8 @@ target="_blank" rel="noopener" href="https://github.com/maurosoria/dirsearch">ht
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>dirsearch使用</div>
-      <div>https://blog.njcit.me/2023/06/12/渗透工具/dirsearch使用/</div>
+      <div>MySQL手动注入笔记</div>
+      <div>https://blog.njcit.me/2023/06/29/渗透记录/MySQL手动注入笔记/</div>
     </div>
     <div class="license-meta">
       
@@ -326,7 +327,7 @@ target="_blank" rel="noopener" href="https://github.com/maurosoria/dirsearch">ht
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年6月12日</div>
+          <div>2023年6月29日</div>
         </div>
       
       
@@ -358,18 +359,12 @@ target="_blank" rel="noopener" href="https://github.com/maurosoria/dirsearch">ht
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/06/29/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/MySQL%E6%89%8B%E5%8A%A8%E6%B3%A8%E5%85%A5%E7%AC%94%E8%AE%B0/" title="MySQL手动注入笔记">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">MySQL手动注入笔记</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/06/09/%E6%9D%82%E9%A1%B9/hexo%E5%8D%9A%E5%AE%A2%E8%B0%83%E4%BC%98/" title="hexo博客调优">
-                        <span class="hidden-mobile">hexo博客调优</span>
+                      <a href="/2023/06/12/%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7/dirsearch%E4%BD%BF%E7%94%A8/" title="dirsearch使用">
+                        <span class="hidden-mobile">dirsearch使用</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
