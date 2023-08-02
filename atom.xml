@@ -174,9 +174,9 @@
     <link href="https://blog.njcit.me/2023/05/31/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E4%B8%ADjwt%E7%9A%84%E5%BA%94%E7%94%A8/"/>
     <id>https://blog.njcit.me/2023/05/31/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E4%B8%ADjwt%E7%9A%84%E5%BA%94%E7%94%A8/</id>
     <published>2023-05-31T02:21:24.000Z</published>
-    <updated>2023-05-31T02:58:20.522Z</updated>
+    <updated>2023-08-02T01:14:08.966Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="什么是jwt">什么是jwt</h1><p>JSON Web Token (JWT，RFC 7519 (opens newwindow))，是为了在网络应用环境间传递声明而执行的一种基于 JSON的开放标准（(RFC 7519)。该 token被设计为紧凑且安全的，特别适用于分布式站点的单点登录（SSO）场景。JWT的声明一般被用来在身份提供者和服务提供者间传递被认证的用户身份信息，以便于从资源服务器获取资源，也可以增加一些额外的其它业务逻辑所必须的声明信息，该token 也可直接被用于认证，也可被加密。</p><h1 id="常用工具">常用工具</h1><ul><li>https://github.com/brendan-rius/c-jwt-cracker</li></ul><figure><imgsrc="../../source/images/渗透测试中jwt的应用/image-20230531103017918.png"alt="image-20230531103017918" /><figcaption aria-hidden="true">image-20230531103017918</figcaption></figure><ul><li>https://github.com/ticarpi/jwt_tool/</li></ul><figure><imgsrc="../../source/images/渗透测试中jwt的应用/image-20230531103044012.png"alt="image-20230531103044012" /><figcaption aria-hidden="true">image-20230531103044012</figcaption></figure><figure><imgsrc="../../source/images/渗透测试中jwt的应用/image-20230531103137446.png"alt="image-20230531103137446" /><figcaption aria-hidden="true">image-20230531103137446</figcaption></figure><h1 id="参考文章">参考文章</h1><ul><li>https://www.anquanke.com/post/id/225947</li></ul>]]></content>
+    <content type="html"><![CDATA[<h1 id="什么是jwt">什么是jwt</h1><p>JSON Web Token (JWT，RFC 7519 (opens newwindow))，是为了在网络应用环境间传递声明而执行的一种基于 JSON的开放标准（(RFC 7519)。该 token被设计为紧凑且安全的，特别适用于分布式站点的单点登录（SSO）场景。JWT的声明一般被用来在身份提供者和服务提供者间传递被认证的用户身份信息，以便于从资源服务器获取资源，也可以增加一些额外的其它业务逻辑所必须的声明信息，该token 也可直接被用于认证，也可被加密。</p><h1 id="常用工具">常用工具</h1><ul><li>https://github.com/brendan-rius/c-jwt-cracker</li></ul><img src="/2023/05/31/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E4%B8%ADjwt%E7%9A%84%E5%BA%94%E7%94%A8/image-20230531103017918.png" class="" title="image-20230531103017918"><ul><li>https://github.com/ticarpi/jwt_tool/</li></ul><img src="/2023/05/31/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E4%B8%ADjwt%E7%9A%84%E5%BA%94%E7%94%A8/image-20230531103044012.png" class="" title="image-20230531103044012"><img src="/2023/05/31/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95%E4%B8%ADjwt%E7%9A%84%E5%BA%94%E7%94%A8/image-20230531103137446.png" class="" title="image-20230531103137446"><h1 id="参考文章">参考文章</h1><ul><li>https://www.anquanke.com/post/id/225947</li></ul>]]></content>
     
     
       
@@ -200,9 +200,9 @@ window))，是为了在网络应用环境间传递声明而执行的一种基于
     <link href="https://blog.njcit.me/2023/05/30/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/hacktricks/"/>
     <id>https://blog.njcit.me/2023/05/30/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/hacktricks/</id>
     <published>2023-05-30T06:34:54.000Z</published>
-    <updated>2023-05-30T06:50:37.556Z</updated>
+    <updated>2023-08-02T01:14:07.866Z</updated>
     
-    <content type="html"><![CDATA[<ul><li>https://book.hacktricks.xyz/</li></ul><figure><img src="../../source/images/hacktricks/image-20230530143543520.png"alt="image-20230530143543520" /><figcaption aria-hidden="true">image-20230530143543520</figcaption></figure><ul><li>https://www.ired.team/</li></ul><figure><img src="../../source/images/hacktricks/image-20230530143758740.png"alt="image-20230530143758740" /><figcaption aria-hidden="true">image-20230530143758740</figcaption></figure><ul><li>https://pentester.land/</li></ul><figure><img src="../../source/images/hacktricks/image-20230530144234475.png"alt="image-20230530144234475" /><figcaption aria-hidden="true">image-20230530144234475</figcaption></figure><ul><li>https://github.com/reddelexc/hackerone-reports/blob/master/tops_100/TOP100PAID.md</li></ul><figure><img src="../../source/images/hacktricks/image-20230530144809964.png"alt="image-20230530144809964" /><figcaption aria-hidden="true">image-20230530144809964</figcaption></figure><ul><li>https://offsec.tools/</li></ul><figure><img src="../../source/images/hacktricks/image-20230530145032272.png"alt="image-20230530145032272" /><figcaption aria-hidden="true">image-20230530145032272</figcaption></figure>]]></content>
+    <content type="html"><![CDATA[<ul><li>https://book.hacktricks.xyz/</li></ul><img src="/2023/05/30/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/hacktricks/image-20230530143543520.png" class="" title="image-20230530143543520"><ul><li>https://www.ired.team/</li></ul><img src="/2023/05/30/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/hacktricks/image-20230530143758740.png" class="" title="image-20230530143758740"><ul><li>https://pentester.land/</li></ul><img src="/2023/05/30/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/hacktricks/image-20230530144234475.png" class="" title="image-20230530144234475"><ul><li>https://github.com/reddelexc/hackerone-reports/blob/master/tops_100/TOP100PAID.md</li></ul><img src="/2023/05/30/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/hacktricks/image-20230530144809964.png" class="" title="image-20230530144809964"><ul><li>https://offsec.tools/</li></ul><img src="/2023/05/30/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/hacktricks/image-20230530145032272.png" class="" title="image-20230530145032272">]]></content>
     
     
       
@@ -210,9 +210,7 @@ window))，是为了在网络应用环境间传递声明而执行的一种基于
     <summary type="html">&lt;ul&gt;
 &lt;li&gt;https://book.hacktricks.xyz/&lt;/li&gt;
 &lt;/ul&gt;
-&lt;figure&gt;
-&lt;img src=&quot;../../source/images/hacktricks/image-20230530143543520.png&quot;
-alt=&quot;image-2</summary>
+&lt;img src=&quot;/2023/05/30/%E6%B8%97%E9%80%8F%E8%AE%B0%E5%BD%95/hacktricks/image-202305301435435</summary>
       
     
     
@@ -304,7 +302,7 @@ alt=&quot;image-2</summary>
     <link href="https://blog.njcit.me/2023/05/15/poc_exp/%E7%AE%80%E5%8D%95%E5%9B%BE%E5%BA%8A%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96/"/>
     <id>https://blog.njcit.me/2023/05/15/poc_exp/%E7%AE%80%E5%8D%95%E5%9B%BE%E5%BA%8A%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96/</id>
     <published>2023-05-15T07:07:51.000Z</published>
-    <updated>2023-08-02T01:05:54.828Z</updated>
+    <updated>2023-08-02T01:07:32.223Z</updated>
     
     <content type="html"><![CDATA[<p>quake语法</p><figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs avrasm"><span class="hljs-symbol">app:</span><span class="hljs-string">&quot;EasyImage&quot;</span><br></code></pre></td></tr></table></figure><p>Poc</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">/application/</span>down.php?dw=.<span class="hljs-regexp">/config/</span>config.php<br></code></pre></td></tr></table></figure><img src="/2023/05/15/poc_exp/%E7%AE%80%E5%8D%95%E5%9B%BE%E5%BA%8A%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96/image-20230515093845541.png" class="" title="image-20230515093845541">]]></content>
     
@@ -327,9 +325,9 @@ alt=&quot;image-2</summary>
     <link href="https://blog.njcit.me/2023/04/17/%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B4%E6%90%9C%E7%B4%A2/quake%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/"/>
     <id>https://blog.njcit.me/2023/04/17/%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B4%E6%90%9C%E7%B4%A2/quake%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/</id>
     <published>2023-04-17T02:27:01.000Z</published>
-    <updated>2023-06-19T02:39:19.756Z</updated>
+    <updated>2023-08-02T01:14:05.482Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="前言">前言</h1><p>国内搜索引擎越来越多，fofa,hunter，zoomeye，当然也包括quake，当初是看重他的漏洞库才开的会员，奈何不向普通会员开放，那要你有啥用，不过买都买了，不如就了解如何去正常如使用他。</p><h1 id="搜索语法">搜索语法</h1><p>官方的文档：https://quake.360.net/quake/#/help?id=5eb238f110d2e850d5c6aec8&amp;title=%E6%A3%80%E7%B4%A2%E5%85%B3%E9%94%AE%E8%AF%8D</p><p>先放一些官方文档可能没有的检索字段：</p><ul><li><p>is_domain:"true" 查询有域名的资产</p></li><li><p>type: "蜜罐(honeypot)" 查询quake判断是蜜罐的资产</p></li></ul><h1 id="其他语法示例">其他语法示例</h1><ul><li><code>response:"&lt;title&gt;系统&lt;/title&gt;"</code>:全匹配title,垃圾quake,不生效。</li><li><code>app:"扫描黑洞"</code>:目标IP开放端口大于一个阈值，就会被标注为扫描黑洞</li></ul><h2 id="查询一些存在漏洞的语法">查询一些存在漏洞的语法</h2><ul><li>title:"Index of/"，这个语法会匹配到index,而且没办法使用not进行排除，建议使用全匹配。</li></ul><figure><img src="../../source/images/quake使用笔记/image-20230417104830535.png"alt="image-20230417104830535" /><figcaption aria-hidden="true">image-20230417104830535</figcaption></figure><ul><li><code>response:"&amp;lt;dir&amp;gt;"</code></li></ul><figure><img src="../../source/images/quake使用笔记/image-20230417105206092.png"alt="image-20230417105206092" /><figcaption aria-hidden="true">image-20230417105206092</figcaption></figure><h1 id="quake特色">quake特色</h1><p>不开启排除蜜罐，蜜罐永远靠前，绝绝子</p><figure><img src="../../source/images/quake使用笔记/image-20230417104609245.png"alt="image-20230417104609245" /><figcaption aria-hidden="true">image-20230417104609245</figcaption></figure>]]></content>
+    <content type="html"><![CDATA[<h1 id="前言">前言</h1><p>国内搜索引擎越来越多，fofa,hunter，zoomeye，当然也包括quake，当初是看重他的漏洞库才开的会员，奈何不向普通会员开放，那要你有啥用，不过买都买了，不如就了解如何去正常如使用他。</p><h1 id="搜索语法">搜索语法</h1><p>官方的文档：https://quake.360.net/quake/#/help?id=5eb238f110d2e850d5c6aec8&amp;title=%E6%A3%80%E7%B4%A2%E5%85%B3%E9%94%AE%E8%AF%8D</p><p>先放一些官方文档可能没有的检索字段：</p><ul><li><p>is_domain:"true" 查询有域名的资产</p></li><li><p>type: "蜜罐(honeypot)" 查询quake判断是蜜罐的资产</p></li></ul><h1 id="其他语法示例">其他语法示例</h1><ul><li><code>response:"&lt;title&gt;系统&lt;/title&gt;"</code>:全匹配title,垃圾quake,不生效。</li><li><code>app:"扫描黑洞"</code>:目标IP开放端口大于一个阈值，就会被标注为扫描黑洞</li></ul><h2 id="查询一些存在漏洞的语法">查询一些存在漏洞的语法</h2><ul><li>title:"Index of/"，这个语法会匹配到index,而且没办法使用not进行排除，建议使用全匹配。</li></ul><img src="/2023/04/17/%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B4%E6%90%9C%E7%B4%A2/quake%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/image-20230417104830535.png" class="" title="image-20230417104830535"><ul><li><code>response:"&amp;lt;dir&amp;gt;"</code></li></ul><img src="/2023/04/17/%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B4%E6%90%9C%E7%B4%A2/quake%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/image-20230417105206092.png" class="" title="image-20230417105206092"><h1 id="quake特色">quake特色</h1><p>不开启排除蜜罐，蜜罐永远靠前，绝绝子</p><img src="/2023/04/17/%E7%BD%91%E7%BB%9C%E7%A9%BA%E9%97%B4%E6%90%9C%E7%B4%A2/quake%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/image-20230417104609245.png" class="" title="image-20230417104609245">]]></content>
     
     
       
@@ -380,9 +378,9 @@ alt=&quot;image-2</summary>
     <link href="https://blog.njcit.me/2023/03/22/%E6%9D%82%E9%A1%B9/AI%E7%9B%B8%E5%85%B3/"/>
     <id>https://blog.njcit.me/2023/03/22/%E6%9D%82%E9%A1%B9/AI%E7%9B%B8%E5%85%B3/</id>
     <published>2023-03-22T08:27:44.000Z</published>
-    <updated>2023-04-23T01:04:53.318Z</updated>
+    <updated>2023-08-02T01:14:10.709Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="链接">链接</h1><ul><li><p>https://chat.openai.com/chat</p><p>貌似是通过udp判断IP，建议使用美国的IP</p></li></ul><figure><img src="../../source/images/AI相关/image-20230322163014374.png"alt="image-20230322163014374" /><figcaption aria-hidden="true">image-20230322163014374</figcaption></figure><ul><li>https://www.bing.com/new 国内要使用插件修改header,貌似dev不用</li></ul><figure><img src="../../source/images/AI相关/image-20230322170113101.png"alt="image-20230322170113101" /><figcaption aria-hidden="true">image-20230322170113101</figcaption></figure><ul><li>https://bard.google.com/</li></ul><figure><img src="../../source/images/AI相关/image-20230423083633416.png"alt="image-20230423083633416" /><figcaption aria-hidden="true">image-20230423083633416</figcaption></figure><ul><li>https://yiyan.baidu.com/welcome</li></ul><figure><img src="../../source/images/AI相关/image-20230423083023088.png"alt="image-20230423083023088" /><figcaption aria-hidden="true">image-20230423083023088</figcaption></figure><ul><li><p>https://tongyi.aliyun.com/</p></li><li><p>https://weibo.com/u/1727858283</p></li><li><p>https://slack.com/apps/A04KGS7N9A8-claude?selected_team_id=T03G6H0A6&amp;tab=more_info&amp;continueFlag=9bd5d9031215cfb669b8ae72708f7318</p></li></ul><figure><img src="../../source/images/AI相关/image-20230423090311349.png"alt="image-20230423090311349" /><figcaption aria-hidden="true">image-20230423090311349</figcaption></figure><ul><li>https://open-assistant.io/zh/chat</li></ul><figure><img src="../../source/images/AI相关/image-20230423090202435.png"alt="image-20230423090202435" /><figcaption aria-hidden="true">image-20230423090202435</figcaption></figure><p># 白嫖</p><p>quake语法：title: "ChatGPT Web"</p><p>https://quake.360.net/quake/#/searchResult?searchVal=title%3A%22chatgpt%22%20AND%20title%3A%20%22ChatGPT%20Web%22&amp;selectIndex=quake_service&amp;ignore_cache=false&amp;timeRange=&amp;timeRange=&amp;latest=true&amp;t=1679475514161</p><figure><img src="../../source/images/AI相关/image-20230322165916603.png"alt="image-20230322165916603" /><figcaption aria-hidden="true">image-20230322165916603</figcaption></figure>]]></content>
+    <content type="html"><![CDATA[<h1 id="链接">链接</h1><ul><li><p>https://chat.openai.com/chat</p><p>貌似是通过udp判断IP，建议使用美国的IP</p></li></ul><img src="/2023/03/22/%E6%9D%82%E9%A1%B9/AI%E7%9B%B8%E5%85%B3/image-20230322163014374.png" class="" title="image-20230322163014374"><ul><li>https://www.bing.com/new 国内要使用插件修改header,貌似dev不用</li></ul><img src="/2023/03/22/%E6%9D%82%E9%A1%B9/AI%E7%9B%B8%E5%85%B3/image-20230322170113101.png" class="" title="image-20230322170113101"><ul><li>https://bard.google.com/</li></ul><img src="/2023/03/22/%E6%9D%82%E9%A1%B9/AI%E7%9B%B8%E5%85%B3/image-20230423083633416.png" class="" title="image-20230423083633416"><ul><li>https://yiyan.baidu.com/welcome</li></ul><img src="/2023/03/22/%E6%9D%82%E9%A1%B9/AI%E7%9B%B8%E5%85%B3/image-20230423083023088.png" class="" title="image-20230423083023088"><ul><li><p>https://tongyi.aliyun.com/</p></li><li><p>https://weibo.com/u/1727858283</p></li><li><p>https://slack.com/apps/A04KGS7N9A8-claude?selected_team_id=T03G6H0A6&amp;tab=more_info&amp;continueFlag=9bd5d9031215cfb669b8ae72708f7318</p></li></ul><img src="/2023/03/22/%E6%9D%82%E9%A1%B9/AI%E7%9B%B8%E5%85%B3/image-20230423090311349.png" class="" title="image-20230423090311349"><ul><li>https://open-assistant.io/zh/chat</li></ul><img src="/2023/03/22/%E6%9D%82%E9%A1%B9/AI%E7%9B%B8%E5%85%B3/image-20230423090202435.png" class="" title="image-20230423090202435"><p># 白嫖</p><p>quake语法：title: "ChatGPT Web"</p><p>https://quake.360.net/quake/#/searchResult?searchVal=title%3A%22chatgpt%22%20AND%20title%3A%20%22ChatGPT%20Web%22&amp;selectIndex=quake_service&amp;ignore_cache=false&amp;timeRange=&amp;timeRange=&amp;latest=true&amp;t=1679475514161</p><p><img src="/2023/03/22/%E6%9D%82%E9%A1%B9/AI%E7%9B%B8%E5%85%B3/image-20230322165916603.png" class="" title="image-20230322165916603"></p>]]></content>
     
     
       
@@ -392,8 +390,7 @@ alt=&quot;image-2</summary>
 &lt;li&gt;&lt;p&gt;https://chat.openai.com/chat&lt;/p&gt;
 &lt;p&gt;貌似是通过udp判断IP，建议使用美国的IP&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;figure&gt;
-&lt;img src=&quot;../../source/im</summary>
+&lt;img src=&quot;/2023/03/22/%E6%9D%82%E9</summary>
       
     
     

