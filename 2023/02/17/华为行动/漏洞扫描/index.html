@@ -24,7 +24,7 @@
 <meta property="og:description" content="前言 一场比赛最重要的环节就是外网打点，外网没点进不了内网一切都白瞎，在我的印象中，这几年比较火的漏洞是shiro 550&#x2F;springboot rce&#x2F;log4j rce。第一时间肯定要先扫描提供的资产是不是存在上面的漏洞，快速打点。当然各大oa还财务系统也存在各种漏洞。 # 批量漏洞扫描 ## log4j fuzz spring 12345678910111213141516171819202">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-02-17T06:14:22.000Z">
-<meta property="article:modified_time" content="2023-07-15T04:07:41.147Z">
+<meta property="article:modified_time" content="2023-08-03T08:32:36.503Z">
 <meta property="article:author" content="ccadmin">
 <meta property="article:tag" content="hvv">
 <meta property="article:tag" content="漏洞扫描">
@@ -222,7 +222,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.4k 字
+          3.3k 字
         
       </span>
     
@@ -233,7 +233,7 @@
         
         
         
-          20 分钟
+          28 分钟
         
       </span>
     
@@ -289,6 +289,12 @@ rce。第一时间肯定要先扫描提供的资产是不是存在上面的漏�
 <p>直接把所有流量走一遍burpsuite或者xray，效率最高。</p>
 <h1 id="telnet-无密码">telnet 无密码</h1>
 <p>使用webfinder-3.2可以扫描telnet默认密码</p>
+<h1
+id="dirsearch使用自定义字典进行批量扫描">dirsearch使用自定义字典进行批量扫描</h1>
+<p>python ..py -w D:.txt -l "C:.txt" -p socks5://127.0.0.1:7772</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">/actuator/</span>env<br><span class="hljs-regexp">/admin/</span>v2/api-docs<br><span class="hljs-regexp">/api/</span>actuator/env<br><span class="hljs-regexp">/api/</span>druid/index.html<br><span class="hljs-regexp">/api/</span>env<br><span class="hljs-regexp">/api/</span>v1/api-docs<br><span class="hljs-regexp">/api/</span>v2/api-docs<br><span class="hljs-regexp">/api/</span>v3/api-docs<br><span class="hljs-regexp">/druid/i</span>ndex.html<br>/env<br><span class="hljs-regexp">/nacos/</span><br>/service<br>/Service.asmx?wsdl<br><span class="hljs-regexp">/statics/u</span>editor<span class="hljs-regexp">/php/</span>controller.php?action=uploadfile<br>/swagger-ui.html<br><span class="hljs-regexp">/swagger/</span>v1/swagger.json<br><span class="hljs-regexp">/UEditor/</span>asp/controller.asp?action=uploadfile<br><span class="hljs-regexp">/ueditor/</span>php/controller.php?action=uploadfile<br><span class="hljs-regexp">/v1/</span>api-docs<br><span class="hljs-regexp">/v2/</span>api-docs<br><span class="hljs-regexp">/v3/</span>api-docs<br></code></pre></td></tr></table></figure>
+<h1 id="xray多线程扫描">xray多线程扫描</h1>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">import</span> time<br><span class="hljs-keyword">import</span> random<br><span class="hljs-keyword">import</span> string<br><span class="hljs-keyword">import</span> subprocess<br><br>file_path = <span class="hljs-string">&#x27;../asset/out&#x27;</span><br><span class="hljs-keyword">for</span> filename <span class="hljs-keyword">in</span> os.listdir(file_path):<br>    t = time.time()<br>    html_filename = <span class="hljs-built_in">str</span>(<span class="hljs-built_in">int</span>(t)) + <span class="hljs-string">&quot;&quot;</span>.join(random.sample(string.ascii_letters + string.digits, <span class="hljs-number">5</span>)) + <span class="hljs-string">&#x27;.html&#x27;</span><br>    cmd = [<span class="hljs-string">&#x27;xray&#x27;</span>, <span class="hljs-string">&#x27;ws&#x27;</span>, <span class="hljs-string">&#x27;--url-file&#x27;</span>, filename, <span class="hljs-string">&#x27;--html-output&#x27;</span>, html_filename]<br>    subprocess.Popen(cmd, creationflags=subprocess.CREATE_NEW_CONSOLE)<br><br></code></pre></td></tr></table></figure>
 
                 
               </div>
