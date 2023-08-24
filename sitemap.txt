@@ -1,3 +1,4 @@
+https://blog.njcit.me/Social_Engineering.html
 https://blog.njcit.me/2023/08/24/%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7/%E7%A4%BE%E5%B7%A5%E5%AF%86%E7%A0%81%E5%AD%97%E5%85%B8%E7%94%9F%E6%88%90%E5%99%A8/
 https://blog.njcit.me/2023/08/12/CTF/Web%E6%89%8B%E5%86%8C/
 https://blog.njcit.me/2023/08/08/%E5%86%85%E7%BD%91/%E5%9F%9F%E5%86%85%E6%A8%AA%E5%90%91%E7%A7%BB%E5%8A%A8%E5%9F%BA%E7%A1%80/
@@ -31,7 +32,6 @@ https://blog.njcit.me/2023/06/05/%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7/%E5%AE%89%
 https://blog.njcit.me/2023/06/09/%E6%9D%82%E9%A1%B9/hexo%E5%8D%9A%E5%AE%A2%E8%B0%83%E4%BC%98/
 https://blog.njcit.me/2023/06/08/%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7/gobuster%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/
 https://blog.njcit.me/2023/05/16/%E6%B8%97%E9%80%8F%E5%B7%A5%E5%85%B7/metasploit%E4%BD%BF%E7%94%A8%E7%AC%94%E8%AE%B0/
-https://blog.njcit.me/Social_Engineering.html
 https://blog.njcit.me/2022/12/06/%E6%9D%82%E9%A1%B9/%E5%B8%B8%E7%94%A8Github%E9%A1%B9%E7%9B%AE/
 https://blog.njcit.me/2023/03/23/waf_bypass/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/
 https://blog.njcit.me/2023/03/22/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99/
@@ -66,10 +66,10 @@ https://blog.njcit.me/tags/ctf/
 https://blog.njcit.me/tags/web/
 https://blog.njcit.me/tags/%E7%88%86%E7%A0%B4/
 https://blog.njcit.me/tags/exp/
-https://blog.njcit.me/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/
-https://blog.njcit.me/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/
 https://blog.njcit.me/tags/waf/
 https://blog.njcit.me/tags/bypass/
+https://blog.njcit.me/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/
+https://blog.njcit.me/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/
 https://blog.njcit.me/tags/geacon-pro/
 https://blog.njcit.me/tags/cobaltstrike/
 https://blog.njcit.me/tags/%E5%86%85%E7%BD%91/
